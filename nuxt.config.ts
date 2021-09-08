@@ -90,7 +90,7 @@ const config: NuxtConfig = {
 
   modules: ['@nuxtjs/pwa'],
   plugins: [
-    // '~/plugins/lazyMode',
+    // '~/plugins/lazyMode', dev update
     { src: '~plugins/vuesax.js' },
     { src: '~plugins/vuemasonry.js' },
     { src: '~plugins/spectrecss.js' },
