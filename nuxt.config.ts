@@ -5,7 +5,7 @@ const useEmulators = false // manually change if emulators needed
 
 const config: NuxtConfig = {
   head: {
-    title: "Helium Artworks - La meilleurs banques d'image africaines",
+    title: "Helium Artworks - La meilleure banque d'images africaines",
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -18,7 +18,6 @@ const config: NuxtConfig = {
 
   buildModules: [
     '@nuxt/typescript-build',
-    '@nuxtjs/tailwindcss',
     '@nuxtjs/firebase',
   ],
 

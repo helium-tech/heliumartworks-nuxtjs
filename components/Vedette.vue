@@ -9,7 +9,7 @@
             ultérieurement.
           </p>
         </div>
-        <div v-else class="columns">
+        <div v-else class="columns flex-centered">
           <figure v-if="loading" class="loading loading-lg"></figure>
 
           <masonry :cols="4" :gutter="10">
@@ -22,7 +22,7 @@
                 <a href="#">
                   <img
                     class="img-responsive img-fit-cover"
-                    :src="image.thumb400"
+                    :src="image.thumb800"
                     :alt="image.title"
                   />
                   <div class="price p-absolute label label-rounded">

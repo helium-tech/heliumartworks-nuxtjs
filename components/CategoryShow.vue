@@ -56,8 +56,13 @@ export default {
 
 <style scoped>
 .fit-img {
-  height: 18em;
+  height: 20em;
   width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.fit-img:hover {
+  box-shadow: rgba(17, 17, 26, 0.1) 0 0 16px;
+  transform: translateY(-5px);
+  transition: all .3s;
 }
 </style>

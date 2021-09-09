@@ -9,7 +9,7 @@
           <div class="column col-7 px-6 py-2 col-lg-auto">
             <h2>Vous êtes artiste, photographe ou créateur africain de contenu ?!</h2>
             <p>Ouvrez un compte, publiez vos oeuvres et faites vous un revenu passif !</p>
-            <button href="#" class="btn btn-cta mr-1 font-500">Vendre mes oeuvres</button>
+            <button href="#" class="btn btn-cta btn-lg mr-1 font-500">Vendre mes oeuvres</button>
           </div>
         </div>
     </div>

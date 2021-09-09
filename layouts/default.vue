@@ -1,24 +1,6 @@
 <template>
   <div id="app">
-    <header class="bg-gray">
-      <div class="container navbar py-4">
-        <section class="navbar-section">
-          <router-link to="/" class="logo"><span class="text-yellow">helium</span>artworks</router-link>
-        </section>
-        <section class="navbar-center hide-md">
-          <router-link to="/images" class="btn btn-link">Images</router-link>
-          <a href="#" class="btn btn-link">Catégories</a>
-          <a href="#" class="btn btn-link">Packs</a>
-          <a href="#" class="btn btn-link">Vidéos</a>
-          <a href="#" class="btn btn-link">Ma sélection</a>
-        </section>
-        <section class="navbar-section navbar-right hide-md">
-          <button href="#" class="btn btn-cta mr-1 font-500">Se connecter</button>
-          <button href="#" class="btn btn-cta-y ml-2 font-500" @click.prevent="toggleModal">Vendre mes oeuvres</button>
-        </section>
-      </div>
-  </header>
-
+    <Header></Header>
   <Nuxt />
 
     <!-- Modal de connexion et d'inscription -->
@@ -70,39 +52,16 @@
     </div>
   </div>
 
-    <!-- Footer-->
-    <footer class="site-footer bg-gray">
-    <div class="container">
-      <div class="divider"></div>
-      <div class="site-info  py-2 navbar">
-        <section class="navbar-section">
-          <div class="site-branding mr-2">
-            <router-link to="/" class="logo"><span class="text-yellow">helium</span>artworks</router-link>
-          </div>
-        </section>
-        <section>
-          <a href="#" class="btn btn-link">Support et Contact</a>
-          <a href="#" class="btn btn-link">Conditions d'utilisation</a>
-        </section>
-        <section class="navbar-section">
-          <h6>©2021 helium</h6>
-        </section>
-      </div>
-    </div>
-  </footer>
+    <Footer></Footer>
 
-  <!-- Menu Mobile-->
-    <section class="mob-menu navbar-section p-sticky p-2 show-lg bg-gray columns">
-      <button class="btn btn-cta-y btn-action mx-1 column"><i class="icon icon-menu"></i></button>
-      <button class="btn btn-cta-y btn-action mx-1 column badge" data-badge="0"><i class="icon icon-bookmark"></i></button>
-      <button class="btn btn-cta-y btn-action mx-1 column"><i class="icon icon-search"></i></button>
-      <button class="btn btn-cta-y btn-action mx-1 column"><i class="icon icon-people"></i></button>
-    </section>
+    <MobMenu></MobMenu>
+
   </div>
 </template>
 
 
 <script>
+
 
 export default {
   data() {
@@ -289,11 +248,6 @@ aside {
 .gradient {
   background-color: #fff293;
   background-image: linear-gradient(315deg, #fff293 0%, #ffe884 74%);
-}
-
-.menu {
-  background: inherit !important;
-  box-shadow: initial !important;
 }
 
 .tab .tab-item a.active, .tab .tab-item.active a {

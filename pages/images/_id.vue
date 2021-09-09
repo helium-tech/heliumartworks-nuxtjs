@@ -14,10 +14,11 @@
         <span class="font-600">Taille :</span>
         <span> {{image.file_size}}</span>
       </div>
-      <h2>
-        <span>{{ parseInt(image.offer_price) + parseInt(image.transaction_fees) }}</span>
-        <span class="text-muted text-tiny"> FCFA</span>
-      </h2>
+      <div>
+        <span class="old-price h4 text-muted">{{image.price}}</span>
+        <span class="h2">{{ parseInt(image.offer_price) + parseInt(image.transaction_fees) }}</span>
+        <span class="text-muted h3"> FCFA</span>
+      </div>
       <section class="">
         <button href="#" class="btn btn-cta-y mr-1 font-500">Télécharger</button>
         <button href="#" class="btn btn-cta ml-2 font-500">Ajouter à ma sélection</button>
@@ -68,8 +69,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
-    z-index: 6;
-    background: #fff;
+.old-price {
+  text-decoration: line-through;
 }
 </style>
