@@ -59,11 +59,5 @@ export default {
 </script>
 
 <style scoped>
-.dropdown:hover .menu {
-  display: block;
-}
 
-.dropdown .menu {
-	top: 80% !important;
-}
 </style>

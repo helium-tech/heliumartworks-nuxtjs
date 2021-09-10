@@ -1,9 +1,22 @@
 <template>
   <section class="container p-relative">
   <div class="columns flex-centered pt-2rem">
-    <div class="column flex-centered col-6">
-      <img class="img-responsive img-fit-cover" :src="image.thumb400" :alt="image.title">
+    <div class="column flex-centered col-6 p-relative">
+      <v-zoomer
+      ref="zoomer"
+      style="width: 500px; height: 500px; border: solid 1px #dedede;"
+      :max-scale="10"
+      :zooming-elastic="false"
+      :zoomed.sync="zoomed"
+      >
+        <img class="img-responsive img-fit-contain" :src="image.thumb800" :alt="image.title" style="width: 100%; height: 100%;">
+      </v-zoomer>
+      <div class="p-absolute zoom-controls">
+        <button class="btn btn-cta" type="action" @click="$refs.zoomer.zoomIn()">Zoom+</button>
+        <button class="btn btn-cta" type="action" @click="$refs.zoomer.zoomOut()">Zoom-</button>
+      </div>
     </div>
+
     <div class="column">
       <h1 class="h4 text-bold">{{image.title}}</h1>
       <div class="size mb-2">
@@ -50,8 +63,9 @@ export default {
   name: 'ImageContent',
   data() {
     return {
-      image: {}
-    };
+      image: {},
+      zoomed: false,
+    }
   },
 
   mounted() {
@@ -71,5 +85,9 @@ export default {
 <style scoped>
 .old-price {
   text-decoration: line-through;
+}
+
+.zoom-controls {
+  top: 0
 }
 </style>

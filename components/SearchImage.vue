@@ -1,5 +1,5 @@
 <template>
-  <div class="input-group input-inline">
+  <div class="input-group">
     <input class="form-input input-lg" type="text" placeholder="Travailleur africain...">
     <button class="btn btn-lg btn-cta-y input-group-btn">Rechercher</button>
   </div>
@@ -13,3 +13,5 @@ export default {
 </script>
 
 <style scoped>
+
+</style>

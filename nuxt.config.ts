@@ -93,6 +93,7 @@ const config: NuxtConfig = {
     { src: '~plugins/vuesax.js' },
     { src: '~plugins/vuemasonry.js' },
     { src: '~plugins/spectrecss.js' },
+    { src: '~plugins/vuezoomer.js' },
   ],
 
   css: [

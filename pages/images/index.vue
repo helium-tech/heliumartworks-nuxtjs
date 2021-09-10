@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <div>
     <HeroSecond></HeroSecond>
-    
-    <div class="render-images-vedette pb-2">
+
+    <div class="render-images-vedette pb-2 pt-2rem container">
       <div v-if="errored" class="error">
         <p>
           Impossible de charger les images pour l'instant. Veuillez réessayer
@@ -19,7 +19,7 @@
             :key="image.id"
           >
             <div class="p-relative">
-              <a href="#">
+              <router-link :to="'/images/' + image.id">
                 <img
                   class="img-responsive img-fit-cover"
                   :src="image.thumb800"
@@ -32,7 +32,7 @@
                   }}</span>
                   <span class="text-muted text-tiny"> FCFA</span>
                 </div>
-              </a>
+              </router-link>
               <figcaption class="figure-caption">
                 <p class="image-title mb-1">{{ image.title }}</p>
                 <button class="btn btn-cta-y btn-action mx-1">
@@ -53,7 +53,7 @@
 <script>
 import SearchImage from '~/components/SearchImage.vue'
 import axios from 'axios'
-let url = "https://heliumartworks.herokuapp.com/files/ressources?resource_type=images&limit=24"
+let url = "https://heliumartworks.herokuapp.com/files/ressources?resource_type=images"
 
 export default {
   name: 'Images',
