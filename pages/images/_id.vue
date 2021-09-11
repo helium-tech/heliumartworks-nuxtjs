@@ -2,49 +2,70 @@
   <section class="container p-relative">
     <div class="columns flex-centered pt-2rem">
       <div class="column flex-centered col-6 p-relative">
-      <v-zoomer
-      ref="zoomer"
-      style="width: 500px; height: 500px; border: solid 1px #dedede;"
-      :max-scale="10"
-      :zooming-elastic="false"
-      :zoomed.sync="zoomed"
-      >
-        <img
-          class="img-responsive img-fit-contain"
-          :src="image.thumb800"
-          :alt="image.title"
-          style="width: 100%; height: 100%"
-        />
+        <v-zoomer
+          ref="zoomer"
+          style="width: 500px; height: 500px; border: solid 1px #dedede"
+          :max-scale="10"
+          :zooming-elastic="false"
+          :zoomed.sync="zoomed"
+        >
+          <img
+            class="img-responsive img-fit-contain"
+            :src="image.thumb800"
+            :alt="image.title"
+            style="width: 100%; height: 100%"
+          />
         </v-zoomer>
         <div class="p-absolute zoom-controls">
-        <button class="btn btn-cta" type="action" @click="$refs.zoomer.zoomIn()">Zoom+</button>
-        <button class="btn btn-cta" type="action" @click="$refs.zoomer.zoomOut()">Zoom-</button>
-      </div>
+          <button
+            class="btn btn-cta"
+            type="action"
+            @click="$refs.zoomer.zoomIn()"
+          >
+            Zoom+
+          </button>
+          <button
+            class="btn btn-cta"
+            type="action"
+            @click="$refs.zoomer.zoomOut()"
+          >
+            Zoom-
+          </button>
+        </div>
       </div>
 
-    <div class="column">
+      <div class="column">
+        <AlertLogin></AlertLogin>
 
-      <AlertLogin></AlertLogin>
-
-      <h1 class="h4 text-bold">{{image.title}}</h1>
-      <div class="size mb-2">
-        <span class="font-600">Description :</span>
-        <span> {{image.description}}</span>
-      </div>
-      <div class="size mb-2">
-        <span class="font-600">Taille :</span>
-        <span> {{image.file_size}}</span>
-      </div>
-      <div>
-        <span class="old-price h4 text-muted">{{image.price}}</span>
-        <span class="h2">{{ parseInt(image.offer_price) + parseInt(image.transaction_fees) }}</span>
-        <span class="text-muted h3"> FCFA</span>
-      </div>
-      <section class="">
-        <button href="#" class="btn btn-cta-y mr-1 font-500">Télécharger</button>
-        <button href="#" class="btn btn-cta ml-2 font-500">Ajouter à ma sélection</button>
-      </section>
-      <div class="divider"></div>
+        <h1 class="h4 text-bold">{{ image.title }}</h1>
+        <div class="size mb-2">
+          <span class="font-600">Description :</span>
+          <span> {{ image.description }}</span>
+        </div>
+        <div class="size mb-2">
+          <span class="font-600">Taille :</span>
+          <span> {{ image.file_size }}</span>
+        </div>
+        <div>
+          <span class="old-price h4 text-muted">{{ image.price }}</span>
+          <span class="h2">{{
+            parseInt(image.offer_price) + parseInt(image.transaction_fees)
+          }}</span>
+          <span class="text-muted h3"> FCFA</span>
+        </div>
+        <section class="">
+          <button
+            href="#"
+            class="btn btn-cta-y mr-1 font-500"
+            @click="downloadFile(image.id)"
+          >
+            Télécharger
+          </button>
+          <button href="#" class="btn btn-cta ml-2 font-500">
+            Ajouter à ma sélection
+          </button>
+        </section>
+        <div class="divider"></div>
         <div class="size mb-2">
           <span>
             <figure
@@ -71,12 +92,13 @@
 <script>
 import AlertLogin from '~/components/AlertLogin.vue'
 import axios from 'axios'
-let url = 'https://heliumartworks.herokuapp.com/files/slug/'
+import { mapState, mapGetters } from 'vuex'
+let url = 'https://heliumartworks.herokuapp.com/files'
 
 export default {
   name: 'ImageContent',
   components: {
-    AlertLogin
+    AlertLogin,
   },
   data() {
     return {
@@ -85,11 +107,35 @@ export default {
     }
   },
 
-  
+  computed: {
+    ...mapState({
+      authUser: (state) => state.auth.authUser,
+    }),
+    ...mapGetters({
+      isLoggedIn: 'auth/isLoggedIn',
+    }),
+  },
+
+  methods: {
+    downloadFile(file_id) {
+      console.log(file_id)
+      var request_url =
+        url + '/download?file_id=' + file_id + '&user_id=' + this.authUser.id
+      axios
+        .get(request_url)
+        .then((data) => {
+          data = data.data
+          console.log(data)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+  },
 
   mounted() {
     axios
-      .get(url + this.$route.params.id)
+      .get(url + '/slug/' + this.$route.params.id)
       .then((response) => {
         this.image = response.data
       })
