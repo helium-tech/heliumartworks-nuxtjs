@@ -57,7 +57,8 @@
             </div>
           </section>
           <section class="navbar-section navbar-right hide-md">
-            <button href="#" class="btn btn-cta mr-1 font-500">Se connecter</button>
+            <AuthModal></AuthModal>
+            <!-- <UserAccountButton v-else></UserAccountButton> -->
             <button href="#" class="btn btn-cta-y ml-2 font-500" @click.prevent="toggleModal">Vendre mes oeuvres</button>
           </section>
         </div>
@@ -123,9 +124,15 @@
 
 
 <script>
-
+import { mapState, mapGetters } from 'vuex'
+import AuthModal from '~/components/auth/AuthModal.vue'
+import UserAccountButton from '~/components/auth/UserAccountButton.vue'
 
 export default {
+  components: {
+    AuthModal,
+    UserAccountButton,
+  },
   data() {
     return {
       isModalActive : false,
@@ -133,6 +140,14 @@ export default {
       isRegisterTabActive : false,
       'currentForm' : 'login',
     }
+  },
+  computed: {
+    ...mapState({
+      authUser: (state) => state.auth.authUser,
+    }),
+    ...mapGetters({
+      isLoggedIn: 'auth/isLoggedIn',
+    }),
   },
   methods: {
 
