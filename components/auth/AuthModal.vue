@@ -11,7 +11,6 @@
         Mon compte
       </button>
       <button
-        @click="active = !active"
         class="btn btn-cta-y my-2 font-500 btn-block"
         v-else>
         Se connecter
