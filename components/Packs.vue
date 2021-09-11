@@ -3,7 +3,7 @@
       <div class="container">
         <h2 class="text-bold pt-2rem">Découvrez les packs images</h2>
         <div class="columns flex-centered">
-          <figure class="column p-relative">
+          <figure class="column p-relative pack">
               <a href="#">
                 <img class="img-responsive h-rounded p-relative img-pack fit-img img-fit-cover" src=@/assets/images/art-cat.jpg>
                 <img class="img-responsive h-rounded fit-img img-fit-cover p-absolute left-image" src=@/assets/images/personnes-cat.jpg>
@@ -84,5 +84,11 @@ export default {
 .img-pack {
   position: relative;
   z-index: 1;
+}
+
+@media (max-width:840px)  {
+  .fit-img {
+    height: 8em;
+  }
 }
 </style>

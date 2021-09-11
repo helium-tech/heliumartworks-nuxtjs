@@ -1,23 +1,68 @@
 <template>
   <div id="app">
     <header class="bg-gray">
-      <div class="container navbar py-4">
-        <section class="navbar-section">
-          <router-link to="/" class="logo"><span class="text-yellow">helium</span>artworks</router-link>
-        </section>
-        <section class="navbar-center hide-md">
-          <router-link to="/images" class="btn btn-link">Images</router-link>
-          <a href="#" class="btn btn-link">Catégories</a>
-          <a href="#" class="btn btn-link">Packs</a>
-          <a href="#" class="btn btn-link">Vidéos</a>
-          <a href="#" class="btn btn-link">Ma sélection</a>
-        </section>
-        <section class="navbar-section navbar-right hide-md">
-          <button href="#" class="btn btn-cta mr-1 font-500">Se connecter</button>
-          <button href="#" class="btn btn-cta-y ml-2 font-500" @click.prevent="toggleModal">Vendre mes oeuvres</button>
-        </section>
-      </div>
-  </header>
+        <div class="container navbar py-4">
+          <section class="navbar-section">
+            <router-link to="/" class="logo"><span class="text-yellow">helium</span>artworks</router-link>
+          </section>
+          <section class="navbar-center hide-md">
+            <router-link to="/images" class="btn btn-link">Images</router-link>
+            <div class="dropdown categories">
+              <a href="#" class="btn btn-link dropdown-toggle" tabindex="0">
+                Catégories
+              </a>
+              <ul class="menu">
+                <li>
+                  <div class="chip">
+                  <img src=@/assets/images/art-cat.jpg class="avatar avatar-sm">
+                    Art
+                  </div>
+                  <div class="chip">
+                  <img src=@/assets/images/travail-cat.jpg class="avatar avatar-sm">
+                    Travail
+                  </div>
+                  <div class="chip">
+                  <img src=@/assets/images/emotions-cat.jpg class="avatar avatar-sm">
+                    Personnes
+                  </div>
+                </li>
+                <li>
+                  <div class="chip">
+                  <img src=@/assets/images/retro-cat.jpg class="avatar avatar-sm">
+                    Retro
+                  </div>
+                  <div class="chip">
+                  <img src=@/assets/images/personnes-cat.jpg class="avatar avatar-sm">
+                    Emotion
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <a href="#" class="btn btn-link">Vidéos</a>
+            <a href="#" class="btn btn-link">Musique</a>
+            <a href="#" class="btn btn-link">Oeuvres d'art</a>
+            <div class="dropdown selection">
+              <a href="#" class="btn btn-link badge" data-badge="0">Ma sélection</a>
+              <ul class="menu">
+                <div class="empty">
+                  <div class="empty-icon">
+                    <i class="icon icon-people"></i>
+                  </div>
+                  <p class="empty-subtitle">Vous n'avez sélectionné aucune image pour l'instant</p>
+                  <div class="empty-action">
+                    <button class="btn btn-cta">Parcourir les images</button>
+                  </div>
+                </div>
+              </ul>
+            </div>
+          </section>
+          <section class="navbar-section navbar-right hide-md">
+            <AuthModal></AuthModal>
+            <!-- <UserAccountButton v-else></UserAccountButton> -->
+            <button href="#" class="btn btn-cta-y ml-2 font-500" @click.prevent="toggleModal">Vendre mes oeuvres</button>
+          </section>
+        </div>
+    </header>
 
   <Nuxt />
 
@@ -70,41 +115,24 @@
     </div>
   </div>
 
-    <!-- Footer-->
-    <footer class="site-footer bg-gray">
-    <div class="container">
-      <div class="divider"></div>
-      <div class="site-info  py-2 navbar">
-        <section class="navbar-section">
-          <div class="site-branding mr-2">
-            <router-link to="/" class="logo"><span class="text-yellow">helium</span>artworks</router-link>
-          </div>
-        </section>
-        <section>
-          <a href="#" class="btn btn-link">Support et Contact</a>
-          <a href="#" class="btn btn-link">Conditions d'utilisation</a>
-        </section>
-        <section class="navbar-section">
-          <h6>©2021 helium</h6>
-        </section>
-      </div>
-    </div>
-  </footer>
+    <Footer></Footer>
 
-  <!-- Menu Mobile-->
-    <section class="mob-menu navbar-section p-sticky p-2 show-lg bg-gray columns">
-      <button class="btn btn-cta-y btn-action mx-1 column"><i class="icon icon-menu"></i></button>
-      <button class="btn btn-cta-y btn-action mx-1 column badge" data-badge="0"><i class="icon icon-bookmark"></i></button>
-      <button class="btn btn-cta-y btn-action mx-1 column"><i class="icon icon-search"></i></button>
-      <button class="btn btn-cta-y btn-action mx-1 column"><i class="icon icon-people"></i></button>
-    </section>
+    <MobMenu></MobMenu>
+
   </div>
 </template>
 
 
 <script>
+import { mapState, mapGetters } from 'vuex'
+import AuthModal from '~/components/auth/AuthModal.vue'
+import UserAccountButton from '~/components/auth/UserAccountButton.vue'
 
 export default {
+  components: {
+    AuthModal,
+    UserAccountButton,
+  },
   data() {
     return {
       isModalActive : false,
@@ -112,6 +140,14 @@ export default {
       isRegisterTabActive : false,
       'currentForm' : 'login',
     }
+  },
+  computed: {
+    ...mapState({
+      authUser: (state) => state.auth.authUser,
+    }),
+    ...mapGetters({
+      isLoggedIn: 'auth/isLoggedIn',
+    }),
   },
   methods: {
 
@@ -173,8 +209,8 @@ a.active, a:active, a:focus, a:hover {
 }
 
 .px-6 {
-  padding-left: 1.2rem !important;
-  padding-right: 1.2rem !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
 }
 
 .pb-8 {
@@ -287,13 +323,8 @@ aside {
 }
 
 .gradient {
-  background-color: #fff293;
-  background-image: linear-gradient(315deg, #fff293 0%, #ffe884 74%);
-}
-
-.menu {
-  background: inherit !important;
-  box-shadow: initial !important;
+  background-color: transparent;
+  background-image: linear-gradient(180deg,rgba(0,23,37,0),rgba(0,23,37,0) 15%,rgba(0,23,37,.85));
 }
 
 .tab .tab-item a.active, .tab .tab-item.active a {
@@ -308,5 +339,19 @@ aside {
 .mob-menu {
   bottom: 0;
   z-index: 10
+}
+
+.dropdown:hover .menu {
+  display: block;
+}
+
+.dropdown .menu {
+	top: 90% !important;
+  width: 18em;
+}
+
+.badge[data-badge]::after,
+.badge:not([data-badge])::after {
+  background: #ffc71c !important;
 }
 </style>
