@@ -18,6 +18,9 @@
     </div>
 
     <div class="column">
+      
+      <AlertLogin></AlertLogin>
+
       <h1 class="h4 text-bold">{{image.title}}</h1>
       <div class="size mb-2">
         <span class="font-600">Description :</span>
@@ -56,11 +59,15 @@
 </template>
 
 <script>
+import AlertLogin from '~/components/AlertLogin.vue'
 import axios from 'axios'
 let url = "https://heliumartworks.herokuapp.com/files/"
 
 export default {
   name: 'ImageContent',
+  components: {
+    AlertLogin
+  },
   data() {
     return {
       image: {},

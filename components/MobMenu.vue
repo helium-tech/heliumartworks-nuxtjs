@@ -1,9 +1,9 @@
 <template>
-  <section class="mob-menu navbar-section p-sticky p-2 show-lg bg-gray columns">
-    <button class="btn btn-cta-y btn-action mx-1 column"><i class="icon icon-menu"></i></button>
-    <button class="btn btn-cta-y btn-action mx-1 column badge" data-badge="0"><i class="icon icon-bookmark"></i></button>
-    <button class="btn btn-cta-y btn-action mx-1 column"><i class="icon icon-search"></i></button>
-    <button class="btn btn-cta-y btn-action mx-1 column"><i class="icon icon-people"></i></button>
+  <section class="mob-menu p-sticky p-4 show-lg bg-gray">
+    <a class="column flex-centered"><i class="icon icon-menu" title="Menu"></i></a>
+    <a class="column flex-centered badge" data-badge="0"><i class="icon icon-bookmark" title="Ma sélection"></i></a>
+    <a class="column flex-centered"><i class="icon icon-search" title="Effectuer une recherche"></i></a>
+    <a class="column flex-centered"><i class="icon icon-person" title="Se connecter"></i></a>
   </section>
 </template>
 
@@ -15,5 +15,13 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width:840px)  {
+  .mob-menu {
+    display: flex !important;
+  }
+}
 
+.p-4 {
+	padding: .8rem;
+}
 </style>

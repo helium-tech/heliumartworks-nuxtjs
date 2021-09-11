@@ -3,7 +3,7 @@
       <div class="container">
 
         <div class="columns">
-          <div class="column">
+          <div class="column hide-md">
               <a href="#">
                 <img class="img-responsive side-img h-rounded fit-img img-fit-cover" src=@/assets/images/painting.jpg alt="Painting">
               </a>
