@@ -85,6 +85,8 @@ export default {
     }
   },
 
+  
+
   mounted() {
     axios
       .get(url + this.$route.params.id)
