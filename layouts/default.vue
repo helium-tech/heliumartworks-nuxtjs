@@ -12,7 +12,6 @@
                 Catégories
               </a>
               <ul class="menu">
-                <li>
                   <div class="chip">
                   <img src=@/assets/images/art-cat.jpg class="avatar avatar-sm">
                     Art
@@ -25,8 +24,6 @@
                   <img src=@/assets/images/emotions-cat.jpg class="avatar avatar-sm">
                     Personnes
                   </div>
-                </li>
-                <li>
                   <div class="chip">
                   <img src=@/assets/images/retro-cat.jpg class="avatar avatar-sm">
                     Retro
@@ -35,7 +32,6 @@
                   <img src=@/assets/images/personnes-cat.jpg class="avatar avatar-sm">
                     Emotion
                   </div>
-                </li>
               </ul>
             </div>
             <a href="#" class="btn btn-link">Vidéos</a>
@@ -72,7 +68,7 @@
       <div class="modal-container h-rounded">
         <section class="modal-header">
         <a href="#close" class="btn btn-clear float-right my-2" aria-label="Close" @click="toggleModal"></a>
-        <div class="switch-login-type py-2">
+        <!-- <div class="switch-login-type py-2">
           <ul class="tab tab-block">
             <li class="tab-item" :class="{active : isLoginTabActive}">
               <a href="#">Connexion</a>
@@ -81,12 +77,13 @@
               <a href="#">Inscription</a>
             </li>
           </ul>
-        </div>
+        </div> -->
         <div class="modal-title text-center h5"><span class="text-yellow">helium</span>artworks</div>
         </section>
         <section class="modal-body">
           <div class="content">
-            <form class="form-group register-form" v-if="currentForm === 'register'">
+            Bientôt vous aurez la possibilité de vendre vos oeuvres
+            <!-- <form class="form-group register-form" v-if="currentForm === 'register'">
               <label class="form-label" for="usermail">Adresse Email</label>
               <input class="form-input" type="email" id="usermail" placeholder="Email">
               <label class="form-label" for="username">Nom d'utilisateur</label>
@@ -109,7 +106,7 @@
               <p class="message">Vous n'avez pas de compte ?
                 <a href="#" @click.prevent="switchForm()"><span class="text-yellow">Créez en un</span></a>
               </p>
-            </form>
+            </form> -->
           </div>
         </section>
     </div>
@@ -347,11 +344,15 @@ aside {
 
 .dropdown .menu {
 	top: 90% !important;
-  width: 18em;
+  width: 20em;
 }
 
 .badge[data-badge]::after,
 .badge:not([data-badge])::after {
   background: #ffc71c !important;
+}
+
+.chip {
+  margin: 8px !important;
 }
 </style>

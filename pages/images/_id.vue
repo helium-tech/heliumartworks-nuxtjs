@@ -2,28 +2,28 @@
   <section class="container p-relative">
     <div class="columns flex-centered pt-2rem">
       <div class="column flex-centered col-6 p-relative">
-        <!-- <v-zoomer
+      <v-zoomer
       ref="zoomer"
       style="width: 500px; height: 500px; border: solid 1px #dedede;"
       :max-scale="10"
       :zooming-elastic="false"
       :zoomed.sync="zoomed"
-      > -->
+      >
         <img
           class="img-responsive img-fit-contain"
           :src="image.thumb800"
           :alt="image.title"
           style="width: 100%; height: 100%"
         />
-        <!-- </v-zoomer> -->
-        <!-- <div class="p-absolute zoom-controls">
+        </v-zoomer>
+        <div class="p-absolute zoom-controls">
         <button class="btn btn-cta" type="action" @click="$refs.zoomer.zoomIn()">Zoom+</button>
         <button class="btn btn-cta" type="action" @click="$refs.zoomer.zoomOut()">Zoom-</button>
-      </div> -->
+      </div>
       </div>
 
     <div class="column">
-      
+
       <AlertLogin></AlertLogin>
 
       <h1 class="h4 text-bold">{{image.title}}</h1>
