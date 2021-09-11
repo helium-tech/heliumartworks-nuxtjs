@@ -19,7 +19,7 @@
             :key="image.id"
           >
             <div class="p-relative">
-              <router-link :to="'/images/' + image.id">
+              <nuxt-link :to="'/images/' + image.slug">
                 <img
                   class="img-responsive img-fit-cover"
                   :src="image.thumb800"
@@ -32,7 +32,7 @@
                   }}</span>
                   <span class="text-muted text-tiny"> FCFA</span>
                 </div>
-              </router-link>
+              </nuxt-link>
               <figcaption class="figure-caption">
                 <p class="image-title mb-1">{{ image.title }}</p>
                 <button class="btn btn-cta-y btn-action mx-1">
