@@ -10,7 +10,7 @@
           </p>
         </div>
         <div v-else class="columns flex-centered">
-          <figure v-if="loading" class="loading loading-lg"></figure>
+          <!-- <figure v-if="loading" class="loading loading-lg"></figure> -->
 
           <masonry 
           :cols="{default: 4, 1000: 3, 700: 2, 400: 1}"
@@ -62,6 +62,7 @@
 
 <script>
 import axios from 'axios'
+import {mapGetters, mapState} from "vuex"
 let url =
   'https://heliumartworks.herokuapp.com/files/ressources?resource_type=images&limit=12'
 
@@ -69,23 +70,18 @@ export default {
   name: 'Vedette',
   data() {
     return {
-      images: '',
-      loading: true,
+      // loading: true,
       errored: false,
     }
   },
+  computed:{
+      ...mapState({
+      images: (state) => state.images.recentsImages,
+    }),
+  },
 
   mounted() {
-    axios
-      .get(url)
-      .then((response) => {
-        this.images = response.data
-      })
-      .catch((error) => {
-        error = true
-        this.errored = error
-      })
-      .finally(() => (this.loading = false))
+    this.$store.dispatch('images/getRecentsImages')
   },
 }
 </script>
