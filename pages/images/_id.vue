@@ -22,32 +22,29 @@
       </div> -->
       </div>
 
-      <div class="column">
-        <h1 class="h4 text-bold">{{ image.title }}</h1>
-        <div class="size mb-2">
-          <span class="font-600">Description :</span>
-          <span> {{ image.description }}</span>
-        </div>
-        <div class="size mb-2">
-          <span class="font-600">Taille :</span>
-          <span> {{ image.file_size }}</span>
-        </div>
-        <div>
-          <span class="old-price h4 text-muted">{{ image.price }} FCFA</span>  <br>
-          <span class="h1">{{
-            parseInt(image.offer_price) + parseInt(image.transaction_fees)
-          }}</span>
-          <span class="text-muted h3"> FCFA</span>
-        </div>
-        <section class="">
-          <button href="#" class="btn btn-cta-y mr-1 font-500">
-            Télécharger
-          </button>
-          <button href="#" class="btn btn-cta ml-2 font-500">
-            Ajouter à ma sélection
-          </button>
-        </section>
-        <div class="divider"></div>
+    <div class="column">
+      
+      <AlertLogin></AlertLogin>
+
+      <h1 class="h4 text-bold">{{image.title}}</h1>
+      <div class="size mb-2">
+        <span class="font-600">Description :</span>
+        <span> {{image.description}}</span>
+      </div>
+      <div class="size mb-2">
+        <span class="font-600">Taille :</span>
+        <span> {{image.file_size}}</span>
+      </div>
+      <div>
+        <span class="old-price h4 text-muted">{{image.price}}</span>
+        <span class="h2">{{ parseInt(image.offer_price) + parseInt(image.transaction_fees) }}</span>
+        <span class="text-muted h3"> FCFA</span>
+      </div>
+      <section class="">
+        <button href="#" class="btn btn-cta-y mr-1 font-500">Télécharger</button>
+        <button href="#" class="btn btn-cta ml-2 font-500">Ajouter à ma sélection</button>
+      </section>
+      <div class="divider"></div>
         <div class="size mb-2">
           <span>
             <figure
@@ -72,11 +69,15 @@
 </template>
 
 <script>
+import AlertLogin from '~/components/AlertLogin.vue'
 import axios from 'axios'
 let url = 'https://heliumartworks.herokuapp.com/files/slug/'
 
 export default {
   name: 'ImageContent',
+  components: {
+    AlertLogin
+  },
   data() {
     return {
       image: {},

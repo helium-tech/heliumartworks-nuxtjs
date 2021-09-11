@@ -85,4 +85,10 @@ export default {
   position: relative;
   z-index: 1;
 }
+
+@media (max-width:840px)  {
+  .fit-img {
+    height: 8em;
+  }
+}
 </style>
