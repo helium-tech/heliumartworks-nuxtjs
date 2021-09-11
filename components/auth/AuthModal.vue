@@ -76,14 +76,14 @@
             Créer un compte
           </vs-button>
 
-          <vs-button
+          <!-- <vs-button
             icon
             style="margin-top: 20px; padding-left: 15px; padding-right: 15px"
             @click="signWithGoogle()"
           >
             <i class="bx bxl-google" style="margin-right: 5px"></i>
             Se Connecter avec Google
-          </vs-button>
+          </vs-button> -->
 
           <div class="new" v-if="isRegister == false">
             Nouveau?

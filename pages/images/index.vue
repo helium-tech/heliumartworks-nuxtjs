@@ -10,7 +10,7 @@
         </p>
       </div>
       <div v-else class="columns flex-centered">
-        <figure v-if="loading" class="loading loading-lg"></figure>
+        <!-- <figure v-if="loading" class="loading loading-lg"></figure> -->
 
         <masonry :cols="4" :gutter="10">
           <figure
@@ -45,7 +45,8 @@
             </div>
           </figure>
         </masonry>
-      </div><!--end v-else -->
+      </div>
+      <!--end v-else -->
     </div>
   </div>
 </template>
@@ -53,32 +54,28 @@
 <script>
 import SearchImage from '~/components/SearchImage.vue'
 import axios from 'axios'
-let url = "https://heliumartworks.herokuapp.com/files/ressources?resource_type=images"
+import { mapGetters, mapState } from 'vuex'
+let url =
+  'https://heliumartworks.herokuapp.com/files/ressources?resource_type=images'
 
 export default {
   name: 'Images',
-  components: {
-
-  },
+  components: {},
   data() {
     return {
-      images: '',
-      loading: true,
-      errored: false
-    };
+      errored: false,
+    }
+  },
+
+  computed: {
+    ...mapState({
+      images: (state) => state.images.recentsImages,
+    }),
   },
 
   mounted() {
-    axios.get(url)
-    .then(response => {
-      this.images = response.data;
-    })
-    .catch(error => {
-      error = true;
-      this.errored = error;
-    })
-    .finally(() => this.loading = false)
-  }
+    this.$store.dispatch('images/getRecentsImages')
+  },
 }
 </script>
 <style scoped>
