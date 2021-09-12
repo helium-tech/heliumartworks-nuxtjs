@@ -2,40 +2,18 @@
   <section class="container p-relative">
     <div class="columns flex-centered pt-2rem">
       <div class="column flex-centered col-6 p-relative">
-        <v-zoomer
-          ref="zoomer"
-          style="width: 500px; height: 500px; border: solid 1px #dedede"
-          :max-scale="10"
-          :zooming-elastic="false"
-          :zoomed.sync="zoomed"
-        >
+        <div style="width: 500px; height: 500px; border: solid 1px #dedede">
           <img
             class="img-responsive img-fit-contain"
             :src="image.thumb800"
             :alt="image.title"
             style="width: 100%; height: 100%"
           />
-        </v-zoomer>
-        <div class="p-absolute zoom-controls">
-          <button
-            class="btn btn-cta"
-            type="action"
-            @click="$refs.zoomer.zoomIn()"
-          >
-            Zoom+
-          </button>
-          <button
-            class="btn btn-cta"
-            type="action"
-            @click="$refs.zoomer.zoomOut()"
-          >
-            Zoom-
-          </button>
         </div>
       </div>
 
       <div class="column">
-        <AlertLogin></AlertLogin>
+        <!-- <AlertLogin></AlertLogin> -->
 
         <h1 class="h4 text-bold">{{ image.title }}</h1>
         <div class="size mb-2">
@@ -57,7 +35,7 @@
           <button
             href="#"
             class="btn btn-cta-y mr-1 font-500"
-            @click="downloadFile(image.id)"
+            @click="downloadFile(image)"
           >
             Télécharger
           </button>
@@ -117,15 +95,47 @@ export default {
   },
 
   methods: {
-    downloadFile(file_id) {
-      console.log(file_id)
+    downloadFile(file) {
+      console.log(file)
       var request_url =
-        url + '/download?file_id=' + file_id + '&user_id=' + this.authUser.id
+        url + '/download?file_id=' + file.id + '&user_id=' + this.authUser.uid
+      console.log(request_url)
+
       axios
         .get(request_url)
         .then((data) => {
           data = data.data
-          console.log(data)
+          if (data.isSuccess == false) {
+            this.$vs.notification({
+              position: 'top-right',
+              title: 'Solde insuffisant',
+              text: data.message,
+            })
+
+            var returnUrl =
+              'http://localhost:3000/images/' +
+              this.image.slug +
+              '?download=true'
+
+            var payement_url =
+              'https://heliumartworks.herokuapp.com/users/account/recharge?amount=550&user_id=' +
+              this.authUser.uid +
+              '&return_url=' +
+              returnUrl
+              
+            console.log(payement_url)
+            axios
+              .post(payement_url)
+              .then((data) => {
+                console.log(data.data)
+                window.open(data.data)
+              })
+              .catch((error) => {
+                console.log(error)
+              })
+          } else {
+            console.log(data)
+          }
         })
         .catch((error) => {
           console.log(error)
@@ -143,7 +153,39 @@ export default {
         error = true
         this.errored = error
       })
-      .finally(() => (this.loading = false))
+      .finally(() => {
+        var isDownload = this.$route.query.download
+
+        if (isDownload === 'true') {
+          var request_url =
+            url +
+            '/download?file_id=' +
+            this.image.id +
+            '&user_id=' +
+            this.authUser.uid
+
+          axios.get(request_url).then((data) => {
+            var result = data.data
+
+            var file_path = result.data.download_url
+
+            // var a = document.createElement('A')
+            // a.href = file_path
+            // a.download = file_path.substr(file_path.lastIndexOf('/') + 1)
+            // document.body.appendChild(a)
+            // a.click()
+            // document.body.removeChild(a)
+
+            var link = document.createElement('a')
+            link.download = this.image.title
+            link.href = file_path
+            document.body.appendChild(link)
+            link.click()
+            document.body.removeChild(link)
+            // delete link;
+          })
+        }
+      })
   },
 }
 </script>
