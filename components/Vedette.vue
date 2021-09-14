@@ -24,8 +24,9 @@
               <div class="p-relative">
                 <a href="#">
                   <img
+
                     class="img-responsive img-fit-cover"
-                    :src="image.thumb800"
+                    :src="image.thumb400"
                     :alt="image.title"
                   />
                   <div class="price p-absolute label label-rounded">
