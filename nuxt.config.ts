@@ -94,6 +94,7 @@ const config: NuxtConfig = {
     { src: '~plugins/vuemasonry.js' },
     { src: '~plugins/spectrecss.js' },
     { src: '~plugins/vuezoomer.js' },
+    { src: '~plugins/vue-lazyload.js' },
   ],
 
   css: [

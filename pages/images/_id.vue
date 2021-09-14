@@ -122,7 +122,7 @@ export default {
               this.authUser.uid +
               '&return_url=' +
               returnUrl
-              
+
             console.log(payement_url)
             axios
               .post(payement_url)
@@ -135,6 +135,41 @@ export default {
               })
           } else {
             console.log(data)
+            var download_url = data.data.download_url
+            console.log(download_url)
+
+            function onStartedDownload(id) {
+              console.log(`Started downloading: ${id}`)
+            }
+
+            function onFailed(error) {
+              console.log(`Download failed: ${error}`)
+            }
+
+            var downloading = browser.downloads.download({
+              url: download_url,
+              filename: 'my-image-again.png',
+              conflictAction: 'uniquify',
+            })
+
+            downloading.then(onStartedDownload, onFailed);
+
+            // axios({
+            //   url: download_url,
+            //   method: 'GET',
+            //   responseType: 'blob',
+            // }).then((response) => {
+            //   var fileUrl = window.URL.createObjectURL(
+            //     new Blob([response.data])
+            //   )
+            //   var fileLink = document.createElement('a')
+            //   fileLink.href = fileUrl
+            //   fileLink.setAttribute('download', this.image.original_file_id)
+
+            //   fileLink.click()
+
+            //   URL.revokeObjectURL(fileLink.href)
+            // })
           }
         })
         .catch((error) => {
