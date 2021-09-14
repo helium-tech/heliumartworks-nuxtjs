@@ -1,103 +1,77 @@
 <template>
-    <div class="columns">
-      <aside class="filters column col-lg-auto col-2 mr-2 bg-gray">
-        <ul class="menu">
-          <li>
-            <h4>Filtres</h4>
-          </li>
-          <li class="divider py-2 font-600" data-content="Catégories"></li>
-          <li class="menu-item">
-            <label class="form-checkbox">
-              <input type="checkbox">
-              <i class="form-icon"></i>
-              Arts
-            </label>
-          </li>
-          <li class="menu-item">
-            <label class="form-checkbox">
-              <input type="checkbox">
-              <i class="form-icon"></i>
-              Travail
-            </label>
-          </li>
-          <li class="menu-item">
-            <label class="form-checkbox">
-              <input type="checkbox">
-              <i class="form-icon"></i>
-              Emotions
-            </label>
-          </li>
-          <li class="menu-item">
-            <label class="form-checkbox">
-              <input type="checkbox">
-              <i class="form-icon"></i>
-              Retro
-            </label>
-          </li>
-          <li class="menu-item">
-            <label class="form-checkbox">
-              <input type="checkbox">
-              <i class="form-icon"></i>
-              Personnes
-            </label>
-          </li>
+    <div class="hidden">
+      <vs-sidebar
+        absolute
+        v-model="active"
+        open
+        >
+        <vs-sidebar-item id="categories">
+          Catégories
+        </vs-sidebar-item>
+        <vs-sidebar-item id="art">
+          <vs-checkbox val="html" v-model="options">
+            Art
+          </vs-checkbox>
+        </vs-sidebar-item>
+        <vs-sidebar-item id="travail">
+          <vs-checkbox val="html" v-model="options">
+            Travail
+          </vs-checkbox>
+        </vs-sidebar-item>
+        <vs-sidebar-item id="personnes">
+          <vs-checkbox val="html" v-model="options">
+            Personnes
+          </vs-checkbox>
+        </vs-sidebar-item>
+        <vs-sidebar-item id="nature">
+          <vs-checkbox val="html" v-model="options">
+            Nature
+          </vs-checkbox>
+        </vs-sidebar-item>
 
-          <li class="divider py-2 font-600" data-content="Types"></li>
-          <li class="menu-item">
-            <label class="form-checkbox">
-              <input type="checkbox">
-              <i class="form-icon"></i>
-              PNG
-            </label>
-          </li>
-          <li class="menu-item">
-            <label class="form-checkbox">
-              <input type="checkbox">
-              <i class="form-icon"></i>
-              JPEG
-            </label>
-          </li>
-          <li class="menu-item">
-            <label class="form-checkbox">
-              <input type="checkbox">
-              <i class="form-icon"></i>
-              PSD
-            </label>
-          </li>
-          <li class="menu-item">
-            <label class="form-checkbox">
-              <input type="checkbox">
-              <i class="form-icon"></i>
-              AES
-            </label>
-          </li>
+        <vs-sidebar-item id="types">
+          Types
+        </vs-sidebar-item>
+        <vs-sidebar-item id="jpeg">
+          <vs-checkbox val="html" v-model="options">
+            JPEG
+          </vs-checkbox>
+        </vs-sidebar-item>
+        <vs-sidebar-item id="png">
+          <vs-checkbox val="html" v-model="options">
+            PNG
+          </vs-checkbox>
+        </vs-sidebar-item>
+        <vs-sidebar-item id="psd">
+          <vs-checkbox val="html" v-model="options">
+            PSD
+          </vs-checkbox>
+        </vs-sidebar-item>
+        <vs-sidebar-item id="aes">
+          <vs-checkbox val="html" v-model="options">
+            AES
+          </vs-checkbox>
+        </vs-sidebar-item>
 
-          <li class="divider py-2 font-600" data-content="Orientation"></li>
-          <li class="menu-item">
-            <label class="form-checkbox">
-              <input type="checkbox">
-              <i class="form-icon"></i>
-              Horizontal
-            </label>
-          </li>
-          <li class="menu-item">
-            <label class="form-checkbox">
-              <input type="checkbox">
-              <i class="form-icon"></i>
-              Verticale
-            </label>
-          </li>
+        <vs-sidebar-item id="orientation">
+          Orientation
+        </vs-sidebar-item>
+        <vs-sidebar-item id="horizontale">
+          <vs-checkbox val="html" v-model="options">
+            Horizontale
+          </vs-checkbox>
+        </vs-sidebar-item>
+        <vs-sidebar-item id="verticale">
+          <vs-checkbox val="html" v-model="options">
+            Verticale
+          </vs-checkbox>
+        </vs-sidebar-item>
 
-          <li class="divider py-2 font-600" data-content="Prix"></li>
-          <li class="menu-item">
-            <input class="slider tooltip" type="range" min="0" max="100" value="50" oninput="this.setAttribute('value', this.value);">
-          </li>
-        </ul>
-      </aside>
+      </vs-sidebar>
 
-      <div class="content column col-lg-auto pt-2">
+      <div class="page-content col-lg-auto pt-2">
         <SearchImage></SearchImage>
-        <div class="render-images-vedette pb-2">
+        <div class="content render-images-vedette pb-2">
           <div v-if="errored" class="error">
             <p>Impossible de charger les images pour l'instant. Veuillez réessayer ultérieurement.</p>
           </div>
@@ -131,7 +105,7 @@
 <script>
 import SearchImage from '~/components/SearchImage.vue'
 import axios from 'axios'
-let url = "https://heliumartworks.herokuapp.com/files/ressources?resource_type=images&limit=24"
+let url = 'https://heliumartworks.herokuapp.com/files/search'
 
 export default {
   name: 'Images',
@@ -147,9 +121,14 @@ export default {
   },
 
   mounted() {
-    axios.get(url)
+    axios
+      .get(url, {
+        params: {
+          keyword: this.$route.query.keyword
+        }
+      })
     .then(response => {
-      this.images = response.data;
+      this.images = response.data.data;
     })
     .catch(error => {
       error = true;
@@ -160,8 +139,15 @@ export default {
 }
 </script>
 <style scoped>
-.menu {
-  background: inherit !important;
-  box-shadow: initial !important;
+.page-content {
+  margin: 1em 2em auto 18em;
+}
+
+.vs-sidebar-content {
+  top: 4rem;
+}
+
+.vs-sidebar__item {
+  padding: 8px 16px !important;
 }
 </style>

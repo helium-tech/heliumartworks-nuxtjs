@@ -2,7 +2,7 @@
   <section class="container p-relative">
     <div class="columns flex-centered pt-2rem">
       <div class="column flex-centered col-6 p-relative">
-        <div style="width: 500px; height: 500px; border: solid 1px #dedede">
+        <div style="width: 500px; height: 500px; border: solid 1px #dedede" @click="toggleModalImage">
           <img
             class="img-responsive img-fit-contain"
             :src="image.thumb800"
@@ -10,6 +10,26 @@
             style="width: 100%; height: 100%"
           />
         </div>
+
+        <div class="modal modal-lg" :class="{active : isModalImageActive}" id="modal-id">
+          <a href="#close" class="modal-overlay" aria-label="Close" @click="toggleModalImage"></a>
+          <div class="modal-container h-rounded">
+            <section class="modal-header">
+            <a href="#close" class="btn btn-clear float-right my-2" aria-label="Close" @click="toggleModalImage"></a>
+            </section>
+            <section class="modal-body">
+              <div class="content">
+                <img
+                  class="img-responsive"
+                  :src="image.thumb800"
+                  :alt="image.title"
+                  style="width: 80%; margin: auto"
+                />
+              </div>
+            </section>
+        </div>
+      </div>
+
       </div>
 
       <div class="column">
@@ -35,9 +55,16 @@
           <button
             href="#"
             class="btn btn-cta-y mr-1 font-500"
-            @click="downloadFile(image)"
+            @click="downloadFile(image)" v-if="isLoggedIn"
           >
             Télécharger
+          </button>
+          <button
+            href="#"
+            class="btn btn-cta-y mr-1 font-500"
+            v-else
+          >
+            Connectez vous pour télécharger cette image
           </button>
           <button href="#" class="btn btn-cta ml-2 font-500">
             Ajouter à ma sélection
@@ -61,7 +88,7 @@
       </div>
     </div>
     <h4 class="text-bold pt-2rem">Tags</h4>
-    <span class="label">{{ image.keywords }}</span>
+    <span class="label mr-2" v-for="tag in tags">{{ tag }}</span>
 
     <h4 class="text-bold pt-2rem">Images similaires</h4>
   </section>
@@ -81,7 +108,8 @@ export default {
   data() {
     return {
       image: {},
-      zoomed: false,
+      tags: '',
+      isModalImageActive : false,
     }
   },
 
@@ -112,17 +140,17 @@ export default {
               text: data.message,
             })
 
-            var returnUrl =
+            let returnUrl =
               'http://localhost:3000/images/' +
               this.image.slug +
               '?download=true'
 
-            var payement_url =
+            let payement_url =
               'https://heliumartworks.herokuapp.com/users/account/recharge?amount=550&user_id=' +
               this.authUser.uid +
               '&return_url=' +
               returnUrl
-              
+
             console.log(payement_url)
             axios
               .post(payement_url)
@@ -141,6 +169,16 @@ export default {
           console.log(error)
         })
     },
+
+    //Déclenche le popup image
+    toggleModalImage() {
+      if (this.isModalImageActive) {
+        this.isModalImageActive = false
+      } else {
+        this.isModalImageActive = true
+      }
+    },
+
   },
 
   mounted() {
@@ -148,6 +186,7 @@ export default {
       .get(url + '/slug/' + this.$route.params.id)
       .then((response) => {
         this.image = response.data
+        this.tags = response.data.keywords[0].split(",")
       })
       .catch((error) => {
         error = true
@@ -195,7 +234,20 @@ export default {
   text-decoration: line-through;
 }
 
-.zoom-controls {
-  top: 0;
+.modal.modal-lg .modal-overlay {
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-container .modal-header {
+	padding: .1rem;
+}
+
+.modal-container {
+  max-height: 90vh;
+}
+
+.modal.modal-lg .modal-container {
+	max-width: fit-content;
 }
 </style>

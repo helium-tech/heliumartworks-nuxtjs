@@ -46,7 +46,7 @@
                   </div>
                   <p class="empty-subtitle">Vous n'avez sélectionné aucune image pour l'instant</p>
                   <div class="empty-action">
-                    <button class="btn btn-cta">Parcourir les images</button>
+                    <button class="btn btn-cta font-500">Parcourir les images</button>
                   </div>
                 </div>
               </ul>
