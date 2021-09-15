@@ -3,10 +3,10 @@
     <header class="bg-gray">
         <div class="container navbar py-4">
           <section class="navbar-section">
-            <router-link to="/" class="logo"><span class="text-yellow">helium</span>artworks</router-link>
+            <nuxt-link to="/" class="logo"><span class="text-yellow">helium</span>artworks</nuxt-link>
           </section>
-          <section class="navbar-center hide-md">
-            <router-link to="/images" class="btn btn-link">Images</router-link>
+          <section class="navbar-center nav-mob" :class="{active: isNavMobActive}">
+            <nuxt-link to="/images" class="btn btn-link">Images</nuxt-link>
             <div class="dropdown categories">
               <a href="#" class="btn btn-link dropdown-toggle" tabindex="0">
                 Catégories
@@ -34,16 +34,13 @@
                   </div>
               </ul>
             </div>
-            <a href="#" class="btn btn-link">Vidéos</a>
-            <a href="#" class="btn btn-link">Musique</a>
-            <a href="#" class="btn btn-link">Oeuvres d'art</a>
+            <nuxt-link to="/videos" class="btn btn-link">Vidéos</nuxt-link>
+            <nuxt-link to="/musiques" class="btn btn-link">Musique</nuxt-link>
+            <nuxt-link to="/arts" class="btn btn-link">Oeuvres d'art</nuxt-link>
             <div class="dropdown selection hide-xs">
               <a href="#" class="btn btn-link badge hide-md" data-badge="0">Ma sélection</a>
               <ul class="menu">
                 <div class="empty">
-                  <div class="empty-icon">
-                    <i class="icon icon-people"></i>
-                  </div>
                   <p class="empty-subtitle">Vous n'avez sélectionné aucune image pour l'instant</p>
                   <div class="empty-action">
                     <button class="btn btn-cta font-500">Parcourir les images</button>
@@ -63,50 +60,16 @@
   <Nuxt />
 
     <!-- Modal de connexion et d'inscription -->
-    <div class="modal modal-sm" :class="{active : isModalActive}" id="modal-id">
+    <div class="modal modal-sm" :class="{active: isModalActive}" id="modal-id">
       <a href="#close" class="modal-overlay" aria-label="Close" @click="toggleModal"></a>
       <div class="modal-container h-rounded">
         <section class="modal-header">
         <a href="#close" class="btn btn-clear float-right my-2" aria-label="Close" @click="toggleModal"></a>
-        <!-- <div class="switch-login-type py-2">
-          <ul class="tab tab-block">
-            <li class="tab-item" :class="{active : isLoginTabActive}">
-              <a href="#">Connexion</a>
-            </li>
-            <li class="tab-item" :class="{active : isRegisterTabActive}">
-              <a href="#">Inscription</a>
-            </li>
-          </ul>
-        </div> -->
         <div class="modal-title text-center h5"><span class="text-yellow">helium</span>artworks</div>
         </section>
         <section class="modal-body">
-          <div class="content">
+          <div class="content text-large">
             Bientôt vous aurez la possibilité de vendre vos oeuvres
-            <!-- <form class="form-group register-form" v-if="currentForm === 'register'">
-              <label class="form-label" for="usermail">Adresse Email</label>
-              <input class="form-input" type="email" id="usermail" placeholder="Email">
-              <label class="form-label" for="username">Nom d'utilisateur</label>
-              <input class="form-input" type="text" id="username" placeholder="Nom d'utilisateur">
-              <label class="form-label" for="userpassword">Mot de passe</label>
-              <input class="form-input" type="password" id="userpassword" placeholder="Mot de passe">
-              <label class="form-label" for="passwordconfirm">Confirmer le mot de passe</label>
-              <input class="form-input" type="password" id="passwordconfirm" placeholder="Confirmer mot de passe">
-              <button href="#" class="btn btn-cta-y my-2 font-500 btn-block">S'inscrire</button>
-              <p class="message">Avez vous déjà un compte?
-                <a href="#" @click.prevent="switchForm()"><span class="text-yellow">Connectez vous</span></a> plutôt
-              </p>
-            </form>
-            <form class="form-group login-form" v-else>
-              <label class="form-label" for="usermail">Adresse Email</label>
-              <input class="form-input" type="email" id="usermail" placeholder="Email">
-              <label class="form-label" for="userpassword">Mot de passe</label>
-              <input class="form-input" type="password" id="userpassword" placeholder="Mot de passe">
-              <button href="#" class="btn btn-cta-y my-2 font-500 btn-block">Se connecter</button>
-              <p class="message">Vous n'avez pas de compte ?
-                <a href="#" @click.prevent="switchForm()"><span class="text-yellow">Créez en un</span></a>
-              </p>
-            </form> -->
           </div>
         </section>
     </div>
@@ -114,7 +77,13 @@
 
     <Footer></Footer>
 
-    <MobMenu></MobMenu>
+    <!-- Mob menu -->
+    <section id="nav-mob" class="mob-menu p-sticky p-4 show-lg bg-gray">
+      <a class="column flex-centered" @click.prevent="toggleNavMob"><i class="icon icon-menu" title="Menu"></i></a>
+      <a class="column flex-centered badge" data-badge="0"><i class="icon icon-bookmark" title="Ma sélection"></i></a>
+      <a class="column flex-centered"><i class="icon icon-search" title="Effectuer une recherche"></i></a>
+      <AuthModal/>
+    </section>
 
   </div>
 </template>
@@ -133,9 +102,7 @@ export default {
   data() {
     return {
       isModalActive : false,
-      isLoginTabActive : true,
-      isRegisterTabActive : false,
-      'currentForm' : 'login',
+      isNavMobActive : false
     }
   },
   computed: {
@@ -155,17 +122,14 @@ export default {
         this.isModalActive = true
       }
     },
-    // switchForm() {
-    //     if (this.currentForm === 'login') {
-    //       this.currentForm = 'register';
-    //       this.isRegisterTabActive = true;
-    //       this.isLoginTabActive = false
-    //     } else {
-    //       this.currentForm = 'login',
-    //       this.isRegisterTabActive = false;
-    //       this.isLoginTabActive = true
-    //     }
-    //   }
+
+    toggleNavMob() {
+      if (this.isNavMobActive) {
+        this.isNavMobActive = false
+      } else {
+        this.isNavMobActive = true
+      }
+    }
 
   }
 }
@@ -335,7 +299,7 @@ aside {
 
 .mob-menu {
   bottom: 0;
-  z-index: 10
+  z-index: 22
 }
 
 .dropdown:hover .menu {
@@ -363,15 +327,28 @@ aside {
   }
 
   .nav-mob {
-  position: fixed;
-  height: 100%;
-  width: 12rem;
-  background: #fff;
-  top: 0;
-  left: -270px;
-  overflow-x: hidden;
-  transition: 0.5s;
-  z-index: 1;
+    position: fixed;
+    height: 100%;
+    width: 12rem;
+    background: #fff;
+    top: 0;
+    left: -270px;
+    overflow-x: hidden;
+    transition: 0.5s;
+    z-index: 20;
+    padding: 1rem;
+  }
+
+  .p-4 {
+  	padding: .8rem;
+  }
+
+  #nav-mob {
+    display: flex !important;
+  }
+
+  .nav-mob.active {
+    left: 0 !important;
   }
 }
 </style>

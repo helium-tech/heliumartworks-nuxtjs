@@ -1,7 +1,7 @@
 <template>
   <section class="container p-relative">
-    <div class="columns flex-centered pt-2rem">
-      <div class="column flex-centered col-6 p-relative">
+    <div class="columns pt-2rem">
+      <div class="column col-lg-12 flex-centered col-6 p-relative">
         <div class="image-container mb-2" @click="toggleModalImage">
           <img
             class="img-responsive img-fit-contain"
@@ -21,55 +21,59 @@
       <div class="column">
         <!-- <AlertLogin></AlertLogin> -->
 
-        <h1 class="h4 text-bold">{{ image.title }}</h1>
-        <div class="size mb-2">
-          <span class="font-600">Description :</span>
-          <span> {{ image.description }}</span>
-        </div>
-        <div class="size mb-2">
-          <span class="font-600">Taille :</span>
-          <span> {{ image.file_size }}</span>
-        </div>
-        <div>
-          <span class="old-price h4 text-muted">{{ image.price }}</span>
-          <span class="h2">{{
-            parseInt(image.offer_price) + parseInt(image.transaction_fees)
-          }}</span>
-          <span class="text-muted h3"> FCFA</span>
-        </div>
-        <section class="">
-          <button
-            href="#"
-            class="btn btn-cta-y mr-1 font-500"
-            @click="downloadFile(image)"
-            v-if="isLoggedIn"
-          >
+        <div class="image-infos">
+          <h1 class="h4 text-bold">{{ image.title }}</h1>
+          <div class="size mb-2">
+            <span class="font-600">Description :</span>
+            <span> {{ image.description }}</span>
+          </div>
+          <div class="size mb-2">
+            <span class="font-600">Taille :</span>
+            <span> {{ image.file_size }}</span>
+          </div>
+          <div class="render-price mb-2">
+            <span class="old-price h4 text-muted" v-if="isOffer === true">{{ image.price }}</span>
+            <span class="h2 text-yellow text-bold">{{
+              parseInt(image.offer_price) + parseInt(image.transaction_fees)
+            }}</span>
+            <span class="text-muted h2 text-yellow text-bold"> FCFA</span>
+          </div>
+          <div class="size pb-2 render-author">
+            <span>
+              <figure
+                class="avatar avatar-lg mr-2 bg-secondary"
+                data-initial="HT"
+              >
+                <img src="img/avatar-1.png" alt="..." />
+              </figure>
+            </span>
+            <nuxt-link :to="'/u/' + image.user_id" v-if="image.user != null">
+              <span class="font-600">Auteur :</span>
+              <span> {{ image.user.displayName }}</span>
+            </nuxt-link>
+            <span class="certified" v-if="userInfo.is_certified === true">
+              <i class="icon icon-check" title="Auteur certifié"></i>
+            </span>
+          </div>
+          <div class="divider"></div>
+          <section class="cta-actions pt-2">
+            <button
+              href="#"
+              class="btn btn-cta-y mr-1 font-500"
+              @click="downloadFile(image)" v-if="isLoggedIn"
+            >
             Télécharger
           </button>
           <button href="#" class="btn btn-cta-y mr-1 font-500" v-else>
-            Connectez vous pour télécharger cette image
+            Se connecter pour télécharger
           </button>
           <button href="#" class="btn btn-cta ml-2 font-500">
             Ajouter à ma sélection
           </button>
         </section>
-        <div class="divider"></div>
-        <div class="size mb-2">
-          <span>
-            <figure
-              class="avatar avatar-lg mr-2 bg-secondary"
-              data-initial="HT"
-            >
-              <img src="img/avatar-1.png" alt="..." />
-            </figure>
-          </span>
-          <nuxt-link :to="'/u/' + image.user_id" v-if="image.user != null">
-            <span class="font-600">Auteur :</span>
-            <span> {{ image.user.displayName }}</span>
-          </nuxt-link>
-        </div>
       </div>
     </div>
+  </div>
     <h4 class="text-bold pt-2rem">Tags</h4>
     <!-- <span class="label mr-2" v-key='tag.id' v-for="tag in tags">{{ tag }}</span> -->
 
@@ -92,6 +96,8 @@ export default {
     return {
       image: {},
       tags: '',
+      isOffer: '',
+      userInfo: '',
       isModalImageActive: false,
     }
   },
@@ -206,6 +212,8 @@ export default {
         console.log(response.data)
         this.image = response.data
         this.tags = response.data.keywords[0].split(',')
+        this.isOffer = response.data.offer
+        this.userInfo = response.data.user
       })
       .catch((error) => {
         error = true
@@ -270,11 +278,35 @@ export default {
   max-width: fit-content;
 }
 
+.tag-label {
+  border: solid 1px #dedede;
+  padding: 4px 8px;
+  margin: .5rem;
+  border-radius: 4px;
+}
+
+.image-infos {
+  box-shadow: 0 .05rem .2rem rgba(48, 55, 66, .3);
+  padding: 2rem;
+}
+
+.certified .icon-check {
+  background: #ffc71c;
+  border: 1px solid;
+  padding: 10px;
+  margin: 0 0 4px 4px;
+  color: #fff;
+}
+
 @media (min-width: 840px) {
   .image-container {
     width: 500px;
     height: 500px;
     border: solid 1px #dedede;
+  }
+
+  .image-infos {
+    margin: 0 2rem;
   }
 }
 </style>

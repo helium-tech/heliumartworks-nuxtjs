@@ -52,34 +52,20 @@
 </template>
 
 <script>
-import SearchImage from '~/components/SearchImage.vue'
-import axios from 'axios'
 import { mapGetters, mapState } from 'vuex'
-let url = 'https://heliumartworks.herokuapp.com/files/ressources?resource_type=images'
 
 export default {
   name: 'Images',
-  components: {},
-  data() {
-    return {
-      errored: false,
-    }
-  },
-
   computed: {
     ...mapState({
       images: (state) => state.images.recentsImages,
     }),
   },
 
-  mounted() {
+  created() {
     this.$store.dispatch('images/getRecentsImages')
   },
 }
 </script>
 <style scoped>
-.menu {
-  background: inherit !important;
-  box-shadow: initial !important;
-}
 </style>
