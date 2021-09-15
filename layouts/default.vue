@@ -37,8 +37,8 @@
             <a href="#" class="btn btn-link">Vidéos</a>
             <a href="#" class="btn btn-link">Musique</a>
             <a href="#" class="btn btn-link">Oeuvres d'art</a>
-            <div class="dropdown selection">
-              <a href="#" class="btn btn-link badge" data-badge="0">Ma sélection</a>
+            <div class="dropdown selection hide-xs">
+              <a href="#" class="btn btn-link badge hide-md" data-badge="0">Ma sélection</a>
               <ul class="menu">
                 <div class="empty">
                   <div class="empty-icon">
@@ -155,17 +155,17 @@ export default {
         this.isModalActive = true
       }
     },
-    switchForm() {
-        if (this.currentForm === 'login') {
-          this.currentForm = 'register';
-          this.isRegisterTabActive = true;
-          this.isLoginTabActive = false
-        } else {
-          this.currentForm = 'login',
-          this.isRegisterTabActive = false;
-          this.isLoginTabActive = true
-        }
-      }
+    // switchForm() {
+    //     if (this.currentForm === 'login') {
+    //       this.currentForm = 'register';
+    //       this.isRegisterTabActive = true;
+    //       this.isLoginTabActive = false
+    //     } else {
+    //       this.currentForm = 'login',
+    //       this.isRegisterTabActive = false;
+    //       this.isLoginTabActive = true
+    //     }
+    //   }
 
   }
 }
@@ -354,5 +354,24 @@ aside {
 
 .chip {
   margin: 8px !important;
+}
+
+@media (max-width: 840px) {
+  .navbar-center {
+   flex-direction: column;
+   align-items: flex-start !important;
+  }
+
+  .nav-mob {
+  position: fixed;
+  height: 100%;
+  width: 12rem;
+  background: #fff;
+  top: 0;
+  left: -270px;
+  overflow-x: hidden;
+  transition: 0.5s;
+  z-index: 1;
+  }
 }
 </style>

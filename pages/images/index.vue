@@ -55,8 +55,7 @@
 import SearchImage from '~/components/SearchImage.vue'
 import axios from 'axios'
 import { mapGetters, mapState } from 'vuex'
-let url =
-  'https://heliumartworks.herokuapp.com/files/ressources?resource_type=images'
+let url = 'https://heliumartworks.herokuapp.com/files/ressources?resource_type=images'
 
 export default {
   name: 'Images',

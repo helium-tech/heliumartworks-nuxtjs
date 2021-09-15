@@ -2,7 +2,7 @@
   <section class="container p-relative">
     <div class="columns flex-centered pt-2rem">
       <div class="column flex-centered col-6 p-relative">
-        <div style="width: 500px; height: 500px; border: solid 1px #dedede" @click="toggleModalImage">
+        <div class="image-container mb-2" @click="toggleModalImage">
           <img
             class="img-responsive img-fit-contain"
             :src="image.thumb800"
@@ -216,7 +216,7 @@ export default {
 
   },
 
-  mounted() {
+  created() { //Changement de hook pour effectuer les requêtes ajax le plus tôt possible
     axios
       .get(url + '/slug/' + this.$route.params.id)
       .then((response) => {
@@ -284,5 +284,13 @@ export default {
 
 .modal.modal-lg .modal-container {
 	max-width: fit-content;
+}
+
+@media (min-width: 840px) {
+  .image-container {
+    width: 500px;
+    height: 500px;
+    border: solid 1px #dedede;
+  }
 }
 </style>
