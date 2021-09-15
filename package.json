@@ -6,7 +6,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt-ts generate",
+    "generate": "nuxt generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js",
     "emulators": "firebase emulators:start"
@@ -18,7 +18,7 @@
     "core-js": "^3.14.0",
     "firebase": "8.6.5",
     "firebase-admin": "^9.9.0",
-    "nuxt": "^2.15.6",
+    "nuxt": "^2.15.8",
     "prismjs": "^1.22.0",
     "spectre.css": "^0.5.9",
     "vue-lazyload": "^1.3.3",
@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.6",
+    "@nuxt/typescript": "^2.8.1",
     "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/eslint-config": "^6.0.1",
     "@nuxtjs/eslint-config-typescript": "^6.0.1",
