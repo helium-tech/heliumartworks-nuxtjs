@@ -13,8 +13,8 @@
           <!-- <figure v-if="loading" class="loading loading-lg"></figure> -->
 
           <masonry
-          :cols="{default: 4, 1000: 3, 700: 2, 400: 1}"
-          :gutter="{default: '30px', 700: '15px'}"
+            :cols="{ default: 4, 1000: 3, 700: 2, 400: 1 }"
+            :gutter="{ default: '30px', 700: '15px' }"
           >
             <figure
               class="m-2 p-relative image-preview h-rounded"
@@ -23,8 +23,8 @@
             >
               <div class="p-relative">
                 <a href="#">
+        
                   <img
-
                     class="img-responsive img-fit-cover"
                     :src="image.thumb400"
                     :alt="image.title"
@@ -63,7 +63,7 @@
 
 <script>
 import axios from 'axios'
-import {mapGetters, mapState} from "vuex"
+import { mapGetters, mapState } from 'vuex'
 let url =
   'https://heliumartworks.herokuapp.com/files/ressources?resource_type=images&limit=12'
 
@@ -73,16 +73,23 @@ export default {
     return {
       // loading: true,
       errored: false,
+      images: [],
     }
   },
-  computed:{
-      ...mapState({
-      images: (state) => state.images.recentsImages,
-    }),
+  computed: {
+    //   ...mapState({
+    //   images: (state) => state.images.recentsImages,
+    // }),
   },
 
   mounted() {
-    this.$store.dispatch('images/getRecentsImages')
+    axios
+      .get(url)
+      .then((data) => {
+        console.log(data.data)
+        var recentsImages = data.data
+        this.images = recentsImages
+      })
   },
 }
 </script>
