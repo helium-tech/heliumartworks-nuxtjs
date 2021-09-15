@@ -11,25 +11,11 @@
           />
         </div>
 
-        <div class="modal modal-lg" :class="{active : isModalImageActive}" id="modal-id">
-          <a href="#close" class="modal-overlay" aria-label="Close" @click="toggleModalImage"></a>
-          <div class="modal-container h-rounded">
-            <section class="modal-header">
-            <a href="#close" class="btn btn-clear float-right my-2" aria-label="Close" @click="toggleModalImage"></a>
-            </section>
-            <section class="modal-body">
-              <div class="content">
-                <img
-                  class="img-responsive"
-                  :src="image.thumb800"
-                  :alt="image.title"
-                  style="width: 80%; margin: auto"
-                />
-              </div>
-            </section>
+        <vs-dialog not-close auto-width blur not-padding v-model="isModalImageActive">
+        <div class="con-image">
+          <img :src="image.thumb800" :alt="image.title">
         </div>
-      </div>
-
+      </vs-dialog>
       </div>
 
       <div class="column">
@@ -55,15 +41,12 @@
           <button
             href="#"
             class="btn btn-cta-y mr-1 font-500"
-            @click="downloadFile(image)" v-if="isLoggedIn"
+            @click="downloadFile(image)"
+            v-if="isLoggedIn"
           >
             Télécharger
           </button>
-          <button
-            href="#"
-            class="btn btn-cta-y mr-1 font-500"
-            v-else
-          >
+          <button href="#" class="btn btn-cta-y mr-1 font-500" v-else>
             Connectez vous pour télécharger cette image
           </button>
           <button href="#" class="btn btn-cta ml-2 font-500">
@@ -88,7 +71,7 @@
       </div>
     </div>
     <h4 class="text-bold pt-2rem">Tags</h4>
-    <span class="label mr-2" v-for="tag in tags">{{ tag }}</span>
+    <!-- <span class="label mr-2" v-key='tag.id' v-for="tag in tags">{{ tag }}</span> -->
 
     <h4 class="text-bold pt-2rem">Images similaires</h4>
   </section>
@@ -109,7 +92,7 @@ export default {
     return {
       image: {},
       tags: '',
-      isModalImageActive : false,
+      isModalImageActive: false,
     }
   },
 
@@ -180,7 +163,7 @@ export default {
               conflictAction: 'uniquify',
             })
 
-            downloading.then(onStartedDownload, onFailed);
+            downloading.then(onStartedDownload, onFailed)
 
             // axios({
             //   url: download_url,
@@ -213,15 +196,16 @@ export default {
         this.isModalImageActive = true
       }
     },
-
   },
 
-  created() { //Changement de hook pour effectuer les requêtes ajax le plus tôt possible
+  created() {
+    //Changement de hook pour effectuer les requêtes ajax le plus tôt possible
     axios
       .get(url + '/slug/' + this.$route.params.id)
       .then((response) => {
+        console.log(response.data)
         this.image = response.data
-        this.tags = response.data.keywords[0].split(",")
+        this.tags = response.data.keywords[0].split(',')
       })
       .catch((error) => {
         error = true
@@ -270,12 +254,12 @@ export default {
 }
 
 .modal.modal-lg .modal-overlay {
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.9);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .modal-container .modal-header {
-	padding: .1rem;
+  padding: 0.1rem;
 }
 
 .modal-container {
@@ -283,7 +267,7 @@ export default {
 }
 
 .modal.modal-lg .modal-container {
-	max-width: fit-content;
+  max-width: fit-content;
 }
 
 @media (min-width: 840px) {
