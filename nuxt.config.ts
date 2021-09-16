@@ -99,6 +99,7 @@ const config: NuxtConfig = {
   css: [
     "~assets/css/fonts.css",
     "~assets/css/icons.css",
+    "~assets/css/iconify.css",
   ],
 
   build: {},

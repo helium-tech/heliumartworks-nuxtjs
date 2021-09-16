@@ -73,6 +73,7 @@ export default {
   },
 
   mounted() {
+    this.$store.dispatch('images/getRecentsImages')
     axios
       .get(url)
       .then((response) => {
