@@ -326,6 +326,10 @@ aside {
    align-items: flex-start !important;
   }
 
+  .dropdown .menu {
+	   width: auto;
+  }
+
   .nav-mob {
     position: fixed;
     height: 100%;

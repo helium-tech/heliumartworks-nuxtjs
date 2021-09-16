@@ -3,13 +3,13 @@
     <HeroSecond></HeroSecond>
 
     <div class="render-images-vedette pb-2 pt-2rem container">
-      <div v-if="errored" class="error">
+      <!-- <div v-if="errored" class="error">
         <p>
           Impossible de charger les images pour l'instant. Veuillez réessayer
           ultérieurement.
         </p>
-      </div>
-      <div v-else class="columns flex-centered">
+      </div> -->
+      <div class="columns flex-centered">
         <!-- <figure v-if="loading" class="loading loading-lg"></figure> -->
 
         <masonry :cols="4" :gutter="10">
@@ -33,7 +33,7 @@
                   <span class="text-muted text-tiny"> FCFA</span>
                 </div>
               </nuxt-link>
-              <figcaption class="figure-caption">
+              <figcaption class="figure-caption hide-md">
                 <p class="image-title mb-1">{{ image.title }}</p>
                 <button class="btn btn-cta-y btn-action mx-1">
                   <i class="icon icon-bookmark"></i>

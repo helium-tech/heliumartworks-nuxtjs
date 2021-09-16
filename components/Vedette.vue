@@ -36,7 +36,7 @@
                   <span class="text-muted text-tiny"> FCFA</span>
                 </div>
               </nuxt-link>
-              <figcaption class="figure-caption">
+              <figcaption class="figure-caption hide-md">
                 <p class="image-title mb-1">{{ image.title }}</p>
                 <button class="btn btn-cta-y btn-action mx-1">
                   <i class="icon icon-bookmark"></i>
@@ -52,9 +52,7 @@
         <!--end v-else -->
       </div>
       <div class="columns flex-centered">
-        <button href="#" class="btn btn-lg btn-cta-y text-center font-500">
-          Afficher plus d'images
-        </button>
+        <nuxt-link to="/images" class="btn btn-lg btn-cta-y text-center font-500">Afficher plus d'images</nuxt-link>
       </div>
     </div>
   </section>

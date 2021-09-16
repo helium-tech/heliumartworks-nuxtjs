@@ -5,7 +5,7 @@
           L'art à la dimension africaine
         </h1>
         <div class="columns pt-2rem flex-centered">
-          <div class="column col-6 col-mx-auto">
+          <div class="column col-6 col-mx-auto col-lg-auto">
               <SearchImage></SearchImage>
           </div>
         </div>
