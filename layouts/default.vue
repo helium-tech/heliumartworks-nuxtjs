@@ -7,16 +7,16 @@
             ><span class="text-yellow">helium</span>artworks</nuxt-link
           >
         </section>
-        <section class="navbar-center hide-md">
+        <!-- <section class="navbar-center hide-md">
           <nuxt-link to="/images" class="btn btn-link">Images</nuxt-link>
           <a href="#" class="btn btn-link">Catégories</a>
           <a href="#" class="btn btn-link">Packs</a>
           <a href="#" class="btn btn-link">Vidéos</a>
           <a href="#" class="btn btn-link">Ma sélection</a>
-        </section>
+        </section> -->
         <section class="navbar-section navbar-right hide-md">
-          <AuthModalSecond v-if="isLoggedIn == false"></AuthModalSecond>
-          <UserAccountButton v-else></UserAccountButton>
+          <!-- <AuthModalSecond v-if="isLoggedIn == false"></AuthModalSecond>
+          <UserAccountButton v-else></UserAccountButton> -->
           <button class="btn btn-cta-y ml-2 font-500">
             Vendre mes oeuvres
           </button>
