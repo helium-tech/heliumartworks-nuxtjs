@@ -12,6 +12,24 @@ const config: NuxtConfig = {
       { hid: 'description', name: 'description', content: '' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [ //inclue les scripts en pied de page de façon normale
+        {
+          type: 'text/javascript',
+          src: '/js/lib/jquery.min.js',
+          async: true,
+        },
+        {
+          type: 'text/javascript',
+          src: '/js/app.js',
+          body: true,
+          defer: true,
+        },
+        {
+          src: '/js/lib/jquery.magnific-popup.min.js',
+          body: true,
+          defer: true,
+        },
+      ]
   },
 
   components: true,
@@ -90,16 +108,16 @@ const config: NuxtConfig = {
   modules: ['@nuxtjs/pwa'],
   plugins: [
     // '~/plugins/lazyMode', dev update
-    { src: '~plugins/vuesax.js' },
     { src: '~plugins/vuemasonry.js' },
-    { src: '~plugins/spectrecss.js' },
     { src: '~plugins/vue-lazyload.js' },
+    { src: '~plugins/spectrecss.js' },
+
   ],
 
   css: [
     "~assets/css/fonts.css",
+    "~assets/css/app.min.css",
     "~assets/css/icons.css",
-    "~assets/css/iconify.css",
   ],
 
   build: {},

@@ -1,61 +1,116 @@
 <template>
   <div id="app">
-    <header class="bg-gray">
-        <div class="container navbar py-4">
-          <section class="navbar-section">
-            <nuxt-link to="/" class="logo"><span class="text-yellow">helium</span>artworks</nuxt-link>
-          </section>
-          <section class="navbar-center nav-mob" :class="{active: isNavMobActive}">
-            <nuxt-link to="/images" class="btn btn-link">Images</nuxt-link>
-            <div class="dropdown categories">
-              <a href="#" class="btn btn-link dropdown-toggle" tabindex="0">
-                Catégories
-              </a>
-              <ul class="menu">
-                  <div class="chip">
-                  <img src=@/assets/images/art-cat.jpg class="avatar avatar-sm">
-                    Art
-                  </div>
-                  <div class="chip">
-                  <img src=@/assets/images/travail-cat.jpg class="avatar avatar-sm">
-                    Travail
-                  </div>
-                  <div class="chip">
-                  <img src=@/assets/images/emotions-cat.jpg class="avatar avatar-sm">
-                    Personnes
-                  </div>
-                  <div class="chip">
-                  <img src=@/assets/images/retro-cat.jpg class="avatar avatar-sm">
-                    Retro
-                  </div>
-                  <div class="chip">
-                  <img src=@/assets/images/personnes-cat.jpg class="avatar avatar-sm">
-                    Emotion
-                  </div>
-              </ul>
-            </div>
-            <nuxt-link to="/videos" class="btn btn-link">Vidéos</nuxt-link>
-            <nuxt-link to="/musiques" class="btn btn-link">Musique</nuxt-link>
-            <nuxt-link to="/arts" class="btn btn-link">Oeuvres d'art</nuxt-link>
-            <div class="dropdown selection hide-xs">
-              <a href="#" class="btn btn-link badge hide-md" data-badge="0">Ma sélection</a>
-              <ul class="menu">
-                <div class="empty">
-                  <p class="empty-subtitle">Vous n'avez sélectionné aucune image pour l'instant</p>
-                  <div class="empty-action">
-                    <button class="btn btn-cta font-500">Parcourir les images</button>
-                  </div>
-                </div>
-              </ul>
-            </div>
-          </section>
-          <section class="navbar-section navbar-right hide-md">
-            <AuthModal></AuthModal>
-            <!-- <UserAccountButton v-else></UserAccountButton> -->
-            <button href="#" class="btn btn-cta-y ml-2 font-500" @click.prevent="toggleModal">Vendre mes oeuvres</button>
-          </section>
+
+  <header class="header js-header authorization">
+  <div class="header__center center">
+    <h1><nuxt-link to="/" class="header__logo"><span class="text-yellow">helium</span>artworks</nuxt-link></h1>
+    <div class="header__wrapper js-header-wrapper">
+      <div class="header__item header__item_dropdown js-header-item">
+        <button class="header__head js-header-head">Catégories
+          <svg class="icon icon-arrow-down">
+            <use xlink:href="#icon-arrow-down">
+            </use>
+          </svg>
+        </button>
+        <div class="header__body js-header-body">
+          <div class="header__menu">
+            <nuxt-link to="/images" class="header__link">Images</nuxt-link>
+            <a class="header__link" href="#">
+              Videos
+            </a>
+            <a class="header__link" href="#">
+              Musiques
+            </a>
+            <a class="header__link" href="#">
+              Oeuvres d'art
+            </a>
+            <a class="header__link" href="#">
+              Stylisme
+            </a>
+          </div>
         </div>
-    </header>
+      </div>
+      <a class="header__item" href="#">Support</a>
+      <div class="header__item header__item_language js-header-item">
+        <button class="header__head js-header-head">
+          <svg class="icon icon-globe">
+            <use xlink:href="#icon-globe"></use>
+          </svg>Langue
+        </button>
+        <div class="header__body js-header-body">
+          <div class="header__list">
+            <a class="header__box active" href="#">
+              <div class="header__category">Français</div>
+            </a>
+            <a class="header__box" href="#">
+              <div class="header__category">Anglais</div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-cta text-small text-bold header__button" href="#">
+        Vendre mes oeuvres
+      </a>
+    </div>
+    <!-- <div class="header__item header__item_notification js-header-item">
+      <button class="header__head js-header-head active">
+        <svg class="icon icon-notification">
+          <use xlink:href="#icon-notification"></use>
+        </svg>
+      </button>
+      <div class="header__body js-header-body">
+        <div class="header__title">Notification</div>
+        <div class="header__notifications"><a class="header__notification" href="message-center.html">
+            <div class="header__avatar"><img src="images/content/avatar-1.jpg" alt="Avatar"></div>
+            <div class="header__details">
+              <div class="header__subtitle">Kohaku Tora</div>
+              <div class="header__content">just sent you a message</div>
+              <div class="header__date">1 minute ago</div>
+              <div class="header__status" style="background-color: #3B71FE;"></div>
+            </div></a><a class="header__notification" href="message-center.html">
+            <div class="header__avatar"><img src="images/content/avatar-1.jpg" alt="Avatar"></div>
+            <div class="header__details">
+              <div class="header__subtitle">Kohaku Tora</div>
+              <div class="header__content">just sent you a message</div>
+              <div class="header__date">3 hours ago</div>
+              <div class="header__status" style="background-color: #3B71FE;"></div>
+            </div></a></div>
+      </div>
+      </div> -->
+    <a class="header__login js-popup-open" href="#popup-login" data-effect="mfp-zoom-in">
+      <svg class="icon icon-user">
+        <use xlink:href="#icon-user"></use>
+      </svg></a>
+    <div class="header__item header__item_user js-header-item">
+      <button class="header__head js-header-head"><img src="images/content/avatar-2.jpg" alt="Avatar"></button>
+      <div class="header__body js-header-body">
+        <div class="header__group">
+          <div class="header__menu"><a class="header__link" href="message-center.html">
+              <svg class="icon icon-comment">
+                <use xlink:href="#icon-comment"></use>
+              </svg>Messages</a><a class="header__link" href="bookings-list.html">
+              <svg class="icon icon-home">
+                <use xlink:href="#icon-home"></use>
+              </svg>Bookings</a><a class="header__link" href="wishlists.html">
+              <svg class="icon icon-email">
+                <use xlink:href="#icon-email"></use>
+              </svg>Wishlists</a></div>
+          <div class="header__menu"><a class="header__link" href="list-your-property.html">
+              <svg class="icon icon-building">
+                <use xlink:href="#icon-building"></use>
+              </svg>List your property</a><a class="header__link" href="host-an-experience.html">
+              <svg class="icon icon-flag">
+                <use xlink:href="#icon-flag"></use>
+              </svg>Host an experience</a></div>
+        </div>
+        <div class="header__btns"><a class="button button-small header__button" href="account-setting.html">Account</a>
+          <button class="button-stroke button-small header__button">Log out</button>
+        </div>
+      </div>
+    </div>
+    <button class="header__burger js-header-burger"></button>
+  </div>
+</header>
 
   <Nuxt />
 
@@ -138,48 +193,21 @@ export default {
 <!-- Style généralisé -->
 <style>
 #app {
-  font-family: "DM sans";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  font-family: 'DM Sans', sans-serif;
+   color: #2c3e50;
 }
-
-.container {
-	max-width: 1280px;
-}
-
 a {
+  text-decoration: none;
   color: #2c3e50 !important;
 }
-
 a.active, a:active, a:focus, a:hover {
 	text-decoration: none !important;
 }
-
 .text-yellow {
   color : #ffc71c;
 }
-
 .bg-yellow {
   background: #ffc71c;
-}
-
-.py-4 {
-	padding-bottom: .8rem;
-	padding-top: .8rem;
-}
-
-.px-6 {
-  padding-left: 2rem !important;
-  padding-right: 2rem !important;
-}
-
-.pb-8 {
-  padding-bottom: 1.6rem;
-}
-
-.pt-2rem {
-  padding-top: 2rem
 }
 
 .logo {

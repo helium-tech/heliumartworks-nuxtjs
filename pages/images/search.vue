@@ -141,6 +141,7 @@ export default {
 <style scoped>
 .page-content {
   margin: 1em 2em auto 18em;
+  height: 80vh;
 }
 
 .vs-sidebar-content {

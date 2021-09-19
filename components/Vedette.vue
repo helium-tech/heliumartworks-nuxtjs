@@ -1,7 +1,8 @@
 <template>
-  <section class="p-relative mb-6">
-    <div class="container">
-      <h2 class="text-bold pt-2rem">En vedette</h2>
+  <section class="section center">
+    <div class="live__head">
+      <h2 class="live__title h2">En vedette</h2>
+    </div>
       <div class="render-images-vedette pb-2">
         <div v-if="errored" class="error">
           <p>
@@ -52,9 +53,8 @@
         <!--end v-else -->
       </div>
       <div class="columns flex-centered">
-        <nuxt-link to="/images" class="btn btn-lg btn-cta-y text-center font-500">Afficher plus d'images</nuxt-link>
+        <nuxt-link to="/images" class="btn btn-cta-y text-center font-500">Afficher plus d'images</nuxt-link>
       </div>
-    </div>
   </section>
 </template>
 

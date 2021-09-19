@@ -1,19 +1,60 @@
 <template>
-    <section class="bg-gray hero hero-lg">
-      <div class="container">
-        <div class="columns flex-centered">
-        <div class="column col-lg-12 hero-text">
-          <h1 class="text-bold h2">
-            Des <span class="text-yellow">images africaines</span> de qualité en un seul et même endroit
-          </h1>
-          <h2 class="pt-2 h3">Que cherchez vous ?</h2>
-          <SearchImage></SearchImage>
-        </div>
-        <div class="column hide-md">
-          <img src=@/assets/images/hero.png class="img-responsive p-absolute hero-image">
+    <section>
+    <div class="section main main_stays">
+      <div>
+    <div class="main__preview bg-gray">
+      <div class="main__wrap">
+        <h1 class="main__title hero">La meilleure banque d'images africaines</h1>
+      </div>
+      <div class="hero-side">
+        <picture class="hero-img">
+          <source media="(max-width: 767px)" srcSet="img/content/main-pic-mobile-1.jpg"><img src=@/assets/images/hero.png alt="Hero">
+        </picture>
+      </div>
+    </div>
+    <div class="panel panel_stays">
+      <div class="panel__background"></div>
+      <div class="panel__nav">
+        <a class="panel__link active" href="#">Images</a>
+        <a class="panel__link" href="#">Nature</a>
+        <a class="panel__link" href="#">Travail</a>
+        <a class="panel__link" href="#">Personnes</a>
+      </div>
+      <div class="panel__body">
+        <div class="panel__row">
+          <div class="location js-location">
+            <div class="location__head js-location-head">
+              <div class="location__icon">
+                <svg class="icon icon-image">
+                  <use xlink:href="#icon-image"></use>
+                </svg>
+              </div>
+              <input class="location__input js-location-input" type="text" name="location" autocomplete="off" placeholder="Travailleur africain"/>
+              <button class="location__clear js-location-clear">
+                <svg class="icon icon-close-circle">
+                  <use xlink:href="#icon-close-circle"></use>
+                </svg>
+              </button>
+            </div>
+            <!-- <div class="location__body js-location-body">
+              <div class="location__list">
+                <a class="location__item js-location-item" href="#">New York, NY</a>
+                <a class="location__item js-location-item" href="#">New York, Manhattan</a>
+                <a class="location__item js-location-item" href="#">New Zealand</a>
+                <a class="location__item js-location-item" href="#">New Smyrna Beach, FL</a>
+                <a class="location__item js-location-item" href="#">Newark, NJ</a>
+              </div>
+            </div> -->
+          </div>
+          <a class="panel__search" href="stays-category.html">
+            <svg class="icon icon-search">
+              <use xlink:href="#icon-search"></use>
+            </svg></a>
         </div>
       </div>
     </div>
+  </div>
+</div>
     </section>
 </template>
 
@@ -28,20 +69,18 @@ export default {
 </script>
 
 <style scoped>
-.hero-text {
-  z-index: 4;
+.main__preview {
+	display: flex;
 }
 
-.hero-image {
-  z-index: 1;
-  right: 0;
-  top: 4.5em;
+.panel {
+	border: none;
+	border-radius: inherit;
 }
 
-@media (max-width:840px)  {
-.hero.hero-lg {
- padding-bottom:2rem;
- padding-top:2rem;
-  }
+.main__preview img {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 </style>
