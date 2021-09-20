@@ -1,22 +1,43 @@
 <template>
-  <footer class="site-footer bg-gray">
-  <div class="container">
-    <div class="divider"></div>
-    <div class="site-info  py-2 navbar">
-      <section class="navbar-section">
-        <div class="site-branding mr-2">
-          <router-link to="/" class="logo"><span class="text-yellow">helium</span>artworks</router-link>
+  <footer class="footer">
+  <div class="footer__center center">
+    <div class="footer__row">
+      <div class="footer__col">
+        <nuxt-link to="/" class="footer__logo h2"><span class="text-yellow">H</span>artworks</nuxt-link>
+        <div class="footer__theme">
+          <svg class="icon icon-bulb">
+            <use xlink:href="#icon-bulb"></use>
+          </svg>Mode Sombre
+          <label class="theme js-theme">
+            <input class="theme__input" type="checkbox"/><span class="theme__inner">
+              <span class="theme__box"></span></span>
+          </label>
         </div>
-      </section>
-      <section>
-        <a href="#" class="btn btn-link">Support et Contact</a>
-        <a href="#" class="btn btn-link">Conditions d'utilisation</a>
-        <a href="#" class="btn btn-link">Politique de confidentialité</a>
-      </section>
-      <section class="navbar-section">
-        <h6>©2021 helium</h6>
-      </section>
+      </div>
+      <div class="footer__col">
+        <div class="footer__menu">
+          <a class="footer__link" href="#">Images</a>
+          <a class="footer__link" href="#">Vidéos</a>
+          <a class="footer__link" href="#">Support</a>
+          <a class="footer__link" href="#">Musique</a>
+          <a class="footer__link" href="#">Images</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <div class="footer__info">Recevez de superbes promos 🔥</div>
+        <form class="subscription">
+          <input class="subscription__input" type="email" name="email" placeholder="Entrer votre adresse email" required="required"/>
+          <button class="subscription__btn">
+            <svg class="icon icon-arrow-next">
+              <use xlink:href="#icon-arrow-next"></use>
+            </svg>
+          </button>
+        </form>
+      </div>
     </div>
+    <!-- <div class="footer__bottom">
+      <div class="footer__copyright">Copyright © 2021 UI8 LLC. All rights reserved</div>
+    </div> -->
   </div>
 
   <!-- Popup -->

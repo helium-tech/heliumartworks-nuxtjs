@@ -1,109 +1,491 @@
 <template>
-    <div class="hidden">
-      <vs-sidebar
-        absolute
-        v-model="active"
-        open
-        >
-        <vs-sidebar-item id="categories">
-          Catégories
-        </vs-sidebar-item>
-        <vs-sidebar-item id="art">
-          <vs-checkbox val="html" v-model="options">
-            Art
-          </vs-checkbox>
-        </vs-sidebar-item>
-        <vs-sidebar-item id="travail">
-          <vs-checkbox val="html" v-model="options">
-            Travail
-          </vs-checkbox>
-        </vs-sidebar-item>
-        <vs-sidebar-item id="personnes">
-          <vs-checkbox val="html" v-model="options">
-            Personnes
-          </vs-checkbox>
-        </vs-sidebar-item>
-        <vs-sidebar-item id="nature">
-          <vs-checkbox val="html" v-model="options">
-            Nature
-          </vs-checkbox>
-        </vs-sidebar-item>
-
-        <vs-sidebar-item id="types">
-          Types
-        </vs-sidebar-item>
-        <vs-sidebar-item id="jpeg">
-          <vs-checkbox val="html" v-model="options">
-            JPEG
-          </vs-checkbox>
-        </vs-sidebar-item>
-        <vs-sidebar-item id="png">
-          <vs-checkbox val="html" v-model="options">
-            PNG
-          </vs-checkbox>
-        </vs-sidebar-item>
-        <vs-sidebar-item id="psd">
-          <vs-checkbox val="html" v-model="options">
-            PSD
-          </vs-checkbox>
-        </vs-sidebar-item>
-        <vs-sidebar-item id="aes">
-          <vs-checkbox val="html" v-model="options">
-            AES
-          </vs-checkbox>
-        </vs-sidebar-item>
-
-        <vs-sidebar-item id="orientation">
-          Orientation
-        </vs-sidebar-item>
-        <vs-sidebar-item id="horizontale">
-          <vs-checkbox val="html" v-model="options">
-            Horizontale
-          </vs-checkbox>
-        </vs-sidebar-item>
-        <vs-sidebar-item id="verticale">
-          <vs-checkbox val="html" v-model="options">
-            Verticale
-          </vs-checkbox>
-        </vs-sidebar-item>
-
-      </vs-sidebar>
-
-      <div class="page-content col-lg-auto pt-2">
-        <SearchImage></SearchImage>
-        <div class="content render-images-vedette pb-2">
-          <div v-if="errored" class="error">
-            <p>Impossible de charger les images pour l'instant. Veuillez réessayer ultérieurement.</p>
+  <div class="outer__inner">
+    <div class="section-pt80 catalog">
+      <div class="catalog__center center">
+        <div class="catalog__top">
+          <div class="catalog__title">Type your keywords</div>
+          <form class="catalog__search">
+            <input class="catalog__input" type="text" name="search" placeholder="Search..." required>
+            <button class="catalog__result">
+              <svg class="icon icon-search">
+                <use xlink:href="#icon-search"></use>
+              </svg>
+            </button>
+          </form>
+        </div>
+        <div class="catalog__sorting">
+          <select class="select">
+            <option>Newest</option>
+            <option>Oldest</option>
+          </select>
+          <div class="catalog__nav"><a class="catalog__link active" href="#">All items</a><a class="catalog__link" href="#">Art</a><a class="catalog__link" href="#">Game</a><a class="catalog__link" href="#">Photography</a><a class="catalog__link" href="#">Music</a><a class="catalog__link" href="#">Video</a></div>
+        </div>
+        <div class="catalog__row">
+          <div class="catalog__filters">
+            <div class="range">
+              <div class="range__label">Price range</div>
+              <div class="range__slider js-slider" data-min="0.01" data-max="10" data-start="5" data-step="0.1" data-tooltips="true" data-postfix=" ETH"></div>
+              <div class="range__indicators">
+                <div class="range__text">0.01 ETH</div>
+                <div class="range__text">10 ETH</div>
+              </div>
+            </div>
+            <div class="catalog__group">
+              <div class="field">
+                <div class="field__label">price</div>
+                <select class="select">
+                  <option>Most liked</option>
+                  <option>Least liked</option>
+                </select>
+              </div>
+              <div class="field">
+                <div class="field__label">color</div>
+                <select class="select">
+                  <option>All colors</option>
+                  <option>Black</option>
+                  <option>Green</option>
+                  <option>Pink</option>
+                  <option>Purple</option>
+                </select>
+              </div>
+              <div class="field">
+                <div class="field__label">creator</div>
+                <select class="select">
+                  <option>Verified only</option>
+                  <option>All</option>
+                  <option>Most liked</option>
+                </select>
+              </div>
+            </div><a class="catalog__reset" href="#">
+              <svg class="icon icon-close-circle-fill">
+                <use xlink:href="#icon-close-circle-fill"></use>
+              </svg>Reset filter</a>
           </div>
-          <div v-else class="columns">
-            <figure v-if="loading" class="loading loading-lg"></figure>
-
-            <masonry :cols="4" :gutter="10">
-            <figure class="m-2 p-relative image-preview h-rounded" v-for="image in images" :key="image.id">
-                <div class="p-relative">
-                  <router-link :to="'/images/' + image.id">
-                    <img class="img-responsive" :src="image.thumb800" :alt="image.title">
-                    <div class="price p-absolute label label-rounded">
-                      <span class="font-500">{{ parseInt(image.offer_price) + parseInt(image.transaction_fees) }}</span>
-                      <span class="text-muted text-tiny"> FCFA</span>
+          <div class="catalog__wrapper">
+            <div class="catalog__list">
+              <div class="card">
+                <div class="card__preview"><img srcSet="img/content/card-pic-1@2x.jpg 2x" src="img/content/card-pic-1.jpg" alt="Card preview"/>
+                  <div class="card__control">
+                    <div class="status-green card__category">purchasing !</div>
+                    <button class="card__favorite">
+                      <svg class="icon icon-heart">
+                        <use xlink:href="#icon-heart"></use>
+                      </svg>
+                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in"><span>Place a bid</span>
+                      <svg class="icon icon-scatter-up">
+                        <use xlink:href="#icon-scatter-up"></use>
+                      </svg></a>
+                  </div>
+                </div><a class="card__link" href="item.html">
+                  <div class="card__body">
+                    <div class="card__line">
+                      <div class="card__title">Amazing digital art</div>
+                      <div class="card__price">2.45 ETH</div>
                     </div>
-                   </router-link>
-                  <figcaption class="figure-caption">
-                      <p class="image-title mb-1">{{image.title}}</p>
-                      <button class="btn btn-cta-y btn-action mx-1"><i class="icon icon-bookmark"></i></button>
-                      <button class="btn btn-cta-y btn-action mx-1"><i class="icon icon-downward"></i></button>
-                  </figcaption>
-                </div>
-            </figure>
-            </masonry>
-          </div><!--end v-else -->
+                    <div class="card__line">
+                      <div class="card__users">
+                        <div class="card__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-3.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-4.jpg" alt="Avatar"/></div>
+                      </div>
+                      <div class="card__counter">3 in stock</div>
+                    </div>
+                  </div>
+                  <div class="card__foot">
+                    <div class="card__status">
+                      <svg class="icon icon-candlesticks-up">
+                        <use xlink:href="#icon-candlesticks-up"></use>
+                      </svg>Highest bid <span>0.001 ETH</span>
+                    </div>
+                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                  </div></a>
+              </div>
+              <div class="card">
+                <div class="card__preview"><img srcSet="img/content/card-pic-2@2x.jpg 2x" src="img/content/card-pic-2.jpg" alt="Card preview"/>
+                  <div class="card__control">
+                    <div class="status-green card__category">purchasing !</div>
+                    <button class="card__favorite">
+                      <svg class="icon icon-heart">
+                        <use xlink:href="#icon-heart"></use>
+                      </svg>
+                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in"><span>Place a bid</span>
+                      <svg class="icon icon-scatter-up">
+                        <use xlink:href="#icon-scatter-up"></use>
+                      </svg></a>
+                  </div>
+                </div><a class="card__link" href="item.html">
+                  <div class="card__body">
+                    <div class="card__line">
+                      <div class="card__title">Ribbon Hunter</div>
+                      <div class="card__price">2.45 ETH</div>
+                    </div>
+                    <div class="card__line">
+                      <div class="card__users">
+                        <div class="card__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-3.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-4.jpg" alt="Avatar"/></div>
+                      </div>
+                      <div class="card__counter">3 in stock</div>
+                    </div>
+                  </div>
+                  <div class="card__foot">
+                    <div class="card__status">
+                      <svg class="icon icon-candlesticks-up">
+                        <use xlink:href="#icon-candlesticks-up"></use>
+                      </svg>Highest bid <span>0.001 ETH</span>
+                    </div>
+                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                  </div></a>
+              </div>
+              <div class="card">
+                <div class="card__preview"><img srcSet="img/content/card-pic-3@2x.jpg 2x" src="img/content/card-pic-3.jpg" alt="Card preview"/>
+                  <div class="card__control">
+                    <div class="status-green card__category">purchasing !</div>
+                    <button class="card__favorite">
+                      <svg class="icon icon-heart">
+                        <use xlink:href="#icon-heart"></use>
+                      </svg>
+                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in"><span>Place a bid</span>
+                      <svg class="icon icon-scatter-up">
+                        <use xlink:href="#icon-scatter-up"></use>
+                      </svg></a>
+                  </div>
+                </div><a class="card__link" href="item.html">
+                  <div class="card__body">
+                    <div class="card__line">
+                      <div class="card__title">Amazing digital art</div>
+                      <div class="card__price">2.45 ETH</div>
+                    </div>
+                    <div class="card__line">
+                      <div class="card__users">
+                        <div class="card__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-3.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-4.jpg" alt="Avatar"/></div>
+                      </div>
+                      <div class="card__counter">3 in stock</div>
+                    </div>
+                  </div>
+                  <div class="card__foot">
+                    <div class="card__status">
+                      <svg class="icon icon-candlesticks-up">
+                        <use xlink:href="#icon-candlesticks-up"></use>
+                      </svg>Highest bid <span>0.001 ETH</span>
+                    </div>
+                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                  </div></a>
+              </div>
+              <div class="card">
+                <div class="card__preview"><img srcSet="img/content/card-pic-4@2x.jpg 2x" src="img/content/card-pic-4.jpg" alt="Card preview"/>
+                  <div class="card__control">
+                    <div class="status-green card__category">purchasing !</div>
+                    <button class="card__favorite">
+                      <svg class="icon icon-heart">
+                        <use xlink:href="#icon-heart"></use>
+                      </svg>
+                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in"><span>Place a bid</span>
+                      <svg class="icon icon-scatter-up">
+                        <use xlink:href="#icon-scatter-up"></use>
+                      </svg></a>
+                  </div>
+                </div><a class="card__link" href="item.html">
+                  <div class="card__body">
+                    <div class="card__line">
+                      <div class="card__title">Ribbon Hunter</div>
+                      <div class="card__price">2.45 ETH</div>
+                    </div>
+                    <div class="card__line">
+                      <div class="card__users">
+                        <div class="card__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-3.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-4.jpg" alt="Avatar"/></div>
+                      </div>
+                      <div class="card__counter">3 in stock</div>
+                    </div>
+                  </div>
+                  <div class="card__foot">
+                    <div class="card__status">
+                      <svg class="icon icon-candlesticks-up">
+                        <use xlink:href="#icon-candlesticks-up"></use>
+                      </svg>Highest bid <span>0.001 ETH</span>
+                    </div>
+                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                  </div></a>
+              </div>
+              <div class="card">
+                <div class="card__preview"><img srcSet="img/content/card-pic-5@2x.jpg 2x" src="img/content/card-pic-5.jpg" alt="Card preview"/>
+                  <div class="card__control">
+                    <div class="status-green card__category">purchasing !</div>
+                    <button class="card__favorite">
+                      <svg class="icon icon-heart">
+                        <use xlink:href="#icon-heart"></use>
+                      </svg>
+                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in"><span>Place a bid</span>
+                      <svg class="icon icon-scatter-up">
+                        <use xlink:href="#icon-scatter-up"></use>
+                      </svg></a>
+                  </div>
+                </div><a class="card__link" href="item.html">
+                  <div class="card__body">
+                    <div class="card__line">
+                      <div class="card__title">Amazing digital art</div>
+                      <div class="card__price">2.45 ETH</div>
+                    </div>
+                    <div class="card__line">
+                      <div class="card__users">
+                        <div class="card__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-3.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-4.jpg" alt="Avatar"/></div>
+                      </div>
+                      <div class="card__counter">3 in stock</div>
+                    </div>
+                  </div>
+                  <div class="card__foot">
+                    <div class="card__status">
+                      <svg class="icon icon-candlesticks-up">
+                        <use xlink:href="#icon-candlesticks-up"></use>
+                      </svg>Highest bid <span>0.001 ETH</span>
+                    </div>
+                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                  </div></a>
+              </div>
+              <div class="card">
+                <div class="card__preview"><img srcSet="img/content/card-pic-6@2x.jpg 2x" src="img/content/card-pic-6.jpg" alt="Card preview"/>
+                  <div class="card__control">
+                    <div class="status-green card__category">purchasing !</div>
+                    <button class="card__favorite">
+                      <svg class="icon icon-heart">
+                        <use xlink:href="#icon-heart"></use>
+                      </svg>
+                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in"><span>Place a bid</span>
+                      <svg class="icon icon-scatter-up">
+                        <use xlink:href="#icon-scatter-up"></use>
+                      </svg></a>
+                  </div>
+                </div><a class="card__link" href="item.html">
+                  <div class="card__body">
+                    <div class="card__line">
+                      <div class="card__title">Ribbon Hunter</div>
+                      <div class="card__price">2.45 ETH</div>
+                    </div>
+                    <div class="card__line">
+                      <div class="card__users">
+                        <div class="card__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-3.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-4.jpg" alt="Avatar"/></div>
+                      </div>
+                      <div class="card__counter">3 in stock</div>
+                    </div>
+                  </div>
+                  <div class="card__foot">
+                    <div class="card__status">
+                      <svg class="icon icon-candlesticks-up">
+                        <use xlink:href="#icon-candlesticks-up"></use>
+                      </svg>Highest bid <span>0.001 ETH</span>
+                    </div>
+                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                  </div></a>
+              </div>
+              <div class="card">
+                <div class="card__preview"><img srcSet="img/content/card-pic-7@2x.jpg 2x" src="img/content/card-pic-7.jpg" alt="Card preview"/>
+                  <div class="card__control">
+                    <div class="status-green card__category">purchasing !</div>
+                    <button class="card__favorite">
+                      <svg class="icon icon-heart">
+                        <use xlink:href="#icon-heart"></use>
+                      </svg>
+                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in"><span>Place a bid</span>
+                      <svg class="icon icon-scatter-up">
+                        <use xlink:href="#icon-scatter-up"></use>
+                      </svg></a>
+                  </div>
+                </div><a class="card__link" href="item.html">
+                  <div class="card__body">
+                    <div class="card__line">
+                      <div class="card__title">Amazing digital art</div>
+                      <div class="card__price">2.45 ETH</div>
+                    </div>
+                    <div class="card__line">
+                      <div class="card__users">
+                        <div class="card__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-3.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-4.jpg" alt="Avatar"/></div>
+                      </div>
+                      <div class="card__counter">3 in stock</div>
+                    </div>
+                  </div>
+                  <div class="card__foot">
+                    <div class="card__status">
+                      <svg class="icon icon-candlesticks-up">
+                        <use xlink:href="#icon-candlesticks-up"></use>
+                      </svg>Highest bid <span>0.001 ETH</span>
+                    </div>
+                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                  </div></a>
+              </div>
+              <div class="card">
+                <div class="card__preview"><img srcSet="img/content/card-pic-1@2x.jpg 2x" src="img/content/card-pic-1.jpg" alt="Card preview"/>
+                  <div class="card__control">
+                    <div class="status-green card__category">purchasing !</div>
+                    <button class="card__favorite">
+                      <svg class="icon icon-heart">
+                        <use xlink:href="#icon-heart"></use>
+                      </svg>
+                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in"><span>Place a bid</span>
+                      <svg class="icon icon-scatter-up">
+                        <use xlink:href="#icon-scatter-up"></use>
+                      </svg></a>
+                  </div>
+                </div><a class="card__link" href="item.html">
+                  <div class="card__body">
+                    <div class="card__line">
+                      <div class="card__title">Amazing digital art</div>
+                      <div class="card__price">2.45 ETH</div>
+                    </div>
+                    <div class="card__line">
+                      <div class="card__users">
+                        <div class="card__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-3.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-4.jpg" alt="Avatar"/></div>
+                      </div>
+                      <div class="card__counter">3 in stock</div>
+                    </div>
+                  </div>
+                  <div class="card__foot">
+                    <div class="card__status">
+                      <svg class="icon icon-candlesticks-up">
+                        <use xlink:href="#icon-candlesticks-up"></use>
+                      </svg>Highest bid <span>0.001 ETH</span>
+                    </div>
+                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                  </div></a>
+              </div>
+              <div class="card">
+                <div class="card__preview"><img srcSet="img/content/card-pic-2@2x.jpg 2x" src="img/content/card-pic-2.jpg" alt="Card preview"/>
+                  <div class="card__control">
+                    <div class="status-green card__category">purchasing !</div>
+                    <button class="card__favorite">
+                      <svg class="icon icon-heart">
+                        <use xlink:href="#icon-heart"></use>
+                      </svg>
+                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in"><span>Place a bid</span>
+                      <svg class="icon icon-scatter-up">
+                        <use xlink:href="#icon-scatter-up"></use>
+                      </svg></a>
+                  </div>
+                </div><a class="card__link" href="item.html">
+                  <div class="card__body">
+                    <div class="card__line">
+                      <div class="card__title">Ribbon Hunter</div>
+                      <div class="card__price">2.45 ETH</div>
+                    </div>
+                    <div class="card__line">
+                      <div class="card__users">
+                        <div class="card__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-3.jpg" alt="Avatar"/></div>
+                        <div class="card__avatar"><img src="img/content/avatar-4.jpg" alt="Avatar"/></div>
+                      </div>
+                      <div class="card__counter">3 in stock</div>
+                    </div>
+                  </div>
+                  <div class="card__foot">
+                    <div class="card__status">
+                      <svg class="icon icon-candlesticks-up">
+                        <use xlink:href="#icon-candlesticks-up"></use>
+                      </svg>Highest bid <span>0.001 ETH</span>
+                    </div>
+                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                  </div></a>
+              </div>
+            </div>
+            <div class="catalog__btns">
+              <button class="button-stroke catalog__button">Load more</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <div class="popup popup_wallet mfp-hide" id="popup-wallet">
+      <div class="popup__title h4">Folow steps</div>
+      <div class="steps">
+        <div class="steps__item">
+          <div class="steps__head">
+            <div class="steps__icon">
+              <svg class="icon icon-upload-file">
+                <use xlink:href="#icon-upload-file"></use>
+              </svg>
+            </div>
+            <div class="steps__details">
+              <div class="steps__info">Deposit ETH</div>
+              <div class="steps__text">Send transaction with your wallet</div>
+            </div>
+          </div>
+          <button class="button steps__button">Start now</button>
+        </div>
+        <div class="steps__item">
+          <div class="steps__head">
+            <div class="steps__icon">
+              <svg class="icon icon-check">
+                <use xlink:href="#icon-check"></use>
+              </svg>
+            </div>
+            <div class="steps__details">
+              <div class="steps__info">Approve</div>
+              <div class="steps__text">Checking balance and approving</div>
+            </div>
+          </div>
+          <button class="button steps__button disabled">Start now</button>
+        </div>
+        <div class="steps__item">
+          <div class="steps__head">
+            <div class="steps__icon">
+              <svg class="icon icon-pencil">
+                <use xlink:href="#icon-pencil"></use>
+              </svg>
+            </div>
+            <div class="steps__details">
+              <div class="steps__info">Signature</div>
+              <div class="steps__text">Create a signature to place a bit</div>
+            </div>
+          </div>
+          <button class="button steps__button disabled js-popup-close">Start now</button>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup_bid mfp-hide" id="popup-bid">
+      <div class="popup__title h4">Place a bid</div>
+      <div class="popup__info">You are about to purchase <strong>C O I N Z</strong> from <strong>UI8</strong></div>
+      <div class="popup__subtitle">Your bid</div>
+      <div class="popup__table">
+        <div class="popup__row">
+          <div class="popup__col">Enter bid</div>
+          <div class="popup__col">
+            <div class="popup__bid">
+              <input class="popup__rate" type="tel" name="bid"/>
+              <div class="popup__currency">ETH</div>
+            </div>
+          </div>
+        </div>
+        <div class="popup__row">
+          <div class="popup__col">Your balance</div>
+          <div class="popup__col">8.498 ETH</div>
+        </div>
+        <div class="popup__row">
+          <div class="popup__col">Service fee</div>
+          <div class="popup__col">0 ETH</div>
+        </div>
+        <div class="popup__row">
+          <div class="popup__col">Total bid amount</div>
+          <div class="popup__col">0 ETH</div>
+        </div>
+      </div>
+      <div class="popup__btns"><a class="button popup__button js-popup-open" href="#popup-wallet" data-effect="mfp-zoom-in">Place a bid</a>
+        <button class="button-stroke popup__button js-popup-close">Cancel</button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import SearchImage from '~/components/SearchImage.vue'
 import axios from 'axios'
 let url = 'https://heliumartworks.herokuapp.com/files/search'
 
@@ -139,16 +521,33 @@ export default {
 }
 </script>
 <style scoped>
-.page-content {
-  margin: 1em 2em auto 18em;
-  height: 80vh;
+.catalog__top {
+	display: flex;
+	align-items: center;
+	margin-bottom: 48px;
+	padding-bottom: 32px;
+	border-bottom: 1px solid #E6E8EC;
+}
+.catalog__title {
+	margin-right: auto;
+	font-size: 24px;
+	line-height: 1.33333;
+	letter-spacing: -.01em;
+}
+.catalog__search {
+	position: relative;
+	flex-shrink: 0;
+	width: 320px;
+	margin-left: 30px;
 }
 
-.vs-sidebar-content {
-  top: 4rem;
+.catalog__sorting {
+	display: flex;
+	align-items: center;
+	margin-bottom: 48px;
 }
 
-.vs-sidebar__item {
-  padding: 8px 16px !important;
+.catalog__row {
+	display: flex;
 }
 </style>

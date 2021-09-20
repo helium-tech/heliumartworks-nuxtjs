@@ -2,7 +2,7 @@
   <div>
     <HeroSecond></HeroSecond>
 
-    <div class="render-images-vedette pb-2 pt-2rem container">
+    <div class="section-mb80 main__center center">
       <!-- <div v-if="errored" class="error">
         <p>
           Impossible de charger les images pour l'instant. Veuillez réessayer

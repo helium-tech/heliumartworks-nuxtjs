@@ -1,83 +1,102 @@
 <template>
-  <section class="container p-relative">
-    <div class="columns pt-2rem">
-      <div class="column col-lg-12 flex-centered col-6 p-relative">
-        <div class="image-container mb-2" @click="toggleModalImage">
+  <section class="">
+  <div class="outer__inner">
+  <div class="section item">
+    <div class="item__center center">
+      <div class="item__bg">
+        <div class="item__preview">
+          <div class="item__categories">
+            <div class="status-black item__category" v-key='tag.id' v-for="tag in tags">{{ tag }}</div>
+          </div>
           <img
-            class="img-responsive img-fit-contain"
+            :srcSet="image.thumb800"
             :src="image.thumb800"
             :alt="image.title"
-            style="width: 100%; height: 100%"
           />
         </div>
-
-        <vs-dialog not-close auto-width blur not-padding v-model="isModalImageActive">
-        <div class="con-image">
-          <img :src="image.thumb800" :alt="image.title">
+        <div class="options">
+          <div class="options__list">
+            <button class="button-circle-stroke options__button options__button_share js-options-share"
+              @click="toggleShareBox"
+            >
+              <svg class="icon icon-share">
+                <use xlink:href="#icon-share"></use>
+              </svg>
+            </button>
+            <button class="button-circle-stroke options__button options__button_favorite active">
+              <svg class="icon icon-heart">
+                <use xlink:href="#icon-heart"></use>
+              </svg>
+            </button>
+          </div>
+          <div class="options__box js-options-box" :class="{active: isShareBoxActive}">
+            <div class="options__stage">Partager cette image</div>
+            <div class="options__share share-btn" data-url="#"><a class="options__direction btn-twitter" data-id="tw"><span>
+                  <svg class="icon icon-twitter">
+                    <use xlink:href="#icon-twitter"></use>
+                  </svg></span></a><a class="options__direction btn-facebook" data-id="fb"><span>
+                  <svg class="icon icon-facebook">
+                    <use xlink:href="#icon-facebook"></use>
+                  </svg></span></a></div>
+          </div>
         </div>
-      </vs-dialog>
       </div>
-
-      <div class="column">
-        <!-- <AlertLogin></AlertLogin> -->
-
-        <div class="image-infos">
-          <h1 class="h4 text-bold">{{ image.title }}</h1>
-          <div class="size mb-2">
-            <span class="font-600">Description :</span>
-            <span> {{ image.description }}</span>
+      <div class="item__details">
+        <h1 class="item__title h3">{{ image.title }}</h1>
+        <div class="item__cost">
+          <div class="item__price text-yellow">
+            {{ parseInt(image.offer_price) + parseInt(image.transaction_fees) }} FCFA
+        </div>
+          <div class="status old-price" v-if="isOffer === true">
+            {{ image.price }} FCFA
           </div>
-          <div class="size mb-2">
-            <span class="font-600">Taille :</span>
-            <span> {{ image.file_size }}</span>
-          </div>
-          <div class="render-price mb-2">
-            <span class="old-price h4 text-muted" v-if="isOffer === true">{{ image.price }}</span>
-            <span class="h2 text-yellow text-bold">{{
-              parseInt(image.offer_price) + parseInt(image.transaction_fees)
-            }}</span>
-            <span class="text-muted h2 text-yellow text-bold"> FCFA</span>
-          </div>
-          <div class="size pb-2 render-author">
-            <span>
+        </div>
+        <div class="item__text">{{ image.description }}</div>
+        <div class="size mb-2">
+          <span class="font-600">Taille :</span>
+          <span> {{ image.file_size }}</span>
+        </div>
+        <div class="item__btns">
+          <a class="button item__button js-popup-open" data-effect="mfp-zoom-in"
+            href="#"
+            @click="downloadFile(image)"
+            v-if="isLoggedIn"
+          >
+            Télécharger
+          </a>
+          <a class="button item__button js-popup-open" data-effect="mfp-zoom-in"
+            href="#"
+            v-else
+          >
+            Se connecter pour télécharger
+          </a>
+          <a class="button-stroke item__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+            Sélectionner
+          </a>
+        </div>
+        <div class="item__control">
+          <div class="item__head">
+            <div class="item__avatar">
               <figure
                 class="avatar avatar-lg mr-2 bg-secondary"
                 data-initial="HT"
               >
-                <img src="img/avatar-1.png" alt="..." />
+              <img src="img/avatar-1.png" alt="..." />
               </figure>
-            </span>
-            <nuxt-link :to="'/u/' + image.user_id" v-if="image.user != null">
-              <span class="font-600">Auteur :</span>
-              <span> {{ image.user.displayName }}</span>
-            </nuxt-link>
-            <span class="certified" v-if="userInfo.is_certified === true">
-              <i class="icon icon-check" title="Auteur certifié"></i>
-            </span>
+            </div>
+            <div class="item__description">
+                <nuxt-link :to="'/u/' + image.user_id" v-if="image.user != null">
+                  <span class="font-600">Auteur :</span>
+                  <span> {{ image.user.displayName }}</span>
+                </nuxt-link>
+            </div>
           </div>
-          <div class="divider"></div>
-          <section class="cta-actions pt-2">
-            <button
-              href="#"
-              class="btn btn-cta-y mr-1 font-500"
-              @click="downloadFile(image)" v-if="isLoggedIn"
-            >
-            Télécharger
-          </button>
-          <button href="#" class="btn btn-cta-y mr-1 font-500" v-else>
-            Se connecter pour télécharger
-          </button>
-          <button href="#" class="btn btn-cta ml-2 font-500">
-            Ajouter à ma sélection
-          </button>
-        </section>
+        </div>
       </div>
     </div>
   </div>
-    <h4 class="text-bold pt-2rem">Tags</h4>
-    <!-- <span class="label mr-2" v-key='tag.id' v-for="tag in tags">{{ tag }}</span> -->
+</div>
 
-    <h4 class="text-bold pt-2rem">Images similaires</h4>
   </section>
 </template>
 
@@ -98,7 +117,7 @@ export default {
       tags: '',
       isOffer: '',
       userInfo: '',
-      isModalImageActive: false,
+      isShareBoxActive: false,
     }
   },
 
@@ -194,13 +213,8 @@ export default {
         })
     },
 
-    //Déclenche le popup image
-    toggleModalImage() {
-      if (this.isModalImageActive) {
-        this.isModalImageActive = false
-      } else {
-        this.isModalImageActive = true
-      }
+    toggleShareBox() {
+      this.isShareBoxActive = !this.isShareBoxActive
     },
   },
 
@@ -257,56 +271,206 @@ export default {
 </script>
 
 <style scoped>
-.old-price {
-  text-decoration: line-through;
+.item {
+	padding: 96px 0;
+}
+.item__center {
+	display: flex;
+}
+.item__bg {
+	position: relative;
+	flex-grow: 1;
+	align-self: flex-start;
+	margin-right: 96px;
+}
+.item__details {
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	width: 384px;
+}
+.item__preview {
+	position: relative;
+}
+.item__categories {
+	position: absolute;
+	top: 24px;
+	left: 24px;
+	display: flex;
+	flex-wrap: wrap;
+	margin: -8px 0 0 -8px;
+}
+.item__category {
+	margin: 8px 0 0 8px;
+}
+.status-black {
+	background: #23262F;
+}
+[class^="status"] {
+	display: inline-block;
+	padding: 0 8px;
+	border-radius: 4px;
+	font-size: 12px;
+	line-height: 26px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #FCFCFD;
+}
+.item__preview img {
+	width: 100%;
+	border-radius: 16px;
+}
+.item__details {
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	width: 384px;
+}
+.item__title {
+	margin-bottom: 8px;
+}
+.item__cost {
+	display: flex;
+	align-items: center;
+	margin-bottom: 40px;
+}
+.item__cost .item__price:not(:last-child) {
+	margin-right: 8px;
+}
+.item__price {
+	font-size: 24px;
+	line-height: 1.33333;
+	font-weight: 600;
+	letter-spacing: -.01em;
+}
+.item__text {
+	margin-bottom: 40px;
+	font-size: 16px;
+	line-height: 1.5;
+	color: #777E90;
+}
+.item__tabs {
+	margin-bottom: auto;
+}
+.item__control {
+	margin-top: 32px;
+	padding: 24px;
+	border-radius: 16px;
+	box-shadow: 0px 64px 64px -24px rgba(31, 47, 70, 0.12);
+	border: 1px solid #E6E8EC;
+}
+.item__head {
+	display: flex;
+	align-items: center;
+}
+.item__avatar {
+	position: relative;
+	flex-shrink: 0;
+	width: 48px;
+	height: 48px;
+	margin-right: 16px;
+}
+.item__avatar > img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+.item__description {
+	flex-grow: 1;
+}
+.item__info {
+	font-size: 16px;
+	line-height: 1.5;
+	font-weight: 500;
+	color: #777E90;
+}
+.item__currency {
+	display: flex;
 }
 
-.modal.modal-lg .modal-overlay {
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.9);
+.item__btns {
+	display: flex;
+	margin: 32px -4px 0;
+}
+.item__btns .item__button {
+	flex: 0 0 calc(50% - 8px);
+	width: calc(50% - 8px);
+	margin: 0 4px;
+	padding: 0 8px;
 }
 
-.modal-container .modal-header {
-  padding: 0.1rem;
+.item__variants {
+	margin-top: 32px;
+	font-weight: 500;
+	color: #777E90;
 }
 
-.modal-container {
-  max-height: 90vh;
+.item .options {
+	position: absolute;
+	top: auto;
+	left: 50%;
+	bottom: 24px;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
 }
-
-.modal.modal-lg .modal-container {
-  max-width: fit-content;
+.options__list {
+	display: flex;
+	padding: 8px;
+	border-radius: 32px;
+	background: #FCFCFD;
 }
-
-.tag-label {
-  border: solid 1px #dedede;
-  padding: 4px 8px;
-  margin: .5rem;
-  border-radius: 4px;
+.options__button:not(:last-child) {
+	margin: 0 24px 0 0;
 }
-
-.image-infos {
-  box-shadow: 0 .05rem .2rem rgba(48, 55, 66, .3);
-  padding: 2rem;
+.options__box {
+	position: absolute;
+	left: 50%;
+	bottom: calc(100% + 8px);
+	z-index: 2;
+	width: 220px;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	padding: 32px 16px;
+	background: #FCFCFD;
+	border: 1px solid #E6E8EC;
+	box-shadow: 0px 32px 32px -8px rgba(31, 47, 70, 0.12);
+	border-radius: 16px;
+	text-align: center;
+	visibility: hidden;
+	opacity: 0;
+	transition: all .2s;
 }
-
-.certified .icon-check {
-  background: #ffc71c;
-  border: 1px solid;
-  padding: 10px;
-  margin: 0 0 4px 4px;
-  color: #fff;
+.options__box.active {
+	visibility: visible;
+	opacity: 1;
+}
+.options__stage {
+	margin-bottom: 24px;
+	font-weight: 500;
+}
+.options__share {
+	display: flex;
+	justify-content: center;
+}
+.options__direction:not(:last-child) {
+	margin-right: 24px;
+}
+.options__direction span {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background: #E6E8EC;
+	cursor: pointer;
+	transition: all .2s;
 }
 
 @media (min-width: 840px) {
-  .image-container {
-    width: 500px;
-    height: 500px;
-    border: solid 1px #dedede;
-  }
 
-  .image-infos {
-    margin: 0 2rem;
-  }
 }
 </style>

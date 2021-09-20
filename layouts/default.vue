@@ -307,22 +307,9 @@ a:focus {
   transition: all 0.3s;
 }
 
-aside {
- margin-bottom: -1em;
-}
-
 .gradient {
   background-color: transparent;
   background-image: linear-gradient(180deg,rgba(0,23,37,0),rgba(0,23,37,0) 15%,rgba(0,23,37,.85));
-}
-
-.tab .tab-item a.active, .tab .tab-item.active a {
-	border-bottom-color: #ffc71c !important;
-}
-
-.form-checkbox input:checked + .form-icon, .form-radio input:checked + .form-icon, .form-switch input:checked + .form-icon {
-	background: #ffc71c !important;
-	border-color: #ffc71c !important;
 }
 
 .mob-menu {
@@ -330,22 +317,9 @@ aside {
   z-index: 22
 }
 
-.dropdown:hover .menu {
-  display: block;
-}
-
-.dropdown .menu {
-	top: 90% !important;
-  width: 20em;
-}
-
 .badge[data-badge]::after,
 .badge:not([data-badge])::after {
   background: #ffc71c !important;
-}
-
-.chip {
-  margin: 8px !important;
 }
 
 @media (max-width: 840px) {
