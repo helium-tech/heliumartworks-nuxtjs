@@ -82,7 +82,7 @@
     >
       <button class="header__head js-header-head">
         <figure
-          class="avatar avatar-lg mr-2 bg-secondary"
+          class="avatar avatar-lg"
           data-initial="HT"
         >
         <img src="img/avatar-1.png" alt="..." />

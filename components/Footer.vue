@@ -3,7 +3,7 @@
   <div class="footer__center center">
     <div class="footer__row">
       <div class="footer__col">
-        <nuxt-link to="/" class="footer__logo h2"><span class="text-yellow">H</span>artworks</nuxt-link>
+        <nuxt-link to="/" class="footer__logo h4"><span class="text-yellow">helium</span>artworks</nuxt-link>
         <div class="footer__theme">
           <svg class="icon icon-bulb">
             <use xlink:href="#icon-bulb"></use>
