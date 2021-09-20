@@ -77,12 +77,17 @@
             </div></a></div>
       </div>
       </div> -->
-    <a class="header__login js-popup-open" href="#popup-login" data-effect="mfp-zoom-in">
-      <svg class="icon icon-user">
-        <use xlink:href="#icon-user"></use>
-      </svg></a>
-    <div class="header__item header__item_user js-header-item">
-      <button class="header__head js-header-head"><img src="images/content/avatar-2.jpg" alt="Avatar"></button>
+    <div class="header__item header__item_user js-header-item"
+      v-if="isLoggedIn"
+    >
+      <button class="header__head js-header-head">
+        <figure
+          class="avatar avatar-lg mr-2 bg-secondary"
+          data-initial="HT"
+        >
+        <img src="img/avatar-1.png" alt="..." />
+        </figure>
+      </button>
       <div class="header__body js-header-body">
         <div class="header__group">
           <div class="header__menu"><a class="header__link" href="message-center.html">
@@ -108,6 +113,11 @@
         </div>
       </div>
     </div>
+    <a class="header__login js-popup-open" data-effect="mfp-zoom-in" v-else>
+      <svg class="icon icon-user">
+        <use xlink:href="#icon-user"></use>
+      </svg>
+    </a>
     <button class="header__burger js-header-burger"></button>
   </div>
 </header>

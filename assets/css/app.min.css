@@ -3028,7 +3028,7 @@ body.dark .some-icon {
       height: 24px;
       fill: #FCFCFD; }
     .header__login:hover {
-      background: #41b168; }
+      background: #ffc71c; }
   .header__burger {
     display: none; }
     @media only screen and (max-width: 767px) {
@@ -4483,7 +4483,7 @@ body.dark .some-icon {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: #3B71FE;
+    background: #ffc71c;
     transition: background .2s; }
     .subscription__btn .icon {
       width: 14px;
@@ -5178,7 +5178,7 @@ body.dark .some-icon {
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background: #3B71FE;
+      background: #ffc71c;
       transition: all .2s; }
 
 .footer {

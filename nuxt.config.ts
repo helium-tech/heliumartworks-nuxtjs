@@ -25,7 +25,8 @@ const config: NuxtConfig = {
           defer: true,
         },
         {
-          src: '/js/lib/jquery.magnific-popup.min.js',
+          type: 'text/javascript',
+          src: '/js/lib/nouislider.min.js',
           body: true,
           defer: true,
         },

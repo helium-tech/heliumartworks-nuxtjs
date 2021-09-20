@@ -17,7 +17,7 @@
                 <use xlink:href="#icon-location"></use>
               </svg>
             </div>
-            <input class="location__input js-location-input" type="text" name="location" autocomplete="off" placeholder="Entrer le mot clé"/>
+            <input class="location__input js-location-input" type="text" name="location" autocomplete="off" placeholder="Rechercher..."/>
             <button class="location__clear js-location-clear">
               <svg class="icon icon-close-circle">
                 <use xlink:href="#icon-close-circle"></use>
