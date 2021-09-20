@@ -20,7 +20,7 @@
           <a class="footer__link" href="#">Vidéos</a>
           <a class="footer__link" href="#">Support</a>
           <a class="footer__link" href="#">Musique</a>
-          <a class="footer__link" href="#">Images</a>
+          <a class="footer__link" href="#">Autres</a>
         </div>
       </div>
       <div class="footer__col">
@@ -38,90 +38,6 @@
     <!-- <div class="footer__bottom">
       <div class="footer__copyright">Copyright © 2021 UI8 LLC. All rights reserved</div>
     </div> -->
-  </div>
-
-  <!-- Popup -->
-  <div class="popup popup_login mfp-hide" id="popup-login">
-    <div class="login">
-      <div class="login__item">
-        <div class="login__title h3">Sign up on Fleet</div>
-        <div class="login__info">Use Your OpenID to Sign up</div>
-        <div class="login__btns">
-          <button class="button login__button">
-            <svg class="icon icon-google">
-              <use xlink:href="#icon-google"></use>
-            </svg><span>Google</span>
-          </button>
-          <button class="button-black login__button">
-            <svg class="icon icon-apple">
-              <use xlink:href="#icon-apple"></use>
-            </svg><span>Apple</span>
-          </button>
-        </div>
-        <div class="login__note">Or continue with email</div>
-        <div class="subscription">
-          <input class="subscription__input" type="email" name="email" placeholder="Enter your email" required>
-          <button class="subscription__btn">
-            <svg class="icon icon-arrow-next">
-              <use xlink:href="#icon-arrow-next"></use>
-            </svg>
-          </button>
-        </div>
-        <div class="login__foot">Already have an account? <a class="login__link" href="#">Login</a></div>
-      </div>
-      <div class="login__item">
-        <div class="login__title h3">Sign in</div>
-        <div class="login__form">
-          <div class="field field_view">
-            <div class="field__wrap">
-              <input class="field__input" type="password" name="password" placeholder="Password" required>
-              <button class="field__view">
-                <svg class="icon icon-eye">
-                  <use xlink:href="#icon-eye"></use>
-                </svg>
-              </button>
-            </div>
-          </div>
-          <button class="button login__button">Login</button>
-        </div>
-        <div class="login__foot"><a class="login__password" href="#">Forgot password?</a></div>
-      </div>
-      <div class="login__item">
-        <div class="login__title h3">Let’s confirm it’s really you</div>
-        <div class="login__info">Help us secure your account. Please complete the verifications below</div>
-        <div class="login__form">
-          <div class="login__variants">
-            <label class="radio">
-              <input class="radio__input" type="radio" name="login" checked="checked"/><span class="radio__inner"><span class="radio__tick"></span><span class="radio__text">Get the code by text message (SM) at +1 234 567 890</span></span>
-            </label>
-            <label class="radio">
-              <input class="radio__input" type="radio" name="login"/><span class="radio__inner"><span class="radio__tick"></span><span class="radio__text">Get the code by email at tranm••••••••••••@gm•••.com</span></span>
-            </label>
-          </div>
-          <button class="button login__button">Continue</button>
-        </div>
-      </div>
-      <div class="login__item">
-        <div class="login__title h3">Enter your security code</div>
-        <div class="login__info">We texted your code to +1 234 567 890</div>
-        <div class="login__form">
-          <div class="login__code">
-            <div class="login__number">
-              <input type="tel">
-            </div>
-            <div class="login__number">
-              <input type="tel">
-            </div>
-            <div class="login__number">
-              <input type="tel">
-            </div>
-            <div class="login__number">
-              <input type="tel">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- svg sprite-->

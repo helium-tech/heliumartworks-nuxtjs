@@ -113,7 +113,10 @@
         </div>
       </div>
     </div>
-    <a class="header__login js-popup-open" data-effect="mfp-zoom-in" v-else>
+    <a class="header__login js-popup-open" data-effect="mfp-zoom-in"
+      v-else
+      @click="toggleModal"
+      >
       <svg class="icon icon-user">
         <use xlink:href="#icon-user"></use>
       </svg>
@@ -124,8 +127,98 @@
 
   <Nuxt />
 
+  <!-- Popup -->
+  <div class="modal" :class="{active: isModalActive}" id="modal-id">
+  <div class="popup popup_login">
+    <div class="login">
+      <div class="login__item">
+        <div class="login__title h3">Sign up on Fleet</div>
+        <div class="login__info">Use Your OpenID to Sign up</div>
+        <div class="login__btns">
+          <button class="button login__button">
+            <svg class="icon icon-google">
+              <use xlink:href="#icon-google"></use>
+            </svg><span>Google</span>
+          </button>
+          <button class="button-black login__button">
+            <svg class="icon icon-apple">
+              <use xlink:href="#icon-apple"></use>
+            </svg><span>Apple</span>
+          </button>
+        </div>
+        <div class="login__note">Or continue with email</div>
+        <div class="subscription">
+          <input class="subscription__input" type="email" name="email" placeholder="Enter your email" required>
+          <button class="subscription__btn">
+            <svg class="icon icon-arrow-next">
+              <use xlink:href="#icon-arrow-next"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="login__foot">Already have an account? <a class="login__link" href="#">Login</a></div>
+      </div>
+      <div class="login__item">
+        <div class="login__title h3">Sign in</div>
+        <div class="login__form">
+          <div class="field field_view">
+            <div class="field__wrap">
+              <input class="field__input" type="password" name="password" placeholder="Password" required>
+              <button class="field__view">
+                <svg class="icon icon-eye">
+                  <use xlink:href="#icon-eye"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <button class="button login__button">Login</button>
+        </div>
+        <div class="login__foot"><a class="login__password" href="#">Forgot password?</a></div>
+      </div>
+      <div class="login__item">
+        <div class="login__title h3">Let’s confirm it’s really you</div>
+        <div class="login__info">Help us secure your account. Please complete the verifications below</div>
+        <div class="login__form">
+          <div class="login__variants">
+            <label class="radio">
+              <input class="radio__input" type="radio" name="login" checked="checked"/><span class="radio__inner"><span class="radio__tick"></span><span class="radio__text">Get the code by text message (SM) at +1 234 567 890</span></span>
+            </label>
+            <label class="radio">
+              <input class="radio__input" type="radio" name="login"/><span class="radio__inner"><span class="radio__tick"></span><span class="radio__text">Get the code by email at tranm••••••••••••@gm•••.com</span></span>
+            </label>
+          </div>
+          <button class="button login__button">Continue</button>
+        </div>
+      </div>
+      <div class="login__item">
+        <div class="login__title h3">Enter your security code</div>
+        <div class="login__info">We texted your code to +1 234 567 890</div>
+        <div class="login__form">
+          <div class="login__code">
+            <div class="login__number">
+              <input type="tel">
+            </div>
+            <div class="login__number">
+              <input type="tel">
+            </div>
+            <div class="login__number">
+              <input type="tel">
+            </div>
+            <div class="login__number">
+              <input type="tel">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button title="Close (Esc)" type="button" class="mfp-close"
+      @click="toggleModal"
+      >×
+    </button>
+  </div>
+</div>
+
     <!-- Modal de connexion et d'inscription -->
-    <div class="modal modal-sm" :class="{active: isModalActive}" id="modal-id">
+    <!-- <div class="modal modal-sm" :class="{active: isModalActive}" id="modal-id">
       <a href="#close" class="modal-overlay" aria-label="Close" @click="toggleModal"></a>
       <div class="modal-container h-rounded">
         <section class="modal-header">
@@ -138,7 +231,7 @@
           </div>
         </section>
     </div>
-  </div>
+  </div> -->
 
     <Footer></Footer>
 
@@ -181,11 +274,7 @@ export default {
   methods: {
 
     toggleModal() {
-      if (this.isModalActive) {
-        this.isModalActive = false
-      } else {
-        this.isModalActive = true
-      }
+      this.isModalActive = !this.isModalActive;
     },
 
     toggleNavMob() {
