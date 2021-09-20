@@ -132,33 +132,29 @@
   <div class="popup popup_login">
     <div class="login">
       <div class="login__item">
-        <div class="login__title h3">Sign up on Fleet</div>
-        <div class="login__info">Use Your OpenID to Sign up</div>
+        <div class="login__title h3">
+          S'inscrire
+        </div>
         <div class="login__btns">
           <button class="button login__button">
             <svg class="icon icon-google">
               <use xlink:href="#icon-google"></use>
-            </svg><span>Google</span>
-          </button>
-          <button class="button-black login__button">
-            <svg class="icon icon-apple">
-              <use xlink:href="#icon-apple"></use>
-            </svg><span>Apple</span>
+            </svg><span>Avec Google</span>
           </button>
         </div>
-        <div class="login__note">Or continue with email</div>
+        <div class="login__note">Ou continuer avec un email</div>
         <div class="subscription">
-          <input class="subscription__input" type="email" name="email" placeholder="Enter your email" required>
+          <input class="subscription__input" type="email" name="email" placeholder="Saisir email" required>
           <button class="subscription__btn">
             <svg class="icon icon-arrow-next">
               <use xlink:href="#icon-arrow-next"></use>
             </svg>
           </button>
         </div>
-        <div class="login__foot">Already have an account? <a class="login__link" href="#">Login</a></div>
+        <div class="login__foot">Avez vous déjà un compte? <a class="login__link" href="#">Se connecter</a></div>
       </div>
       <div class="login__item">
-        <div class="login__title h3">Sign in</div>
+        <div class="login__title h3">S'inscrire</div>
         <div class="login__form">
           <div class="field field_view">
             <div class="field__wrap">
@@ -278,11 +274,7 @@ export default {
     },
 
     toggleNavMob() {
-      if (this.isNavMobActive) {
-        this.isNavMobActive = false
-      } else {
-        this.isNavMobActive = true
-      }
+      this.isNavMobActive = !this.isNavMobActive
     }
 
   }
