@@ -10,20 +10,29 @@
     <div class="panel__background"></div>
     <div class="panel__body">
       <div class="panel__row">
-        <div class="location js-location location_small">
+        <div class="location js-location">
           <div class="location__head js-location-head">
             <div class="location__icon">
               <svg class="icon icon-image">
-                <use xlink:href="#icon-location"></use>
+                <use xlink:href="#icon-image"></use>
               </svg>
             </div>
-            <input class="location__input js-location-input" type="text" name="location" autocomplete="off" placeholder="Rechercher..."/>
+            <input class="location__input js-location-input" type="text" name="location" autocomplete="off" placeholder="Travailleur africain"/>
             <button class="location__clear js-location-clear">
               <svg class="icon icon-close-circle">
                 <use xlink:href="#icon-close-circle"></use>
               </svg>
             </button>
           </div>
+          <!-- <div class="location__body js-location-body">
+            <div class="location__list">
+              <a class="location__item js-location-item" href="#">New York, NY</a>
+              <a class="location__item js-location-item" href="#">New York, Manhattan</a>
+              <a class="location__item js-location-item" href="#">New Zealand</a>
+              <a class="location__item js-location-item" href="#">New Smyrna Beach, FL</a>
+              <a class="location__item js-location-item" href="#">Newark, NJ</a>
+            </div>
+          </div> -->
         </div>
         <button class="panel__search">
           <svg class="icon icon-search">

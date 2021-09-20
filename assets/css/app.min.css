@@ -5151,7 +5151,7 @@ body.dark .some-icon {
     left: 0;
     opacity: 0; }
     .theme__input:checked + .theme__inner .theme__box {
-      background: #3B71FE; }
+      background: #ffc71c; }
       .theme__input:checked + .theme__inner .theme__box:before {
         transform: translate(24px, -50%);
         background: #FCFCFD; }
@@ -11645,7 +11645,7 @@ body.dark .upload__wrap {
 .login__foot {
   margin-top: 32px;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.66667;
   color: #353945; }
   body.dark .login__foot {
@@ -11656,9 +11656,11 @@ body.dark .upload__wrap {
   transition: color .2s; }
 
 .login__link {
-  color: #3B71FE; }
+  cursor: pointer;
+}
   .login__link:hover {
-    color: #084cfe; }
+    color: #ffc71c !important;
+   }
 
 .login__password {
   color: #353945; }

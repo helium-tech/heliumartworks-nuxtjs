@@ -24,12 +24,6 @@ const config: NuxtConfig = {
           body: true,
           defer: true,
         },
-        {
-          type: 'text/javascript',
-          src: '/js/lib/nouislider.min.js',
-          body: true,
-          defer: true,
-        },
       ]
   },
 

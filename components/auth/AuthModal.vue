@@ -1,9 +1,136 @@
 <template>
-  <div class="center">
+  <div>
     <!-- <vs-button @click="active=!active">
         Open Dialog
       </vs-button> -->
-    <div>
+
+      <div class="header__item header__item_user js-header-item"
+        v-if="isLoggedIn"
+      >
+        <button class="header__head js-header-head">
+          <figure
+            class="avatar avatar-lg"
+            data-initial="HT"
+          >
+          <img src="img/avatar-1.png" alt="..." />
+          </figure>
+        </button>
+        <div class="header__body js-header-body">
+          <div class="header__group">
+            <div class="header__menu"><a class="header__link" href="message-center.html">
+                <svg class="icon icon-comment">
+                  <use xlink:href="#icon-comment"></use>
+                </svg>Messages</a><a class="header__link" href="bookings-list.html">
+                <svg class="icon icon-home">
+                  <use xlink:href="#icon-home"></use>
+                </svg>Bookings</a><a class="header__link" href="wishlists.html">
+                <svg class="icon icon-email">
+                  <use xlink:href="#icon-email"></use>
+                </svg>Wishlists</a></div>
+            <div class="header__menu"><a class="header__link" href="list-your-property.html">
+                <svg class="icon icon-building">
+                  <use xlink:href="#icon-building"></use>
+                </svg>List your property</a><a class="header__link" href="host-an-experience.html">
+                <svg class="icon icon-flag">
+                  <use xlink:href="#icon-flag"></use>
+                </svg>Host an experience</a></div>
+          </div>
+          <div class="header__btns"><a class="button button-small header__button" href="account-setting.html">Account</a>
+            <button class="button-stroke button-small header__button">Log out</button>
+          </div>
+        </div>
+      </div>
+      <a class="header__login js-popup-open" data-effect="mfp-zoom-in"
+        v-else
+        @click="toggleModal"
+        >
+        <svg class="icon icon-user">
+          <use xlink:href="#icon-user"></use>
+        </svg>
+      </a>
+      <!-- Modal de connexion et d'inscription -->
+      <!-- <div class="modal modal-sm" :class="{active: isModalActive}" id="modal-id">
+        <a href="#close" class="modal-overlay" aria-label="Close" @click="toggleModal"></a>
+        <div class="modal-container h-rounded">
+          <section class="modal-header">
+          <a href="#close" class="btn btn-clear float-right my-2" aria-label="Close" @click="toggleModal"></a>
+          <div class="modal-title text-center h5"><span class="text-yellow">helium</span>artworks</div>
+          </section>
+          <section class="modal-body">
+            <div class="content text-large">
+              Bientôt vous aurez la possibilité de vendre vos oeuvres
+            </div>
+          </section>
+      </div>
+    </div> -->
+
+      <!-- Popup login-->
+      <div class="modal" :class="{active: isModalActive}" id="modal-id">
+      <div class="popup popup_login">
+        <div class="signup"
+          v-if="isRegister == true"
+        >
+          <div class="login__item">
+            <div class="login__title h3">
+              S'inscrire
+            </div>
+            <div class="login__btns">
+              <button class="button login__button">
+                <svg class="icon icon-google">
+                  <use xlink:href="#icon-google"></use>
+                </svg><span>Avec Google</span>
+              </button>
+            </div>
+            <div class="login__note">Ou continuer avec email</div>
+            <div class="subscription">
+              <input class="subscription__input mb-2" type="email" name="email" placeholder="Saisir email" required>
+              <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Saisir mot de passe" required>
+              <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Confirmer mot de passe" required>
+              <a class="btn btn-cta flex-centered text-bold mt-2" href="#" style="border-radius: 20px;">
+                S'inscrire
+              </a>
+            </div>
+            <div class="login__foot">Avez vous déjà un compte?
+              <a class="login__link" @click.prevent="swithConnexionMode">
+                Se connecter
+              </a>
+              </div>
+          </div>
+        </div>
+        <div class="login" v-else>
+          <div class="login__item">
+            <div class="login__title h3">
+              Se connecter
+            </div>
+            <div class="login__btns">
+              <button class="button login__button">
+                <svg class="icon icon-google">
+                  <use xlink:href="#icon-google"></use>
+                </svg><span>Avec Google</span>
+              </button>
+            </div>
+            <div class="login__note">Ou avec email</div>
+            <div class="subscription">
+              <input class="subscription__input mb-2" type="email" name="email" placeholder="Saisir email" required>
+              <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Saisir mot de passe" required>
+              <a class="btn btn-cta flex-centered text-bold mt-2" href="#" style="border-radius: 20px;">
+                Se connecter
+              </a>
+            </div>
+            <div class="login__foot">Vous n'avez pas de compte?
+              <a class="login__link" @click.prevent="swithConnexionMode">S'inscrire</a>
+            </div>
+          </div>
+        </div>
+        <button title="Fermer" type="button" class="mfp-close"
+          @click="toggleModal"
+          >×
+        </button>
+      </div>
+    </div>
+
+
+    <!-- <div>
       <button
         class="btn btn-cta-y my-2 font-500 btn-block"
         v-if="isLoggedIn">
@@ -58,9 +185,9 @@
           </vs-checkbox>
           <a href="#" v-if="isRegister == false">Mot de passe oublié?</a>
         </div>
-      </div>
+      </div> -->
 
-      <template #footer>
+      <!-- <template #footer>
         <div class="footer-dialog">
           <vs-button
             color="#ffc71c"
@@ -79,7 +206,7 @@
             @click="createAccountWithEmail()"
           >
             Créer un compte
-          </vs-button>
+          </vs-button> -->
 
           <!-- <vs-button
             icon
@@ -90,7 +217,7 @@
             Se Connecter avec Google
           </vs-button> -->
 
-          <div class="new" v-if="isRegister == false">
+          <!-- <div class="new" v-if="isRegister == false">
             Nouveau?
             <a href="javascript:{}" @click="swithConnexionMode()"
               >Créer un compte</a
@@ -102,7 +229,7 @@
           </div>
         </div>
       </template>
-    </vs-dialog>
+    </vs-dialog> -->
   </div>
 </template>
   <script >
@@ -127,8 +254,12 @@ export default Vue.extend({
     password: '',
     confirm: '',
     remember: false,
+    isModalActive : false,
   }),
   methods: {
+    toggleModal() {
+      this.isModalActive = !this.isModalActive;
+    },
     swithConnexionMode() {
       this.isRegister = !this.isRegister
     },
