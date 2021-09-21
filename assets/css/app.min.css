@@ -2431,7 +2431,7 @@ body.dark .some-icon {
   .button-stroke:hover, .button-stroke.active {
     background: inherit;
     box-shadow: 0 0 0 2px #ffc71c inset;
-    color: #ffc71c !important; 
+    color: #ffc71c !important;
   }
     .button-stroke:hover .icon, .button-stroke.active .icon {
       fill: #FCFCFD; }
@@ -11522,6 +11522,7 @@ body.dark .upload__wrap {
   margin: auto;
   background: #FCFCFD;
   border-radius: 16px;
+  position: relative;
   box-shadow: 0px 64px 64px -48px rgba(15, 15, 15, 0.08);
   z-index: 2; }
   body.dark .popup {
@@ -11553,7 +11554,6 @@ body.dark .upload__wrap {
   .popup_login {
     max-width: 544px;
     padding: 72px 96px;
-    position: relative;
   }
     @media only screen and (max-width: 767px) {
       .popup_login {

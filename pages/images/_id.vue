@@ -8,7 +8,9 @@
           <div class="item__categories">
             <div class="status-black item__category" v-key='tag.id' v-for="tag in tags">{{ tag }}</div>
           </div>
-          <div class="">
+          <div class="image-content"
+            @click="toggleImageModal"
+          >
             <img
               :src="image.thumb_image"
               :alt="image.title"
@@ -109,7 +111,24 @@
   </div>
 </div>
 
-<!-- popup achat -->
+
+<!-- popup modal image -->
+<div class="modal modal-image" :class="{active: isModalImageActive}" id="modal-id">
+<div class="popup popup_image">
+
+  <img
+    :src="image.thumb_image"
+    :alt="image.title"
+  />
+
+  <button title="Fermer" type="button" class="mfp-close"
+    @click="toggleImageModal"
+    >×
+  </button>
+</div>
+</div>
+
+<!-- popup modal achat -->
 <div class="modal" :class="{active: isAchatModalActive}" id="modal-id">
 <div class="popup popup_login">
   <div class="signup"
@@ -195,6 +214,7 @@ export default {
       isOffer: '',
       isShareBoxActive: false,
       isAchatModalActive : false,
+      isModalImageActive : false,
       isRegister: false
     }
   },
@@ -213,8 +233,16 @@ export default {
       this.isAchatModalActive = !this.isAchatModalActive;
     },
 
+    toggleImageModal() {
+      this.isModalImageActive = !this.isModalImageActive;
+    },
+
     swithConnexionMode() {
       this.isRegister = !this.isRegister
+    },
+
+    toggleShareBox() {
+      this.isShareBoxActive = !this.isShareBoxActive
     },
 
     downloadFile(file) {
@@ -298,10 +326,6 @@ export default {
           console.log(error)
         })
     },
-
-    toggleShareBox() {
-      this.isShareBoxActive = !this.isShareBoxActive
-    },
   },
 
   created() {
@@ -361,12 +385,14 @@ export default {
 }
 .item__center {
 	display: flex;
+  justify-content: center;
 }
 .item__bg {
 	position: relative;
 	flex-grow: 1;
 	align-self: flex-start;
 	margin-right: 96px;
+  max-width: 40%
 }
 .item__details {
 	display: flex;
@@ -409,7 +435,7 @@ export default {
 	display: flex;
 	flex-direction: column;
 	flex-shrink: 0;
-	width: 384px;
+	width: 400px;
 }
 .item__title {
 	margin-bottom: 8px;
@@ -559,7 +585,26 @@ export default {
 	text-decoration: line-through;
 }
 .final-price {
-	background: #ffc71c;
+	box-shadow: inset 0 0 0 2px#ffc71c;
+	color: #ffc71c;
+  background: none;
+}
+
+.popup_image {
+  max-width: 544px;
+  background: transparent;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+.modal-image.active {
+  background-color: rgba(0,0,0,0.9) !important;
+}
+
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
 }
 
 @media (min-width: 840px) {
