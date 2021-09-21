@@ -78,7 +78,7 @@
         <div class="user__wrapper">
           <div class="user__details">
             <div class="user__head">
-              <div class="user__title">Salut,je suis Kohaku Tora</div><a class="button-stroke button-small user__button" href="account-setting.html">Edit your profile</a>
+              <div class="user__title">Salut,je suis Kohaku Tora</div><a class="button-stroke button-small user__button" href="#">Modifier le profil</a>
             </div>
             <div class="user__content">Bla bla bla</div>
             <div class="user__options">

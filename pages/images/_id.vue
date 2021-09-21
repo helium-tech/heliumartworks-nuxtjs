@@ -8,6 +8,7 @@
           <div class="item__categories">
             <div class="status-black item__category" v-key='tag.id' v-for="tag in tags">{{ tag }}</div>
           </div>
+
           <img
             :srcSet="image.thumb800"
             :src="image.thumb800"
@@ -77,12 +78,14 @@
         <div class="item__control">
           <div class="item__head">
             <div class="item__avatar">
-              <figure
-                class="avatar avatar-lg mr-2 bg-secondary"
-                data-initial="HT"
-              >
+              <figure class="avatar avatar-lg mr-2 bg-secondary">
               <img src="img/avatar-1.png" alt="..." />
               </figure>
+              <span class="receipt__check">
+                <svg class="icon icon-check">
+                  <use xlink:href="#icon-check"></use>
+                </svg>
+              </span>
             </div>
             <div class="item__description">
                 <nuxt-link :to="'/u/' + image.user_id" v-if="image.user != null">
@@ -113,7 +116,7 @@ export default {
   },
   data() {
     return {
-      image: {},
+      image: [],
       tags: '',
       isOffer: '',
       userInfo: '',
