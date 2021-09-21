@@ -48,21 +48,6 @@
           <use xlink:href="#icon-user"></use>
         </svg>
       </a>
-      <!-- Modal de connexion et d'inscription -->
-      <!-- <div class="modal modal-sm" :class="{active: isModalActive}" id="modal-id">
-        <a href="#close" class="modal-overlay" aria-label="Close" @click="toggleModal"></a>
-        <div class="modal-container h-rounded">
-          <section class="modal-header">
-          <a href="#close" class="btn btn-clear float-right my-2" aria-label="Close" @click="toggleModal"></a>
-          <div class="modal-title text-center h5"><span class="text-yellow">helium</span>artworks</div>
-          </section>
-          <section class="modal-body">
-            <div class="content text-large">
-              Bientôt vous aurez la possibilité de vendre vos oeuvres
-            </div>
-          </section>
-      </div>
-    </div> -->
 
       <!-- Popup login-->
       <div class="modal" :class="{active: isModalActive}" id="modal-id">
@@ -381,58 +366,6 @@ export default Vue.extend({
   },
 })
 </script>
-  <style>
-.not-margin {
-  margin: 0px;
-  font-weight: normal;
-  padding: 10px;
-}
-.con-form {
-  width: 100%;
-}
-.con-form .flex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.con-form .flex a {
-  font-size: 0.8rem;
-  opacity: 0.7;
-}
-.con-form .flex a:hover {
-  opacity: 1;
-}
-.con-form .vs-checkbox-label {
-  font-size: 0.8rem;
-}
-.con-form .vs-input-content {
-  margin: 10px 0px;
-  width: calc(100%);
-}
-.con-form .vs-input-content .vs-input {
-  width: 100%;
-}
-.footer-dialog {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: calc(100%);
-}
-.footer-dialog .new {
-  margin: 0px;
-  margin-top: 20px;
-  padding: 0px;
-  font-size: 0.7rem;
-}
-.footer-dialog .new a {
-  color: rgba(var(--vs-primary), 1) !important;
-  margin-left: 6px;
-}
-.footer-dialog .new a:hover {
-  text-decoration: underline;
-}
-.footer-dialog .vs-button {
-  margin: 0px;
-}
+<style scoped>
+
 </style>

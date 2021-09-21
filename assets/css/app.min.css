@@ -2429,9 +2429,10 @@ body.dark .some-icon {
     body.dark .button-stroke .icon {
       fill: #FCFCFD; }
   .button-stroke:hover, .button-stroke.active {
-    background: #23262F;
-    box-shadow: 0 0 0 2px #23262F inset;
-    color: #FCFCFD; }
+    background: inherit;
+    box-shadow: 0 0 0 2px #ffc71c inset;
+    color: #ffc71c !important; 
+  }
     .button-stroke:hover .icon, .button-stroke.active .icon {
       fill: #FCFCFD; }
     body.dark .button-stroke:hover, body.dark .button-stroke.active {

@@ -8,12 +8,12 @@
           <div class="item__categories">
             <div class="status-black item__category" v-key='tag.id' v-for="tag in tags">{{ tag }}</div>
           </div>
-
-          <img
-            :srcSet="image.thumb800"
-            :src="image.thumb800"
-            :alt="image.title"
-          />
+          <div class="">
+            <img
+              :src="image.thumb_image"
+              :alt="image.title"
+            />
+          </div>
         </div>
         <div class="options">
           <div class="options__list">
@@ -43,19 +43,27 @@
         </div>
       </div>
       <div class="item__details">
-        <h1 class="item__title h3">{{ image.title }}</h1>
+        <h1 class="item__title h2 text-bold">{{ image.title }}</h1>
+        <div class="item__text">{{ image.description }}</div>
         <div class="item__cost">
-          <div class="item__price text-yellow">
-            {{ parseInt(image.offer_price) + parseInt(image.transaction_fees) }} FCFA
-        </div>
-          <div class="status old-price" v-if="isOffer === true">
+          <div class="old-price mr-2" v-if="isOffer === true">
             {{ image.price }} FCFA
           </div>
+          <div class="status-stroke-green final-price item__price">
+            {{ parseInt(image.offer_price) + parseInt(image.transaction_fees) }} FCFA
+          </div>
         </div>
-        <div class="item__text">{{ image.description }}</div>
-        <div class="size mb-2">
-          <span class="font-600">Taille :</span>
-          <span> {{ image.file_size }}</span>
+        <div class="item__counter">
+              <span>Téléchargements :</span>
+              <span class="font-600"> {{ image.download_counter }}</span>
+        </div>
+        <div class="item__counter">
+          <span>Taille :</span>
+          <span class="font-600"> {{ image.file_size }}</span>
+        </div>
+        <div class="item__counter">
+          <span>Vues :</span>
+          <span class="font-600"> {{ image.views }}</span>
         </div>
         <div class="item__btns">
           <a class="button item__button js-popup-open" data-effect="mfp-zoom-in"
@@ -63,13 +71,14 @@
             @click="downloadFile(image)"
             v-if="isLoggedIn"
           >
-            Télécharger
+            Acheter maintenant
           </a>
           <a class="button item__button js-popup-open" data-effect="mfp-zoom-in"
             href="#"
             v-else
+            @click="toggleAchatModal"
           >
-            Se connecter pour télécharger
+            Acheter
           </a>
           <a class="button-stroke item__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
             Sélectionner
@@ -100,6 +109,71 @@
   </div>
 </div>
 
+<!-- popup achat -->
+<div class="modal" :class="{active: isAchatModalActive}" id="modal-id">
+<div class="popup popup_login">
+  <div class="signup"
+    v-if="isRegister == true"
+  >
+    <div class="login__item">
+      <div class="login__title h3">
+        S'inscrire
+      </div>
+      <div class="login__btns">
+        <button class="button login__button">
+          <svg class="icon icon-google">
+            <use xlink:href="#icon-google"></use>
+          </svg><span>Avec Google</span>
+        </button>
+      </div>
+      <div class="login__note">Ou continuer avec email</div>
+      <div class="subscription">
+        <input class="subscription__input mb-2" type="email" name="email" placeholder="Saisir email" required>
+        <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Saisir mot de passe" required>
+        <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Confirmer mot de passe" required>
+        <a class="btn btn-cta flex-centered text-bold mt-2" href="#" style="border-radius: 20px;">
+          S'inscrire
+        </a>
+      </div>
+      <div class="login__foot">Avez vous déjà un compte?
+        <a class="login__link" @click.prevent="swithConnexionMode">
+          Se connecter
+        </a>
+        </div>
+    </div>
+  </div>
+  <div class="login" v-else>
+    <div class="login__item">
+      <div class="login__title h3">
+        Il semblerait que vous ne soyez pas connecté
+      </div>
+      <div class="login__btns">
+        <button class="button login__button">
+          <svg class="icon icon-google">
+            <use xlink:href="#icon-google"></use>
+          </svg><span>Avec Google</span>
+        </button>
+      </div>
+      <div class="login__note">Ou avec email</div>
+      <div class="subscription">
+        <input class="subscription__input mb-2" type="email" name="email" placeholder="Saisir email" required>
+        <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Saisir mot de passe" required>
+        <a class="btn btn-cta flex-centered text-bold mt-2" href="#" style="border-radius: 20px;">
+          Se connecter
+        </a>
+      </div>
+      <div class="login__foot">Vous n'avez pas de compte?
+        <a class="login__link" @click.prevent="swithConnexionMode">S'inscrire</a>
+      </div>
+    </div>
+  </div>
+  <button title="Fermer" type="button" class="mfp-close"
+    @click="toggleAchatModal"
+    >×
+  </button>
+</div>
+</div>
+
   </section>
 </template>
 
@@ -119,8 +193,9 @@ export default {
       image: [],
       tags: '',
       isOffer: '',
-      userInfo: '',
       isShareBoxActive: false,
+      isAchatModalActive : false,
+      isRegister: false
     }
   },
 
@@ -134,6 +209,14 @@ export default {
   },
 
   methods: {
+    toggleAchatModal() {
+      this.isAchatModalActive = !this.isAchatModalActive;
+    },
+
+    swithConnexionMode() {
+      this.isRegister = !this.isRegister
+    },
+
     downloadFile(file) {
       console.log(file)
       var request_url =
@@ -230,7 +313,6 @@ export default {
         this.image = response.data
         this.tags = response.data.keywords[0].split(',')
         this.isOffer = response.data.offer
-        this.userInfo = response.data.user
       })
       .catch((error) => {
         error = true
@@ -471,6 +553,13 @@ export default {
 	background: #E6E8EC;
 	cursor: pointer;
 	transition: all .2s;
+}
+
+.old-price {
+	text-decoration: line-through;
+}
+.final-price {
+	background: #ffc71c;
 }
 
 @media (min-width: 840px) {
