@@ -2354,7 +2354,7 @@ body.dark .some-icon {
       font-size: 80px; } }
   @media only screen and (max-width: 1179px) {
     .hero {
-      font-size: 64px; } }
+      font-size: 54px; } }
 
 .h1 {
   font-size: 64px;
@@ -2546,10 +2546,10 @@ body.dark .some-icon {
 .header {
   position: relative;
   z-index: 10;
-  padding: 24px 0; }
+  padding: 18px 0; }
   @media only screen and (max-width: 767px) {
     .header {
-      padding: 48px 0 24px; } }
+      padding: 24px 0; } }
   .header__center {
     display: flex;
     align-items: center; }
@@ -3016,7 +3016,7 @@ body.dark .some-icon {
       .header__item_notification, .header__item_user, .header__login {
         margin-left: 20px; } }
   .header__login {
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 40px;
@@ -3249,7 +3249,7 @@ body.dark .some-icon {
         margin: -110px 8px 0; } }
   @media only screen and (max-width: 767px) {
     .panel_stays {
-      margin-top: -180px; } }
+      margin-top: -160px; } }
   @media only screen and (max-width: 767px) {
     .panel_flights {
       margin-top: -210px; } }
@@ -3298,7 +3298,7 @@ body.dark .some-icon {
         margin: -100px 8px 0; } }
   .panel_stays .panel__row > div:first-child,
   .panel_stays-category .panel__row > div:first-child {
-    flex: 0 0 300px; }
+    flex: 0 0 95%; }
     @media only screen and (max-width: 1419px) {
       .panel_stays .panel__row > div:first-child,
       .panel_stays-category .panel__row > div:first-child {
@@ -3524,8 +3524,10 @@ body.dark .some-icon {
       padding: 80px 40px; } }
   @media only screen and (max-width: 767px) {
     .main__wrap {
-      padding: 80px 16px;
-      text-align: center; } }
+      position: relative;
+      padding: 0px 10px 80px;
+    }
+  }
 
 .main__title {
   margin-bottom: 16px; }
@@ -3959,11 +3961,18 @@ body.dark .some-icon {
   @media only screen and (max-width: 767px) {
     .live__slider {
       display: block;
-      visibility: hidden;
       margin: 0;
       padding-bottom: 64px; }
       .live__slider.slick-initialized {
-        visibility: visible; } }
+        visibility: visible; }
+    .collections__slider {
+      flex-direction: column;
+    }
+    .collections__item {
+      padding-bottom: 20px;
+    }
+
+      }
 
 .live__item {
   flex: 0 0 calc(33.333% - 32px);
@@ -11557,7 +11566,11 @@ body.dark .upload__wrap {
   }
     @media only screen and (max-width: 767px) {
       .popup_login {
-        padding: 32px 24px; } }
+        padding: 32px 24px;
+        max-width: 300px;
+      }
+
+      }
   .popup_avatars {
     max-width: 663px;
     padding: 8px 8px 32px; }

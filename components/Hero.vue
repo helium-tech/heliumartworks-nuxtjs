@@ -6,11 +6,6 @@
       <div class="main__wrap">
         <h1 class="main__title hero">La meilleure banque d'images africaines</h1>
       </div>
-      <div class="hero-side">
-        <picture class="hero-img">
-          <source media="(max-width: 767px)" srcSet="img/content/main-pic-mobile-1.jpg"><img src=@/assets/images/hero.png alt="Hero">
-        </picture>
-      </div>
     </div>
     <div class="panel panel_stays">
       <div class="panel__background"></div>
@@ -22,19 +17,19 @@
       </div>
       <div class="panel__body">
         <div class="panel__row">
-          <div class="location js-location">
-            <div class="location__head js-location-head">
+          <div class="location">
+            <div class="location__head">
               <div class="location__icon">
                 <svg class="icon icon-image">
                   <use xlink:href="#icon-image"></use>
                 </svg>
               </div>
-              <input class="location__input js-location-input" type="text" name="location" autocomplete="off" placeholder="Travailleur africain"/>
-              <button class="location__clear js-location-clear">
+              <input class="location__input" type="text" name="location" autocomplete="off" v-model="keyword" placeholder="Travailleur africain" required/>
+              <!-- <button class="location__clear js-location-clear">
                 <svg class="icon icon-close-circle">
                   <use xlink:href="#icon-close-circle"></use>
                 </svg>
-              </button>
+              </button> -->
             </div>
             <!-- <div class="location__body js-location-body">
               <div class="location__list">
@@ -46,7 +41,7 @@
               </div>
             </div> -->
           </div>
-          <a class="panel__search" href="stays-category.html">
+          <a class="panel__search" @click.prevent="makeSearch">
             <svg class="icon icon-search">
               <use xlink:href="#icon-search"></use>
             </svg></a>
@@ -59,11 +54,20 @@
 </template>
 
 <script>
-import SearchImage from './SearchImage.vue'
+let url = 'https://heliumartworks.herokuapp.com/files/search'
 export default {
   name: 'Hero',
-  components: {
-    SearchImage
+  data() {
+    return {
+      keyword: "",
+    }
+  },
+  methods : {
+    makeSearch() {
+      if (this.keyword) {
+        this.$router.push('/images/search?' + `keyword=${this.keyword}`);
+      }
+    }
   }
 }
 </script>

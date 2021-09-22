@@ -6,7 +6,7 @@
       <div class="item__bg">
         <div class="item__preview">
           <div class="item__categories">
-            <div class="status-black item__category" v-key='tag.id' v-for="tag in tags">{{ tag }}</div>
+            <div class="status-black item__category" :key='tag.id' v-for="tag in tags">{{ tag }}</div>
           </div>
           <div class="image-content"
             @click="toggleImageModal"

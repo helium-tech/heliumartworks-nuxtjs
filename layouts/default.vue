@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-  <header class="header js-header authorization">
+  <header class="header">
   <div class="header__center center">
-    <h1><nuxt-link to="/" class="header__logo"><span class="text-yellow">helium</span>artworks</nuxt-link></h1>
+    <h1><nuxt-link to="/" class="header__logo m-0"><span class="text-yellow">helium</span>artworks</nuxt-link></h1>
     <div class="header__wrapper js-header-wrapper">
       <div class="header__item header__item_dropdown js-header-item">
         <button class="header__head js-header-head">Catégories
@@ -51,7 +51,7 @@
         Vendre mes oeuvres
       </a>
     </div>
-    <AuthModal/>
+    <AuthModal class="hide-md"/>
     <!-- <div class="header__item header__item_notification js-header-item">
       <button class="header__head js-header-head active">
         <svg class="icon icon-notification">
@@ -89,7 +89,7 @@
       <a class="column flex-centered" @click.prevent="toggleNavMob"><i class="icon icon-menu" title="Menu"></i></a>
       <a class="column flex-centered badge" data-badge="0"><i class="icon icon-bookmark" title="Ma sélection"></i></a>
       <a class="column flex-centered"><i class="icon icon-search" title="Effectuer une recherche"></i></a>
-      <AuthModal/>
+      <AuthModal class="column flex-centered"/>
     </section>
 
   </div>

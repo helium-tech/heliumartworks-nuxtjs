@@ -40,7 +40,7 @@
           </div>
         </div>
       </div>
-      <a class="header__login js-popup-open" data-effect="mfp-zoom-in"
+      <a class="header__login" data-effect="mfp-zoom-in"
         v-else
         @click="toggleModal"
         >
