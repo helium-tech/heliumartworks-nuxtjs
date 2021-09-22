@@ -2,10 +2,10 @@
   <div id="app">
   <header class="header">
   <div class="header__center center">
-    <h1><nuxt-link to="/" class="header__logo m-0"><span class="text-yellow">helium</span>artworks</nuxt-link></h1>
-    <div class="header__wrapper js-header-wrapper">
-      <div class="header__item header__item_dropdown js-header-item">
-        <button class="header__head js-header-head">Catégories
+    <h1><nuxt-link to="/" class="header__logo text-bold"><span class="text-yellow">helium</span>artworks</nuxt-link></h1>
+    <div class="header__wrapper js-header-wrapper" :class="{visible: isNavMobVisible}">
+      <div class="header__item header__item_dropdown" :class="{active: isHeadDropdownactive}">
+        <button class="header__head" @click.prevent="toggleHeadDropdown">Catégories
           <svg class="icon icon-arrow-down">
             <use xlink:href="#icon-arrow-down">
             </use>
@@ -30,8 +30,8 @@
         </div>
       </div>
       <a class="header__item" href="#">Support</a>
-      <div class="header__item header__item_language js-header-item">
-        <button class="header__head js-header-head">
+      <div class="header__item header__item_language" :class="{active: isLanguageDropdownActive}">
+        <button class="header__head" @click="toggleLanguageDropdown">
           <svg class="icon icon-globe">
             <use xlink:href="#icon-globe"></use>
           </svg>Langue
@@ -108,7 +108,9 @@ export default {
   },
   data() {
     return {
-      isNavMobActive : false
+      isNavMobVisible : false,
+      isHeadDropdownactive: false,
+      isLanguageDropdownActive: false
     }
   },
   computed: {
@@ -122,7 +124,13 @@ export default {
   methods: {
 
     toggleNavMob() {
-      this.isNavMobActive = !this.isNavMobActive
+      this.isNavMobVisible = !this.isNavMobVisible
+    },
+    toggleHeadDropdown() {
+      this.isHeadDropdownactive = !this.isHeadDropdownactive
+    },
+    toggleLanguageDropdown() {
+      this.isLanguageDropdownActive = !this.isLanguageDropdownActive
     }
 
   }
@@ -266,7 +274,14 @@ a:focus {
   background: #ffc71c !important;
 }
 
-@media (max-width: 840px) {
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+
+@media (max-width: 960px) {
   .navbar-center {
    flex-direction: column;
    align-items: flex-start !important;

@@ -6,6 +6,11 @@
       <div class="main__wrap">
         <h1 class="main__title hero">La meilleure banque d'images africaines</h1>
       </div>
+      <div class="hero-side">
+        <picture class="hero-img">
+          <source media="(max-width: 767px)" srcSet="img/content/main-pic-mobile-1.jpg"><img src=@/assets/images/hero.png alt="Hero">
+          </picture>
+        </div>
     </div>
     <div class="panel panel_stays">
       <div class="panel__background"></div>
@@ -87,4 +92,10 @@ export default {
     top: 0;
     right: 0;
 }
+
+@media only screen and (max-width: 767px) {
+   .main__wrap {
+     position: relative;
+   }
+ }
 </style>

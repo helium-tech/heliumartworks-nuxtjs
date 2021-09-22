@@ -37,4 +37,10 @@ export default {
 .px-6 {
   padding: 0 2rem;
 }
+
+@@media (max-width: 840px) {
+  .px-6 {
+    padding: 1rem;
+  }
+}
 </style>
