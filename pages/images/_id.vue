@@ -112,7 +112,7 @@
 </div>
 
 
-<!-- popup modal image -->
+<!-- popup modal image  nothing-->
 <div class="modal modal-image" :class="{active: isModalImageActive}" id="modal-id">
 <div class="popup popup_image">
 
