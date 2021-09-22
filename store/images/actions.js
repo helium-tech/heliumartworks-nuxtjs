@@ -11,20 +11,25 @@ export default {
     },
 
 
-    async downloadImage({ commit }, imageId, userId) {
-        var request_url =
-            url + '/download?file_id=' + imageId + '&user_id=' + userId
-        axios.get(request_url).then(data => {
-            var result = data.data
+    async searchImages({ commit }, keyword, page, limit) {
+        if (page == null || !Number.isInteger(page)) {
+            page = 1
+        }
+        if (limit == null || !Number.isInteger(limit)) {
+            limit = 20
+        }
+        let url = 'https://heliumartworks.herokuapp.com/files/search'
+        var searchUrl = url + '?keyword=' + keyword + '&page=' + page + '&limit=20'
+        axios
+            .get(searchUrl)
+            .then((response) => {
+                var images = response.data.data;
+                commit('SET_SEARCH_IMAGES', { images })
+            })
+            .catch((error) => {
+                console.log(error)
+            })
 
-            var file_path = 'host/path/file.ext';
-            var a = document.createElement('A');
-            a.href = file_path;
-            a.download = file_path.substr(file_path.lastIndexOf('/') + 1);
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        })
-    }
+    },
 
 }

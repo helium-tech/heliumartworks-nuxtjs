@@ -1,4 +1,5 @@
 export default () => ({
-  recentsImages: [],
-  allImages: [],
+    recentsImages: [],
+    searchImages: [],
+    allImages: [],
 })

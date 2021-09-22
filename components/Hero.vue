@@ -29,7 +29,8 @@
                   <use xlink:href="#icon-image"></use>
                 </svg>
               </div>
-              <input class="location__input" type="text" name="location" autocomplete="off" v-model="keyword" placeholder="Travailleur africain" required/>
+              <input class="location__input" type="text" name="location" autocomplete="off" 
+              v-model="keyword" placeholder="Travailleur africain" required v-on:keyup.enter="makeSearch"/>
               <!-- <button class="location__clear js-location-clear">
                 <svg class="icon icon-close-circle">
                   <use xlink:href="#icon-close-circle"></use>
@@ -70,7 +71,7 @@ export default {
   methods : {
     makeSearch() {
       if (this.keyword) {
-        this.$router.push('/images/search?' + `keyword=${this.keyword}`);
+        this.$router.push('/search?' + `keyword=${this.keyword}`);
       }
     }
   }

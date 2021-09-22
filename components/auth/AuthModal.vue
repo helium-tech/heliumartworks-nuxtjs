@@ -7,7 +7,7 @@
       <div class="header__item header__item_user js-header-item"
         v-if="isLoggedIn"
       >
-        <button class="header__head js-header-head">
+        <button class="header__head js-header-head" @click="logout">
           <figure
             class="avatar avatar-lg"
             data-initial="HT"
@@ -60,7 +60,7 @@
               S'inscrire
             </div>
             <div class="login__btns">
-              <button class="button login__button">
+              <button class="button login__button" @click="signWithGoogle" >
                 <svg class="icon icon-google">
                   <use xlink:href="#icon-google"></use>
                 </svg><span>Avec Google</span>
@@ -68,10 +68,10 @@
             </div>
             <div class="login__note">Ou continuer avec email</div>
             <div class="subscription">
-              <input class="subscription__input mb-2" type="email" name="email" placeholder="Saisir email" required>
-              <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Saisir mot de passe" required>
-              <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Confirmer mot de passe" required>
-              <a class="btn btn-cta flex-centered text-bold mt-2" href="#" style="border-radius: 20px;">
+              <input class="subscription__input mb-2" type="email" name="email" placeholder="Saisir email" required v-model="email">
+              <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Saisir mot de passe" required v-model="password">
+              <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Confirmer mot de passe" required v-model="confirm">
+              <a class="btn btn-cta flex-centered text-bold mt-2" href="#" style="border-radius: 20px;" @click="createAccountWithEmail">
                 S'inscrire
               </a>
             </div>
@@ -88,7 +88,7 @@
               Se connecter
             </div>
             <div class="login__btns">
-              <button class="button login__button">
+              <button class="button login__button" @click="signWithGoogle">
                 <svg class="icon icon-google">
                   <use xlink:href="#icon-google"></use>
                 </svg><span>Avec Google</span>
@@ -96,9 +96,9 @@
             </div>
             <div class="login__note">Ou avec email</div>
             <div class="subscription">
-              <input class="subscription__input mb-2" type="email" name="email" placeholder="Saisir email" required>
-              <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Saisir mot de passe" required>
-              <a class="btn btn-cta flex-centered text-bold mt-2" href="#" style="border-radius: 20px;">
+              <input class="subscription__input mb-2" type="email" name="email" placeholder="Saisir email" required v-model="email">
+              <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Saisir mot de passe" required v-model="password">
+              <a class="btn btn-cta flex-centered text-bold mt-2" href="#" style="border-radius: 20px;" @click="connectWithEmail">
                 Se connecter
               </a>
             </div>
@@ -112,6 +112,7 @@
           >×
         </button>
       </div>
+      
     </div>
 
 
@@ -256,6 +257,7 @@ export default Vue.extend({
         .signInWithPopup(provider)
         .then((result) => {
           this.loading = false
+          this.isModalActive = false
           const noti = this.$vs.notification({
             color: 'success',
             position: 'top-right',
@@ -291,6 +293,7 @@ export default Vue.extend({
         .signInWithEmailAndPassword(this.email, this.password)
         .then((data) => {
           this.loading = false
+          this.isModalActive = false
           const noti = this.$vs.notification({
             color: 'success',
             position: 'top-right',
@@ -351,6 +354,7 @@ export default Vue.extend({
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((data) => {
           this.loading = false
+          this.isModalActive = false
         })
         .catch((error) => {
           this.loading = false
@@ -362,6 +366,14 @@ export default Vue.extend({
           })
           return
         })
+    },
+
+    async logout() {
+      try {
+        await this.$fire.auth.signOut()
+      } catch (e) {
+        alert(e)
+      }
     },
   },
 })
