@@ -82,7 +82,7 @@
           >
             Acheter
           </a>
-          <a class="button-stroke item__button js-popup-open" href="#popup-bid">
+          <a class="button-stroke item__button js-popup-open" href="#">
             Sélectionner
           </a>
         </div>
