@@ -68,21 +68,21 @@
           <span class="font-600"> {{ image.views }}</span>
         </div>
         <div class="item__btns">
-          <a class="button item__button js-popup-open" data-effect="mfp-zoom-in"
+          <a class="button item__button js-popup-open"
             href="#"
             @click="downloadFile(image)"
             v-if="isLoggedIn"
           >
             Acheter maintenant
           </a>
-          <a class="button item__button js-popup-open" data-effect="mfp-zoom-in"
+          <a class="button item__button js-popup-open"
             href="#"
             v-else
             @click="toggleAchatModal"
           >
             Acheter
           </a>
-          <a class="button-stroke item__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+          <a class="button-stroke item__button js-popup-open" href="#">
             Sélectionner
           </a>
         </div>
@@ -593,18 +593,10 @@ export default {
 .popup_image {
   max-width: 544px;
   background: transparent;
-  animation-name: zoom;
-  animation-duration: 0.6s;
 }
 
 .modal-image.active {
   background-color: rgba(0,0,0,0.9) !important;
-}
-
-
-@keyframes zoom {
-  from {transform:scale(0)}
-  to {transform:scale(1)}
 }
 
 @media (min-width: 840px) {

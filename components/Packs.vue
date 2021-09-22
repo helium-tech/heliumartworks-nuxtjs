@@ -92,7 +92,7 @@ export default {
     border-radius: 8px;
 }
 .collections__item  {
-  padding: 0 14px;
+  padding: 14px;
 }
 .collections__line {
     display: flex;

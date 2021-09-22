@@ -3524,7 +3524,6 @@ body.dark .some-icon {
       padding: 80px 40px; } }
   @media only screen and (max-width: 767px) {
     .main__wrap {
-      position: relative;
       padding: 0px 10px 80px;
     }
   }
@@ -4674,7 +4673,7 @@ body.dark .some-icon {
       padding: 0; } }
 
 .places__inner {
-  padding: 112px 80px;
+  padding: 80px;
   background: #F4F5F6;
   border-radius: 24px; }
   @media only screen and (max-width: 1419px) {
@@ -11533,7 +11532,12 @@ body.dark .upload__wrap {
   border-radius: 16px;
   position: relative;
   box-shadow: 0px 64px 64px -48px rgba(15, 15, 15, 0.08);
-  z-index: 2; }
+  z-index: 2;
+  -webkit-animation-name: zoom;
+          animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s
+}
   body.dark .popup {
     background: #141416; }
   .popup .mfp-close {

@@ -4,7 +4,7 @@
     <div class="footer__row">
       <div class="footer__col">
         <nuxt-link to="/" class="footer__logo h4"><span class="text-yellow">helium</span>artworks</nuxt-link>
-        <div class="footer__theme">
+        <!-- <div class="footer__theme">
           <svg class="icon icon-bulb">
             <use xlink:href="#icon-bulb"></use>
           </svg>Mode Sombre
@@ -12,7 +12,7 @@
             <input class="theme__input" type="checkbox"/><span class="theme__inner">
               <span class="theme__box"></span></span>
           </label>
-        </div>
+        </div> -->
       </div>
       <div class="footer__col">
         <div class="footer__menu">
