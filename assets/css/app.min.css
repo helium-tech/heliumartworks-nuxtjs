@@ -7507,8 +7507,8 @@ body.dark .some-icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     background: #58C27D; }
     .receipt__check .icon {
@@ -11526,7 +11526,7 @@ body.dark .upload__wrap {
   right: calc(50% - 44px); }
 
 .popup {
-  width: 100%;
+  width: auto;
   margin: auto;
   background: #FCFCFD;
   border-radius: 16px;
