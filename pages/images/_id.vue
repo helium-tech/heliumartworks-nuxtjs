@@ -45,7 +45,7 @@
                 </button>
               </div>
               <div
-                class="options__box"
+                class="options__box js-options-box"
                 :class="{ active: isShareBoxActive }"
               >
                 <div class="options__stage">Partager cette image</div>
@@ -77,7 +77,7 @@
                 FCFA
               </div>
             </div>
-            <div class="item__counter">
+            <div class="item__counter" v-if="image.download_counter > 0">
               <span>Téléchargements :</span>
               <span class="font-600"> {{ image.download_counter }}</span>
             </div>

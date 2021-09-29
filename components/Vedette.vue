@@ -37,7 +37,6 @@ export default {
     return {
       // loading: true,
       errored: false,
-      images: [],
     }
   },
   computed: {

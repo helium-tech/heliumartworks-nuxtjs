@@ -6,8 +6,8 @@
         v-for="image in images"
         :key="image.id"
       >
-        <div class="p-relative">
-          <nuxt-link :to="'/images/' + image.slug">
+        <nuxt-link :to="'/images/' + image.slug">
+          <div class="p-relative">
             <img
               class="img-responsive img-fit-cover"
               :src="image.thumb800"
@@ -19,17 +19,18 @@
               }}</span>
               <span class="text-muted text-tiny"> FCFA</span>
             </div>
-          </nuxt-link>
-          <figcaption class="figure-caption hide-md">
-            <p class="image-title mb-1">{{ image.title }}</p>
-            <button class="btn btn-cta-y btn-action mx-1">
-              <i class="icon icon-bookmark"></i>
-            </button>
-            <button class="btn btn-cta-y btn-action mx-1">
-              <i class="icon icon-downward"></i>
-            </button>
-          </figcaption>
-        </div>
+
+            <figcaption class="figure-caption hide-md">
+              <p class="image-title mb-1">{{ image.title }}</p>
+              <button class="btn btn-cta-y btn-action mx-1">
+                <i class="icon icon-bookmark"></i>
+              </button>
+              <button class="btn btn-cta-y btn-action mx-1">
+                <i class="icon icon-downward"></i>
+              </button>
+            </figcaption>
+          </div>
+        </nuxt-link>
       </figure>
     </masonry>
   </div>
