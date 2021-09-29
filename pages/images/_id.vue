@@ -45,7 +45,7 @@
                 </button>
               </div>
               <div
-                class="options__box js-options-box"
+                class="options__box"
                 :class="{ active: isShareBoxActive }"
               >
                 <div class="options__stage">Partager cette image</div>
@@ -116,7 +116,7 @@
                   <figure class="avatar avatar-lg mr-2 bg-secondary">
                     <img src="img/avatar-1.png" alt="..." />
                   </figure>
-                  <span class="receipt__check">
+                  <span class="receipt__check" v-if="isCertified === true">
                     <svg class="icon icon-check">
                       <use xlink:href="#icon-check"></use>
                     </svg>
@@ -144,7 +144,7 @@
       :class="{ active: isModalImageActive }"
       id="modal-id"
     >
-      <div class="popup popup_image">
+      <div class="popup popup_image flex-centered">
         <img :src="image.thumb_image" :alt="image.title" />
 
         <button
@@ -300,6 +300,7 @@ export default {
       isAchatModalActive: false,
       isModalImageActive: false,
       isRegister: false,
+      isCertified:  false
     }
   },
 
@@ -372,7 +373,7 @@ export default {
               color: 'success',
               position: 'top-right',
               title: 'Téléchargement Effectués',
-              text: 'Le télechargement à été effectué avec. Continuer à accroitre votre créativité avec Helium Artworks',
+              text: 'Le télechargement a été effectué avec succès. Continuer à accroitre votre créativité avec Helium Artworks',
             })
             console.log(data)
             var download_url = data.data.download_url
@@ -430,7 +431,7 @@ export default {
             color: 'success',
             position: 'top-right',
             title: 'Connexion Réussi',
-            text: 'Vous avez été connecter avec succès. Alors, créer un nouveau monde avec Artworks !',
+            text: 'Vous vous êtes connecté avec succès. Alors, créez un nouveau monde avec Artworks !',
           })
         })
         .catch((e) => {
@@ -452,7 +453,7 @@ export default {
           color: 'danger',
           position: 'top-right',
           title: 'Email Incorrect',
-          text: "L'email que avez entrez est incorrect' ! Veuillez choisir un autre",
+          text: "Veuillez saisir une adresse email valide !",
         })
         return
       }
@@ -466,7 +467,7 @@ export default {
             color: 'success',
             position: 'top-right',
             title: 'Connexion Réussi',
-            text: 'Vous avez été connecter avec succès. Alors, créer un nouveau monde avec Artworks !',
+            text: 'Vous vous êtes connecté avec succès. Alors, créez un nouveau monde avec Artworks !',
           })
         })
         .catch((error) => {
@@ -486,7 +487,7 @@ export default {
           color: 'danger',
           position: 'top-right',
           title: 'Nom trop court',
-          text: 'Le nom que vous avez fournis est trop court ! Veuillez choisir un autre',
+          text: 'Le nom que vous avez fourni est trop court ! Veuillez en choisir un autre',
         })
         return
       }
@@ -495,7 +496,7 @@ export default {
           color: 'danger',
           position: 'top-right',
           title: 'Mot de passe trop court',
-          text: 'Les mot de passe que vous avez fournis est trop court ! Veuillez choisir un autre',
+          text: 'Le mot de passe que vous avez fourni est trop court ! Veuillez en choisir un autre',
         })
         return
       }
@@ -504,7 +505,7 @@ export default {
           color: 'danger',
           position: 'top-right',
           title: 'Mot de passe non conforme',
-          text: 'Les mot de passe que vous avez fournis ne sont pas conforme ! Veuillez le vérifiez',
+          text: 'Le mot de passe que vous avez fourni n\'est pas conforme ! Veuillez le vérifier',
         })
         return
       }
@@ -546,6 +547,7 @@ export default {
         this.image = response.data
         this.tags = response.data.keywords[0].split(',')
         this.isOffer = response.data.offer
+        this.isCertified = response.user.is_certified
       })
       .catch((error) => {
         error = true
@@ -797,11 +799,6 @@ export default {
   box-shadow: inset 0 0 0 2px#ffc71c;
   color: #ffc71c;
   background: none;
-}
-
-.popup_image {
-  max-width: 544px;
-  background: transparent;
 }
 
 .modal-image.active {
