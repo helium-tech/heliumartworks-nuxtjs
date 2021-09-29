@@ -3,7 +3,7 @@
     <div class="section-pt80 catalog">
       <div class="catalog__center center">
         <div class="catalog__top">
-          <form class="catalog__search">
+          <form class="catalog__search" v-on:submit.prevent>
             <input
               class="catalog__input"
               type="text"

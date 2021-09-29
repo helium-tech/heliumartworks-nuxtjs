@@ -1,8 +1,5 @@
 <template>
   <section class="section center">
-    <div class="live__head">
-      <h2 class="live__title h2">En vedette</h2>
-    </div>
       <div class="render-images-vedette pb-2">
         <div v-if="errored" class="error">
           <p>
@@ -44,19 +41,13 @@ export default {
     }
   },
   computed: {
-    //   ...mapState({
-    //   images: (state) => state.images.recentsImages,
-    // }),
+      ...mapState({
+      images: (state) => state.images.recentsImages,
+    }),
   },
 
   created() {
-    axios
-      .get(url)
-      .then((data) => {
-        console.log(data.data)
-        var recentsImages = data.data
-        this.images = recentsImages
-      })
+    this.$store.dispatch('images/getRecentsImages')
   },
 }
 </script>
