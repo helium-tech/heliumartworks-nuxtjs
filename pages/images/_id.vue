@@ -11,7 +11,11 @@
                   :key="tag.id"
                   v-for="tag in tags"
                 >
+                <nuxt-link
+                  :to="'/search?' + 'keyword=' + tag"
+                >
                   {{ tag }}
+                </nuxt-link>
                 </div>
               </div>
               <div class="image-content" @click="toggleImageModal">

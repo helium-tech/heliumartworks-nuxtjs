@@ -17,7 +17,7 @@
                 <use xlink:href="#icon-image"></use>
               </svg>
             </div>
-            <input class="location__input js-location-input" type="text" name="location" autocomplete="off" placeholder="Travailleur africain"/>
+            <input class="location__input js-location-input" type="text" name="searchimage" v-model="keyword" placeholder="Travailleur africain" required v-on:keyup.enter="makeSearch"/>
             <button class="location__clear js-location-clear">
               <svg class="icon icon-close-circle">
                 <use xlink:href="#icon-close-circle"></use>
@@ -52,6 +52,18 @@ export default {
   name: 'HeroSecond',
   components: {
     SearchImage
+  },
+  data() {
+    return {
+      keyword: "",
+    }
+  },
+  methods : {
+    makeSearch() {
+      if (this.keyword) {
+        this.$router.push('/search?' + `keyword=${this.keyword}`);
+      }
+    }
   }
 }
 </script>

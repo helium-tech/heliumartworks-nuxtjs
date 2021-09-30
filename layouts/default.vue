@@ -4,7 +4,7 @@
   <div class="header__center center">
     <h1><nuxt-link to="/" class="header__logo text-bold"><span class="text-yellow">helium</span>artworks</nuxt-link></h1>
     <div class="header__wrapper js-header-wrapper" :class="{visible: isNavMobVisible}">
-      <div class="header__item header__item_dropdown" :class="{active: isHeadDropdownactive}">
+      <div class="header__item header__item_dropdown" :class="{active: isHeadDropdownactive}" ref="HeadDropdown">
         <button class="header__head" @click.prevent="toggleHeadDropdown">Catégories
           <svg class="icon icon-arrow-down">
             <use xlink:href="#icon-arrow-down">
@@ -121,6 +121,7 @@ export default {
       isLoggedIn: 'auth/isLoggedIn',
     }),
   },
+
   methods: {
 
     toggleNavMob() {
@@ -131,9 +132,23 @@ export default {
     },
     toggleLanguageDropdown() {
       this.isLanguageDropdownActive = !this.isLanguageDropdownActive
+    },
+    documentClick(e){
+        let el = this.$refs.HeadDropdown
+        let target = e.target
+        if ( el !== target && !el.contains(target) ) {
+          this.isHeadDropdownactive = false
+        }
+      }
+  },
+  watch: {
+    '$route' () {
+      this.isHeadDropdownactive = false
     }
-
-  }
+  },
+  mounted () {
+      document.addEventListener('click', this.documentClick)
+    }
 }
 </script>
 
