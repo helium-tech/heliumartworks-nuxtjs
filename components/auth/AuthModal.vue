@@ -17,31 +17,33 @@
           </figure>
         </button>
         <div class="header__body">
-          <!-- <div class="header__group">
-            <div class="header__menu"><a class="header__link" href="message-center.html">
-                <svg class="icon icon-comment">
+          <div class="header__group">
+              <div class="header__menu">
+                <a class="header__link" href="#">
+                <!-- <svg class="icon icon-comment">
                   <use xlink:href="#icon-comment"></use>
                 </svg>Messages</a><a class="header__link" href="bookings-list.html">
                 <svg class="icon icon-home">
                   <use xlink:href="#icon-home"></use>
-                </svg>Bookings</a><a class="header__link" href="wishlists.html">
-                <svg class="icon icon-email">
-                  <use xlink:href="#icon-email"></use>
-                </svg>Wishlists</a>
+                </svg>Bookings</a><a class="header__link" href="wishlists.html"> -->
+                <svg class="icon icon-bag">
+                  <use xlink:href="#icon-bag"></use>
+                </svg>Ma sélection
+              </a>
               </div>
-            <div class="header__menu"><a class="header__link" href="list-your-property.html">
+              <!-- <div class="header__menu"><a class="header__link" href="list-your-property.html">
                 <svg class="icon icon-building">
                   <use xlink:href="#icon-building"></use>
                 </svg>List your property</a><a class="header__link" href="host-an-experience.html">
                 <svg class="icon icon-flag">
                   <use xlink:href="#icon-flag"></use>
                 </svg>Host an experience</a>
-              </div>
-          </div> -->
+              </div> -->
+          </div>
           <div class="header__btns"><a class="button button-small header__button" href="#">Mon compte</a>
             <button class="button-stroke button-small header__button"
             @click="logout"
-            >Se déconnecter</button>
+            >Déconnexion</button>
           </div>
         </div>
       </div>
