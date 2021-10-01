@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeroSecond></HeroSecond>
+    <HeroSecond title="Images"/>
 
     <div class="section-mb80 main__center center">
       <!-- <div v-if="errored" class="error">

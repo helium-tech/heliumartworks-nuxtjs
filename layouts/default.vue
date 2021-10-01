@@ -14,9 +14,7 @@
         <div class="header__body js-header-body">
           <div class="header__menu">
             <nuxt-link to="/images" class="header__link">Images</nuxt-link>
-            <a class="header__link" href="#">
-              Videos
-            </a>
+            <nuxt-link to="/videos" class="header__link">Videos</nuxt-link>
             <a class="header__link" href="#">
               Musiques
             </a>

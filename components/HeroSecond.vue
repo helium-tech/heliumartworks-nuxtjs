@@ -3,7 +3,7 @@
 <div class="main__center center">
   <div class="main__preview"><img src=@/assets/images/emotions-cat.jpg alt="Main">
     <div class="main__wrap">
-      <h1 class="main__title hero">Images</h1>
+      <h1 class="main__title hero">{{title}}</h1>
     </div>
   </div>
   <div class="panel panel_stays-category">
@@ -18,7 +18,7 @@
               </svg>
             </div>
             <input class="location__input js-location-input" type="text" name="searchimage" v-model="keyword" placeholder="Travailleur africain" required v-on:keyup.enter="makeSearch"/>
-            <button class="location__clear js-location-clear">
+            <button class="location__clear">
               <svg class="icon icon-close-circle">
                 <use xlink:href="#icon-close-circle"></use>
               </svg>
@@ -52,6 +52,9 @@ export default {
   name: 'HeroSecond',
   components: {
     SearchImage
+  },
+  props: {
+    title: String
   },
   data() {
     return {

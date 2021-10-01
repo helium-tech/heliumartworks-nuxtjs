@@ -185,6 +185,7 @@
                 required
                 v-model="email"
               />
+              <input class="subscription__input mb-2" type="name" name="name" placeholder="Choisir un pseudonyme" required v-model="name">
               <input
                 class="subscription__input mb-2 mt-2"
                 type="password"
@@ -295,6 +296,7 @@ export default {
       email: '',
       password: '',
       confirm: '',
+      name: '',
 
       image: {},
       tags: '',
@@ -513,15 +515,15 @@ export default {
         })
         return
       }
-      if (this.remember != true) {
-        const noti = this.$vs.notification({
-          color: 'danger',
-          position: 'top-right',
-          title: "Accepter les conditions d'utilisation",
-          text: "Vous devez lire et accepter les conditions d'utilisation de la plateforme avant de créer votre compte!",
-        })
-        return
-      }
+      // if (this.remember != true) {
+      //   const noti = this.$vs.notification({
+      //     color: 'danger',
+      //     position: 'top-right',
+      //     title: "Accepter les conditions d'utilisation",
+      //     text: "Vous devez lire et accepter les conditions d'utilisation de la plateforme avant de créer votre compte!",
+      //   })
+      //   return
+      // }
       this.loading = true
       await this.$fire.auth
         .createUserWithEmailAndPassword(this.email, this.password)
@@ -636,11 +638,10 @@ export default {
   display: inline-block;
   padding: 0 8px;
   border-radius: 4px;
-  font-size: 12px;
-  line-height: 26px;
-  font-weight: 700;
   text-transform: uppercase;
-  color: #fcfcfd;
+}
+.item__category a {
+	color: #fff !important;
 }
 .item__preview img {
   width: 100%;

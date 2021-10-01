@@ -4,19 +4,20 @@
         Open Dialog
       </vs-button> -->
 
-      <div class="header__item header__item_user js-header-item"
+      <div class="header__item header__item_user"
+        :class="{active: isUserTabActive}"
         v-if="isLoggedIn"
       >
-        <button class="header__head js-header-head" @click="logout">
+        <button class="header__login" @click="toggleUserTab">
           <figure
-            class="avatar avatar-lg"
+            class="avatar"
             data-initial="HT"
           >
           <img src="img/avatar-1.png" alt="..." />
           </figure>
         </button>
-        <div class="header__body js-header-body">
-          <div class="header__group">
+        <div class="header__body">
+          <!-- <div class="header__group">
             <div class="header__menu"><a class="header__link" href="message-center.html">
                 <svg class="icon icon-comment">
                   <use xlink:href="#icon-comment"></use>
@@ -26,17 +27,21 @@
                 </svg>Bookings</a><a class="header__link" href="wishlists.html">
                 <svg class="icon icon-email">
                   <use xlink:href="#icon-email"></use>
-                </svg>Wishlists</a></div>
+                </svg>Wishlists</a>
+              </div>
             <div class="header__menu"><a class="header__link" href="list-your-property.html">
                 <svg class="icon icon-building">
                   <use xlink:href="#icon-building"></use>
                 </svg>List your property</a><a class="header__link" href="host-an-experience.html">
                 <svg class="icon icon-flag">
                   <use xlink:href="#icon-flag"></use>
-                </svg>Host an experience</a></div>
-          </div>
-          <div class="header__btns"><a class="button button-small header__button" href="account-setting.html">Account</a>
-            <button class="button-stroke button-small header__button">Log out</button>
+                </svg>Host an experience</a>
+              </div>
+          </div> -->
+          <div class="header__btns"><a class="button button-small header__button" href="#">Mon compte</a>
+            <button class="button-stroke button-small header__button"
+            @click="logout"
+            >Se déconnecter</button>
           </div>
         </div>
       </div>
@@ -69,6 +74,7 @@
             <div class="login__note">Ou continuer avec email</div>
             <div class="subscription">
               <input class="subscription__input mb-2" type="email" name="email" placeholder="Saisir email" required v-model="email">
+              <input class="subscription__input mb-2" type="name" name="name" placeholder="Choisir un pseudonyme" required v-model="name">
               <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Saisir mot de passe" required v-model="password">
               <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Confirmer mot de passe" required v-model="confirm">
               <a class="btn btn-cta flex-centered text-bold mt-2" href="#" style="border-radius: 20px;" @click="createAccountWithEmail">
@@ -241,10 +247,14 @@ export default Vue.extend({
     confirm: '',
     remember: false,
     isModalActive : false,
+    isUserTabActive : false,
   }),
   methods: {
     toggleModal() {
       this.isModalActive = !this.isModalActive;
+    },
+    toggleUserTab() {
+      this.isUserTabActive = !this.isUserTabActive;
     },
     swithConnexionMode() {
       this.isRegister = !this.isRegister
@@ -336,19 +346,19 @@ export default Vue.extend({
           color: 'danger',
           position: 'top-right',
           title: 'Mot de passe non conforme',
-          text: 'Les mot de passe que vous avez fournis ne sont pas conforme ! Veuillez le vérifiez',
+          text: 'Les mots de passe que vous avez fournis ne sont pas conformes ! Veuillez les vérifier',
         })
         return
       }
-      if (this.remember != true) {
-        const noti = this.$vs.notification({
-          color: 'danger',
-          position: 'top-right',
-          title: "Accepter les conditions d'utilisation",
-          text: "Vous devez lire et accepter les conditions d'utilisation de la plateforme avant de créer votre compte!",
-        })
-        return
-      }
+      // if (this.remember != true) {
+      //   const noti = this.$vs.notification({
+      //     color: 'danger',
+      //     position: 'top-right',
+      //     title: "Accepter les conditions d'utilisation",
+      //     text: "Vous devez lire et accepter les conditions d'utilisation de la plateforme avant de créer votre compte!",
+      //   })
+      //   return
+      // }
       this.loading = true
       await this.$fire.auth
         .createUserWithEmailAndPassword(this.email, this.password)
@@ -376,6 +386,12 @@ export default Vue.extend({
       }
     },
   },
+
+  watch: {
+    '$route' () {
+      this.isUserTabActive = false
+    }
+  }
 })
 </script>
 <style scoped>
