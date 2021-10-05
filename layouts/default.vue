@@ -141,7 +141,8 @@ export default {
   },
   watch: {
     '$route' () {
-      this.isHeadDropdownactive = false
+      this.isHeadDropdownactive = false,
+      this.isNavMobVisible = false
     }
   },
   mounted () {

@@ -3448,7 +3448,7 @@ body.dark .status-gray {
 
 @media only screen and (max-width: 767px) {
     .header__wrapper {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;

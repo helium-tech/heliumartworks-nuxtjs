@@ -40,10 +40,12 @@
                 </svg>Host an experience</a>
               </div> -->
           </div>
-          <div class="header__btns"><a class="button button-small header__button" href="#">Mon compte</a>
+          <div class="header__btns">
+            <nuxt-link to="/account" class="button button-small header__button">Mon compte</nuxt-link>
             <button class="button-stroke button-small header__button"
-            @click="logout"
-            >Déconnexion</button>
+              @click="logout">
+              Déconnexion
+            </button>
           </div>
         </div>
       </div>
@@ -123,107 +125,6 @@
 
     </div>
 
-
-    <!-- <div>
-      <button
-        class="btn btn-cta-y my-2 font-500 btn-block"
-        v-if="isLoggedIn">
-        Mon compte
-      </button>
-      <button
-        @click="active = !active"
-        class="btn btn-cta-y my-2 font-500 btn-block"
-        v-else>
-        Se connecter
-      </button>
-    </div>
-    <vs-dialog :loading="loading" blur v-model="active">
-      <template #header>
-        <h1 class=""><span class="text-yellow">helium</span>artworks</h1>
-      </template>
-
-      <div class="con-form">
-        <vs-input
-          v-if="isRegister == true"
-          v-model="name"
-          placeholder="Nom Complet"
-        >
-          <template #icon>
-            <i class="bx bxs-user-circle"></i>
-          </template>
-        </vs-input>
-        <vs-input v-model="email" placeholder="Email">
-          <template #icon> @ </template>
-        </vs-input>
-        <vs-input type="password" v-model="password" placeholder="Password">
-          <template #icon>
-            <i class="bx bxs-lock"></i>
-          </template>
-        </vs-input>
-        <vs-input
-          v-if="isRegister == true"
-          type="password"
-          v-model="confirm"
-          placeholder="Confimer le mot de passe"
-        >
-          <template #icon>
-            <i class="bx bxs-lock"></i>
-          </template>
-        </vs-input>
-        <div class="flex">
-          <vs-checkbox v-model="remember" v-if="isRegister == false"
-            >Se Souvenir</vs-checkbox
-          >
-          <vs-checkbox v-model="remember" v-else
-            >J'accepte les <a href="#">conditions d'utilisations</a>
-          </vs-checkbox>
-          <a href="#" v-if="isRegister == false">Mot de passe oublié?</a>
-        </div>
-      </div> -->
-
-      <!-- <template #footer>
-        <div class="footer-dialog">
-          <vs-button
-            color="#ffc71c"
-            dark
-            block
-            v-if="isRegister == false"
-            @click="connectWithEmail()"
-          >
-            Connexion
-          </vs-button>
-          <vs-button
-            color="#ffc71c"
-            dark
-            block
-            v-else
-            @click="createAccountWithEmail()"
-          >
-            Créer un compte
-          </vs-button> -->
-
-          <!-- <vs-button
-            icon
-            style="margin-top: 20px; padding-left: 15px; padding-right: 15px"
-            @click="signWithGoogle()"
-          >
-            <i class="bx bxl-google" style="margin-right: 5px"></i>
-            Se Connecter avec Google
-          </vs-button> -->
-
-          <!-- <div class="new" v-if="isRegister == false">
-            Nouveau?
-            <a href="javascript:{}" @click="swithConnexionMode()"
-              >Créer un compte</a
-            >
-          </div>
-          <div class="new" v-else>
-            Déja un compte?
-            <a href="javascript:{}" @click="swithConnexionMode()">Connexion</a>
-          </div>
-        </div>
-      </template>
-    </vs-dialog> -->
   </div>
 </template>
   <script >

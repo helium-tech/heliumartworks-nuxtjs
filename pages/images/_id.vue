@@ -100,7 +100,7 @@
                 @click="downloadFile(image)"
                 v-if="isLoggedIn"
               >
-                Acheter maintenant
+                Télécharger
               </a>
               <a
                 class="button item__button js-popup-open"
@@ -306,7 +306,8 @@ export default {
       isAchatModalActive: false,
       isModalImageActive: false,
       isRegister: false,
-      isCertified:  false
+      isCertified:  false,
+      DownloadUrl : '',
     }
   },
 
@@ -337,87 +338,66 @@ export default {
     },
 
     downloadFile(file) {
-      console.log(file)
-      var request_url =
+      let request_url =
         url + '/download?file_id=' + file.id + '&user_id=' + this.authUser.uid
-      console.log(request_url)
 
       axios
         .get(request_url)
         .then((data) => {
           data = data.data
           if (data.isSuccess == false) {
-            this.$vs.notification({
-              position: 'top-right',
-              title: 'Solde insuffisant',
-              text: data.message,
-            })
-
-            let returnUrl =
-              'http://localhost:3000/images/' +
-              this.image.slug +
-              '?download=true'
-
-            let payement_url =
-              'https://heliumartworks.herokuapp.com/users/account/recharge?amount=550&user_id=' +
-              this.authUser.uid +
-              '&return_url=' +
-              returnUrl
-
-            console.log(payement_url)
-            axios
-              .post(payement_url)
-              .then((data) => {
-                console.log(data.data)
-                window.open(data.data)
+              this.$vs.notification({
+                position: 'top-right',
+                title: 'Solde insuffisant',
+                text: data.message,
               })
-              .catch((error) => {
-                console.log(error)
-              })
-          } else {
-            this.$vs.notification({
-              color: 'success',
-              position: 'top-right',
-              title: 'Téléchargement Effectués',
-              text: 'Le télechargement a été effectué avec succès. Continuer à accroitre votre créativité avec Helium Artworks',
-            })
-            console.log(data)
-            var download_url = data.data.download_url
-            console.log(download_url)
 
-            function onStartedDownload(id) {
-              console.log(`Started downloading: ${id}`)
+              let returnUrl =
+                'http://localhost:3000/images/' +
+                this.image.slug +
+                '?download=true'
+
+              let payement_url =
+                'https://heliumartworks.herokuapp.com/users/account/recharge?amount=550&user_id=' +
+                this.authUser.uid +
+                '&return_url=' +
+                returnUrl
+
+              console.log(payement_url)
+              axios
+                .post(payement_url)
+                .then((data) => {
+                  console.log(data.data)
+                  window.open(data.data)
+                })
+                .catch((error) => {
+                  console.log(error)
+                })
             }
+          else {
+              //Voir ici : https://stackoverflow.com/questions/54978597/download-file-from-php-server-with-vuejs
+              let download_url = data.data.download_url
+              console.log(download_url)
+              axios
+                .get(download_url,
+                  {responseType: 'blob'}
+                  )
+                .then((response) => {
+                  const url = window.URL.createObjectURL(new Blob([response.data]));
+                  const link = document.createElement('a');
+                  link.href = url;
+                  link.setAttribute('download', 'image.png');
+                  document.body.appendChild(link);
+                  link.click();
+                })
 
-            function onFailed(error) {
-              console.log(`Download failed: ${error}`)
+                this.$vs.notification({
+                  color: 'success',
+                  position: 'top-right',
+                  title: 'Téléchargement Effectué',
+                  text: 'Le télechargement a été effectué avec succès. Continuer à accroitre votre créativité avec Helium Artworks',
+                })
             }
-
-            var downloading = browser.downloads.download({
-              url: download_url,
-              filename: 'my-image-again.png',
-              conflictAction: 'uniquify',
-            })
-
-            downloading.then(onStartedDownload, onFailed)
-
-            // axios({
-            //   url: download_url,
-            //   method: 'GET',
-            //   responseType: 'blob',
-            // }).then((response) => {
-            //   var fileUrl = window.URL.createObjectURL(
-            //     new Blob([response.data])
-            //   )
-            //   var fileLink = document.createElement('a')
-            //   fileLink.href = fileUrl
-            //   fileLink.setAttribute('download', this.image.original_file_id)
-
-            //   fileLink.click()
-
-            //   URL.revokeObjectURL(fileLink.href)
-            // })
-          }
         })
         .catch((error) => {
           console.log(error)
@@ -549,7 +529,6 @@ export default {
     axios
       .get(url + '/slug/' + this.$route.params.id)
       .then((response) => {
-        console.log(response.data)
         this.image = response.data
         this.tags = response.data.keywords[0].split(',')
         this.isOffer = response.data.offer
@@ -646,12 +625,6 @@ export default {
 .item__preview img {
   width: 100%;
   border-radius: 16px;
-}
-.item__details {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  width: 400px;
 }
 .item__title {
   margin-bottom: 8px;
@@ -810,6 +783,21 @@ export default {
   background-color: rgba(0, 0, 0, 0.9) !important;
 }
 
-@media (min-width: 840px) {
+@media (max-width: 840px) {
+  .item__center{
+  display: block;
+  }
+  .item__bg {
+    margin-right: 0;
+    max-width: 100%
+  }
+  .item__btns .item__button {
+    flex: inherit;
+    width: auto;
+  }
+  .item__details[data-v-032a055c] {
+    display: block;
+    width: auto;
+  }
 }
 </style>
