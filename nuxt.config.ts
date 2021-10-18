@@ -24,6 +24,12 @@ const config: NuxtConfig = {
         body: true,
         defer: true,
       },
+      {
+        type: 'text/javascript',
+        src: '//code.tidio.co/jpah1p3bihphulgejchyouwkgyjmixj6.js',
+        body: true,
+        defer: true,
+      },
     ]
   },
 

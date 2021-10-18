@@ -1,7 +1,7 @@
 <template>
   <div>
     <masonry 
-    :cols="{default: 4, 1000: 3, 700: 2, 400: 1}"
+    :cols="{default: 4, 1000: 3, 700: 1, 400: 1}"
   :gutter="{default: '10px', 700: '10px'}"
     >
 
