@@ -1,4 +1,12 @@
 import firebase from 'firebase'
+import axios from 'axios'
+const API_BASE_URL = "https://heliumartworks.herokuapp.com";
+
+async function initUserWithID(uid) {
+    axios.post(API_BASE_URL + `/users/save?uid=${uid}`).then(data => {
+
+    })
+}
 
 async function listenToAuthUser(commit, authUser) {
     const userRef = firebase.firestore()
@@ -25,7 +33,12 @@ async function listenToAuthUser(commit, authUser) {
             await userRef.set(user)
 
 
+
             listenToAuthUser(commit, authUser)
+        }
+
+        if (!doc.id) {
+            await initUserWithID(doc.uid)
         }
 
         userRef.onSnapshot(snapshot => {
