@@ -1,6 +1,11 @@
 <template>
   <div>
-    <masonry :cols="4" :gutter="10">
+    <masonry 
+    :cols="{default: 4, 1000: 3, 700: 2, 400: 1}"
+  :gutter="{default: '10px', 700: '10px'}"
+    >
+
+
       <figure
         class="m-2 p-relative image-preview h-rounded"
         v-for="image in images"
@@ -32,6 +37,7 @@
           </div>
         </nuxt-link>
       </figure>
+      
     </masonry>
   </div>
 </template>
