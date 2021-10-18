@@ -13,19 +13,20 @@ const config: NuxtConfig = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [ //inclue les scripts en pied de page de façon normale
-        {
-          type: 'text/javascript',
-          src: '/js/lib/jquery.min.js',
-          async: true,
-        },
-        {
-          type: 'text/javascript',
-          src: '/js/app.js',
-          body: true,
-          defer: true,
-        },
-      ]
+      {
+        type: 'text/javascript',
+        src: '/js/lib/jquery.min.js',
+        async: true,
+      },
+      {
+        type: 'text/javascript',
+        src: '/js/app.js',
+        body: true,
+        defer: true,
+      },
+    ]
   },
+
 
   components: true,
 
@@ -126,12 +127,58 @@ const config: NuxtConfig = {
   },
 
   pwa: {
+    manifest: {
+      name: "Helium Artworks",
+      lang: "fr",
+      short_name: "Helium Artworks",
+      description: "Tous les médias africaines, comme vous le vloulez pour vos projets créatives !"
+    },
     workbox: {
       importScripts: ['/firebase-auth-sw.js'],
-      // by default the workbox module will not install the service worker in dev environment to avoid conflicts with HMR
-      // only set this true for testing and remember to always clear your browser cache in development
       dev: process.env.NODE_ENV === 'development',
     },
+    meta: {
+      mobileAppIOS: true,
+      name: "Helium Artworks",
+      author: "Helium Technologie",
+      lang: "fr",
+      ogType: "website",
+      ogName: "Helium Artworks"
+    },
+    icon: {
+      source: '/logo_500.png',
+      filename: "logo_500.png",
+      icons: [
+        {
+          src: `/icon.png`,
+          size: "144x144",
+          type: "image/png"
+        }, {
+          src: `/apple-touch-icon.png`,
+          size: "128x128",
+          type: "image/png"
+        }, {
+          src: `/apple-touch-icon.png`,
+          size: "152x152",
+          type: "image/png"
+        }, {
+          src: `/apple-touch-icon.png`,
+          size: "180x180",
+          type: "image/png"
+        }, {
+          src: `/apple-touch-icon.png`,
+          size: "192x192",
+          type: "image/png"
+        }, {
+          src: `/apple-touch-icon.png`,
+          size: "256x256",
+          type: "image/png"
+        }
+      ]
+    }
+
   },
 }
 export default config
+
+
