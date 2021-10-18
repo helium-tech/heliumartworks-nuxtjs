@@ -377,6 +377,7 @@ export default {
           else {
               //Voir ici : https://stackoverflow.com/questions/54978597/download-file-from-php-server-with-vuejs
               let download_url = data.data.download_url
+              let file_id = data.data.file_id
               console.log(download_url)
               axios
                 .get(download_url,
@@ -386,7 +387,7 @@ export default {
                   const url = window.URL.createObjectURL(new Blob([response.data]));
                   const link = document.createElement('a');
                   link.href = url;
-                  link.setAttribute('download', 'image.png');
+                  link.setAttribute('download', file_id);
                   document.body.appendChild(link);
                   link.click();
                 })
