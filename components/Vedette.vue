@@ -1,5 +1,5 @@
 <template>
-  <section class="section main__center center">
+  <section class="section center">
       <div class="render-images-vedette pb-2">
         <div v-if="errored" class="error">
           <p>

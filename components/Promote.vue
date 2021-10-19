@@ -1,6 +1,6 @@
 <template>
   <div class="section places">
-    <div class="places__center center">
+    <div class="center">
   <div class="places__inner">
     <div class="columns flex-centered">
       <div class="column col-7 px-6 col-lg-auto">

@@ -20,6 +20,10 @@
             <div class="live__preview"><img src=@/assets/images/art-cat.jpg alt="Art"></div>
             <div class="live__subtitle">Art</div>
           </a>
+          <a class="live__item" href="#">
+            <div class="live__preview"><img src=@/assets/images/art-cat.jpg alt="Art"></div>
+            <div class="live__subtitle">Art</div>
+          </a>
         </div>
         <div class="live__btns">
           <!-- <button class="button-stroke button-small live__button">

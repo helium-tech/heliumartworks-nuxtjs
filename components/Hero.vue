@@ -29,7 +29,7 @@
                   <use xlink:href="#icon-image"></use>
                 </svg>
               </div>
-              <input class="location__input" type="text" name="searchimage" autocomplete="off" 
+              <input class="location__input" type="text" name="searchimage" autocomplete="off"
               v-model="keyword" placeholder="Travailleur africain" required v-on:keyup.enter="makeSearch"/>
               <!-- <button class="location__clear js-location-clear">
                 <svg class="icon icon-close-circle">
@@ -91,7 +91,7 @@ export default {
 .main__preview img {
     position: absolute;
     top: 0;
-    right: 0;
+    right: -8em;
 }
 
 @media only screen and (max-width: 767px) {

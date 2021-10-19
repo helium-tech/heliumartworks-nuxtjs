@@ -5676,7 +5676,7 @@ body.dark .work__line path {
 }
 
 .live__item {
-    flex: 0 0 calc(33.333% - 32px);
+    flex: 0 0 calc(24% - 21px);
     width: calc(33.333% - 32px);
     margin: 48px 16px 0;
     text-align: center;
@@ -5712,10 +5712,6 @@ body.dark .live__item {
 
 body.dark .live__item:hover {
     color: #3B71FE;
-}
-
-.live__item:nth-child(n+4) {
-    display: none;
 }
 
 @media only screen and (max-width: 1023px) {
