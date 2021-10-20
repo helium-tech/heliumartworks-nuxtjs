@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import axios from 'axios'
 const API_BASE_URL = "https://heliumartworks.herokuapp.com";
 

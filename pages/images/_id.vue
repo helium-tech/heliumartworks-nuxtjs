@@ -292,7 +292,7 @@
 <script>
 import AlertLogin from '~/components/AlertLogin.vue'
 import axios from 'axios'
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import { mapState, mapGetters } from 'vuex'
 let url = 'https://heliumartworks.herokuapp.com/files'
 
