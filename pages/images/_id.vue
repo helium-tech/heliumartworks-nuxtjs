@@ -3,26 +3,13 @@
     <div class="outer__inner">
       <div class="section item">
         <div class="item__center center">
-          <div class="item__bg">
+          <div class="item__bg mb-2">
             <div class="item__preview">
-              <div class="item__categories">
-                <div
-                  class="status-black item__category"
-                  :key="tag.id"
-                  v-for="tag in tags"
-                >
-                <nuxt-link
-                  :to="'/search?' + 'keyword=' + tag"
-                >
-                  {{ tag }}
-                </nuxt-link>
-                </div>
-              </div>
               <div class="image-content" @click="toggleImageModal">
                 <img :src="image.thumb_image" :alt="image.title" />
               </div>
             </div>
-            <div class="options">
+            <!-- <div class="options">
               <div class="options__list">
                 <button
                   class="
@@ -65,9 +52,24 @@
                   ></a>
                 </div>
               </div>
+            </div> -->
+
+            <div class="item__tags">
+              <div
+                class="status-black item__category"
+                :key="tag.id"
+                v-for="tag in tags"
+              >
+              <nuxt-link
+                :to="'/search?' + 'keyword=' + tag"
+              >
+                {{ tag }}
+              </nuxt-link>
+              </div>
             </div>
+
           </div>
-          <div class="item__details">
+          <div class="item__details mt-2">
             <h1 class="item__title h2 text-bold">{{ image.title }}</h1>
             <div class="item__text">{{ image.description }}</div>
             <div class="item__cost">
@@ -92,6 +94,14 @@
             <div class="item__counter">
               <span>Vues :</span>
               <span class="font-600"> {{ image.views }}</span>
+            </div>
+            <div class="item__counter">
+              <span>Résolution :</span>
+              <span class="font-600"> {{ image.resolution }}</span>
+            </div>
+            <div class="item__counter">
+              <span>Format :</span>
+              <span class="font-600"> {{ image.format }}</span>
             </div>
             <div class="item__btns">
               <a
@@ -142,7 +152,7 @@
       </div>
     </div>
 
-    <!-- popup modal image  nothing-->
+    <!-- popup modal image nothing-->
     <div
       class="modal modal-image"
       :class="{ active: isModalImageActive }"
@@ -307,7 +317,6 @@ export default {
       isModalImageActive: false,
       isRegister: false,
       isCertified:  false,
-      DownloadUrl : '',
     }
   },
 
@@ -626,6 +635,7 @@ export default {
 .item__preview img {
   width: 100%;
   border-radius: 16px;
+  cursor: zoom-in;
 }
 .item__title {
   margin-bottom: 8px;
@@ -633,7 +643,7 @@ export default {
 .item__cost {
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 .item__cost .item__price:not(:last-child) {
   margin-right: 8px;

@@ -25,8 +25,6 @@
 import axios from 'axios'
 import ImagesList from '~/components/Lists/ImagesList.vue'
 import { mapGetters, mapState } from 'vuex'
-let url =
-  'https://heliumartworks.herokuapp.com/files/ressources?resource_type=images&limit=12'
 
 export default {
   name: 'Vedette',
