@@ -1,7 +1,7 @@
 <template>
   <div class="outer__inner">
     <div class="section-pt80 catalog">
-      <div class="catalog__center center">
+      <div class="main__center center">
         <div class="catalog__top">
           <form class="catalog__search" v-on:submit.prevent>
             <input

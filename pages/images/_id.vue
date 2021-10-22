@@ -2,7 +2,7 @@
   <section class="">
     <div class="outer__inner">
       <div class="section item">
-        <div class="item__center center">
+        <div class="item__center main__center center section-mb80">
           <div class="item__bg mb-2">
             <div class="item__preview">
               <div class="image-content" @click="toggleImageModal">
@@ -150,7 +150,8 @@
           </div>
         </div>
 
-        <section class="center">
+        <section class="main__center center">
+          <h2 class="text-bold mb-2">Images similaires</h2>
           <ImagesList :images="searchImages"/>
         </section>
 
@@ -618,7 +619,6 @@ export default {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  width: 384px;
 }
 .item__preview {
   position: relative;
