@@ -149,6 +149,11 @@
             </div>
           </div>
         </div>
+
+        <section class="center">
+          <ImagesList :images="renderSimilarImages"/>
+        </section>
+
       </div>
     </div>
 
@@ -294,12 +299,14 @@ import AlertLogin from '~/components/AlertLogin.vue'
 import axios from 'axios'
 import firebase from 'firebase'
 import { mapState, mapGetters } from 'vuex'
+import ImagesList from '~/components/Lists/ImagesList.vue'
 let url = 'https://heliumartworks.herokuapp.com/files'
 
 export default {
   name: 'ImageContent',
   components: {
     AlertLogin,
+    ImagesList
   },
   data() {
     return {
@@ -310,6 +317,7 @@ export default {
 
       image: {},
       tags: '',
+      cats: '',
       isOffer: '',
       loading: false,
       isShareBoxActive: false,
@@ -327,6 +335,9 @@ export default {
     ...mapGetters({
       isLoggedIn: 'auth/isLoggedIn',
     }),
+    renderSimilarImages() {
+      return this.$store.dispatch('images/searchImages', this.cats[0]);
+    }
   },
 
   methods: {
@@ -542,7 +553,9 @@ export default {
         this.image = response.data
         this.tags = response.data.keywords[0].split(',')
         this.isOffer = response.data.offer
-        this.isCertified = response.user.is_certified
+        this.cats = response.data.categories[0].split(',')
+        this.isCertified = response.data.user.is_certified
+
       })
       .catch((error) => {
         error = true

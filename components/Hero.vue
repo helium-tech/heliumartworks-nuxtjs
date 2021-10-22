@@ -4,7 +4,7 @@
       <div>
     <div class="main__preview bg-gray">
       <div class="main__wrap">
-        <h1 class="main__title hero">La meilleure banque d'images africaines</h1>
+        <h1 class="main__title app-hero">Des <span class="text-yellow">images africaines</span> de qualité en un seul et même endroit</h1>
       </div>
       <div class="hero-side">
         <picture class="hero-img">
@@ -15,10 +15,11 @@
     <div class="panel panel_stays">
       <div class="panel__background"></div>
       <div class="panel__nav">
-        <a class="panel__link active" href="#">Images</a>
-        <a class="panel__link" href="#">Nature</a>
-        <a class="panel__link" href="#">Travail</a>
-        <a class="panel__link" href="#">Personnes</a>
+        <nuxt-link to="/images" class="panel__link">Images</nuxt-link>
+        <nuxt-link to="/videos" class="panel__link">Videos</nuxt-link>
+        <a class="panel__link" href="#">Musique</a>
+        <a class="panel__link" href="#">Oeuvres d'art</a>
+        <a class="panel__link" href="#">Stylisme</a>
       </div>
       <div class="panel__body">
         <div class="panel__row">
@@ -29,8 +30,8 @@
                   <use xlink:href="#icon-image"></use>
                 </svg>
               </div>
-              <input class="location__input" type="text" name="searchimage" autocomplete="off"
-              v-model="keyword" placeholder="Travailleur africain" required v-on:keyup.enter="makeSearch"/>
+              <input class="location__input" type="text" name="searchimage" ref="searchKey"
+              v-model="keyword" placeholder="Saisir votre recherche" required v-on:keyup.enter="makeSearch"/>
               <!-- <button class="location__clear js-location-clear">
                 <svg class="icon icon-close-circle">
                   <use xlink:href="#icon-close-circle"></use>
@@ -72,6 +73,9 @@ export default {
     makeSearch() {
       if (this.keyword) {
         this.$router.push('/search?' + `keyword=${this.keyword}`);
+      }
+      else {
+        this.$refs.searchKey.focus()
       }
     }
   }

@@ -155,7 +155,6 @@ export default {
 <style>
 #app {
   font-family: 'DM Sans', sans-serif;
-   color: #2c3e50;
 }
 a {
   text-decoration: none;

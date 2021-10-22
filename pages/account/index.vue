@@ -4,10 +4,10 @@
   <div class="setting__center center">
     <div class="setting__select tablet-show">
       <select class="select js-tabs-select">
-        <option>Personal info</option>
-        <option>Login and security</option>
-        <option>Payments</option>
-        <option>Notification</option>
+        <option>Mes informations</option>
+        <option>Connexion et sécurité</option>
+        <option>Paiements</option>
+        <option>Notifications</option>
       </select>
     </div>
     <div class="setting__menu"><a class="setting__link js-tabs-link active" href="#">

@@ -3096,7 +3096,7 @@ body.dark .section-bg {
     }
 }
 
-.hero,
+.app-hero,
 .h1,
 .h2,
 .h3,
@@ -3104,20 +3104,20 @@ body.dark .section-bg {
     font-weight: 700;
 }
 
-.hero {
+.app-hero {
     font-size: 3rem;
     line-height: 1;
     letter-spacing: -.02em;
 }
 
 @media only screen and (max-width: 1339px) {
-    .hero {
+    .app-hero {
         font-size: 80px;
     }
 }
 
 @media only screen and (max-width: 1179px) {
-    .hero {
+    .app-hero {
         font-size: 54px;
     }
 }
@@ -7827,15 +7827,15 @@ body.dark .location.active .location__head {
 }
 
 .location__input::-moz-placeholder {
-    color: #23262F;
+    color: #777E90;
 }
 
 .location__input:-ms-input-placeholder {
-    color: #23262F;
+    color: #777E90;
 }
 
 .location__input::placeholder {
-    color: #23262F;
+    color: #777E90;
 }
 
 body.dark .location__input {
