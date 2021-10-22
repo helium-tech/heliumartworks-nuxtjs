@@ -8,7 +8,7 @@
         </div>
         <div class="live__slider js-slider-live js-slider-resize">
           <nuxt-link to="/categories/technologie">
-            <a class="live__item" href="/categories/technologie">
+            <a class="live__item">
               <div class="live__preview">
                 <img src=@/assets/images/categories/technologie.png alt="Helium
                 Artworks Technologie">
@@ -18,7 +18,7 @@
             </a>
           </nuxt-link>
           <nuxt-link to="/categories/femmes">
-            <a class="live__item" href="/categories/femmes">
+            <a class="live__item">
               <div class="live__preview">
                 <img src=@/assets/images/categories/femmes.png alt="Helium
                 Artworks Femmes">
@@ -28,7 +28,7 @@
             </a>
           </nuxt-link>
           <nuxt-link to="/categories/hommes">
-            <a class="live__item" href="/categories/hommes">
+            <a class="live__item">
               <div class="live__preview">
                 <img src=@/assets/images/categories/hommes.png alt="Helium
                 Artworks Hommes">
@@ -38,7 +38,7 @@
             </a>
           </nuxt-link>
           <nuxt-link to="/categories/etudiants">
-            <a class="live__item" href="/categories/etudiants">
+            <a class="live__item">
               <div class="live__preview">
                 <img src=@/assets/images/categories/etudiants.png alt="Helium
                 Artworks Etudiants">

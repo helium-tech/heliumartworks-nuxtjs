@@ -2,7 +2,7 @@
   <div class="home">
     <Hero></Hero>
     <Vedette></Vedette>
-    <!-- <CategoryShow></CategoryShow> -->
+    <CategoryShow></CategoryShow>
     <!-- //bug not found -->
     <Promote></Promote>
     <Packs></Packs>
