@@ -3,6 +3,7 @@
     <Hero></Hero>
     <Vedette></Vedette>
     <CategoryShow></CategoryShow>
+    <!-- //bug not found -->
     <Promote></Promote>
     <Packs></Packs>
     <CtaVendeur></CtaVendeur>
