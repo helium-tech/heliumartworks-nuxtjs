@@ -12,6 +12,9 @@ export default {
 
 
     async searchImages({ commit }, keyword, page, limit) {
+        let is_searching = true;
+        commit('SWITCH_SEARCHING_BOOL', { is_searching })
+
         if (page == null || !Number.isInteger(page)) {
             page = 1
         }
@@ -25,9 +28,15 @@ export default {
             .then((response) => {
                 var images = response.data.data;
                 commit('SET_SEARCH_IMAGES', { images })
+
+                is_searching = false;
+                commit('SWITCH_SEARCHING_BOOL', { is_searching })
             })
             .catch((error) => {
                 console.log(error)
+
+                is_searching = false;
+                commit('SWITCH_SEARCHING_BOOL', { is_searching })
             })
 
     },

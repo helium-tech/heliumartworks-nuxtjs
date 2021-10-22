@@ -8,4 +8,9 @@ export default {
         console.log("mutate search", images)
         state.searchImages = images
     },
+
+    SWITCH_SEARCHING_BOOL: (state, { is_searching }) => {
+        console.log("is search", is_searching)
+        state.isSearching = is_searching
+    },
 }

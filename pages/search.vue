@@ -108,6 +108,7 @@ export default {
     ...mapState({
       images: (state) => state.images.recentsImages,
       searchImages: (state) => state.images.searchImages,
+      isSearching: (state) => state.images.isSearching,
     }),
   },
 

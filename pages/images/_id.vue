@@ -151,7 +151,7 @@
         </div>
 
         <section class="center">
-          <ImagesList :images="renderSimilarImages"/>
+          <ImagesList :images="searchImages"/>
         </section>
 
       </div>
@@ -331,13 +331,12 @@ export default {
   computed: {
     ...mapState({
       authUser: (state) => state.auth.authUser,
+      searchImages: (state) => state.images.searchImages,
+      isSearching: (state) => state.images.isSearching,
     }),
     ...mapGetters({
       isLoggedIn: 'auth/isLoggedIn',
     }),
-    renderSimilarImages() {
-      return this.$store.dispatch('images/searchImages', this.cats[0]);
-    }
   },
 
   methods: {
@@ -555,6 +554,8 @@ export default {
         this.isOffer = response.data.offer
         this.cats = response.data.categories[0].split(',')
         this.isCertified = response.data.user.is_certified
+
+        return this.$store.dispatch('images/searchImages', response.data.categories[0]);
 
       })
       .catch((error) => {
