@@ -1,7 +1,7 @@
 <template>
   <div id="app">
   <header class="header">
-  <div class="header__center center">
+  <div class="header__center main__center center">
     <h1><nuxt-link to="/" class="header__logo text-bold"><span class="text-yellow">helium</span>artworks</nuxt-link></h1>
     <div class="header__wrapper js-header-wrapper" :class="{visible: isNavMobVisible}">
       <div class="header__item header__item_dropdown" :class="{active: isHeadDropdownactive}" ref="HeadDropdown">
