@@ -4,6 +4,7 @@ const isDev = process.env.NODE_ENV === 'development'
 const useEmulators = false // manually change if emulators needed
 
 const config: NuxtConfig = {
+  target: 'static',
   head: {
     title: "Helium Artworks - La meilleure banque d'images africaines",
     meta: [

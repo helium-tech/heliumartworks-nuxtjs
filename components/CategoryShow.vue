@@ -7,45 +7,37 @@
           <div class="browse__info info">Explorez par catégories</div>
         </div>
         <div class="live__slider js-slider-live js-slider-resize">
-          <nuxt-link to="/categories/technologie">
-            <a class="live__item">
-              <div class="live__preview">
-                <img src=@/assets/images/categories/technologie.png alt="Helium
-                Artworks Technologie">
-              </div>
-              <div class="live__subtitle">Technologie</div>
-              <!-- <div class="live__content">6,879 properties</div> -->
-            </a>
+          <nuxt-link to="/categories/technologie" class="live__item">
+            <div class="live__preview">
+              <img src=@/assets/images/categories/technologie.png alt="Helium
+              Artworks Technologie">
+            </div>
+            <div class="live__subtitle">Technologie</div>
+            <!-- <div class="live__content">6,879 properties</div> -->
           </nuxt-link>
-          <nuxt-link to="/categories/femmes">
-            <a class="live__item">
-              <div class="live__preview">
-                <img src=@/assets/images/categories/femmes.png alt="Helium
-                Artworks Femmes">
-              </div>
-              <div class="live__subtitle">Femmes</div>
-              <!-- <div class="live__content">6,879 properties</div> -->
-            </a>
+          <nuxt-link to="/categories/femmes" class="live__item">
+            <div class="live__preview">
+              <img src=@/assets/images/categories/femmes.png alt="Helium
+              Artworks Femmes">
+            </div>
+            <div class="live__subtitle">Femmes</div>
+            <!-- <div class="live__content">6,879 properties</div> -->
           </nuxt-link>
-          <nuxt-link to="/categories/hommes">
-            <a class="live__item">
-              <div class="live__preview">
-                <img src=@/assets/images/categories/hommes.png alt="Helium
-                Artworks Hommes">
-              </div>
-              <div class="live__subtitle">Hommes</div>
-              <!-- <div class="live__content">6,879 properties</div> -->
-            </a>
+          <nuxt-link to="/categories/hommes" class="live__item">
+            <div class="live__preview">
+              <img src=@/assets/images/categories/hommes.png alt="Helium
+              Artworks Hommes">
+            </div>
+            <div class="live__subtitle">Hommes</div>
+            <!-- <div class="live__content">6,879 properties</div> -->
           </nuxt-link>
-          <nuxt-link to="/categories/etudiants">
-            <a class="live__item">
-              <div class="live__preview">
-                <img src=@/assets/images/categories/etudiants.png alt="Helium
-                Artworks Etudiants">
-              </div>
-              <div class="live__subtitle">Etudiants</div>
-              <!-- <div class="live__content">6,879 properties</div> -->
-            </a>
+          <nuxt-link to="/categories/etudiants" class="live__item">
+            <div class="live__preview">
+              <img src=@/assets/images/categories/etudiants.png alt="Helium
+              Artworks Etudiants">
+            </div>
+            <div class="live__subtitle">Etudiants</div>
+            <!-- <div class="live__content">6,879 properties</div> -->
           </nuxt-link>
         </div>
         <div class="live__btns">
