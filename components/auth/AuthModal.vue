@@ -128,7 +128,7 @@
   </div>
 </template>
   <script >
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import Vue from 'vue'
 import { mapState, mapGetters } from 'vuex'
 export default Vue.extend({
