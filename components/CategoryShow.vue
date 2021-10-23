@@ -12,7 +12,7 @@
               <img src=@/assets/images/categories/technologie.png alt="Helium
               Artworks Technologie">
             </div>
-            <div class="live__subtitle">Technologie</div>
+            <div class="live__subtitle text-large">Technologie</div>
             <!-- <div class="live__content">6,879 properties</div> -->
           </nuxt-link>
           <nuxt-link to="/categories/femmes" class="live__item">
@@ -20,7 +20,7 @@
               <img src=@/assets/images/categories/femmes.png alt="Helium
               Artworks Femmes">
             </div>
-            <div class="live__subtitle">Femmes</div>
+            <div class="live__subtitle text-large">Femmes</div>
             <!-- <div class="live__content">6,879 properties</div> -->
           </nuxt-link>
           <nuxt-link to="/categories/hommes" class="live__item">
@@ -28,7 +28,7 @@
               <img src=@/assets/images/categories/hommes.png alt="Helium
               Artworks Hommes">
             </div>
-            <div class="live__subtitle">Hommes</div>
+            <div class="live__subtitle text-large">Hommes</div>
             <!-- <div class="live__content">6,879 properties</div> -->
           </nuxt-link>
           <nuxt-link to="/categories/etudiants" class="live__item">
@@ -36,7 +36,7 @@
               <img src=@/assets/images/categories/etudiants.png alt="Helium
               Artworks Etudiants">
             </div>
-            <div class="live__subtitle">Etudiants</div>
+            <div class="live__subtitle text-large">Etudiants</div>
             <!-- <div class="live__content">6,879 properties</div> -->
           </nuxt-link>
         </div>

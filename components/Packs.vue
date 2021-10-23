@@ -4,7 +4,8 @@
   <div class="collections__wrapper">
     <h3 class="collections__title h3">Packs</h3>
     <div class="collections__inner">
-      <div class="collections__slider js-slider-collections"><a class="collections__item" href="#">
+      <div class="collections__slider js-slider-collections">
+        <nuxt-link to="/packs" class="collections__item">
           <div class="collections__gallery">
             <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
             <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
@@ -18,35 +19,41 @@
               <div class="collections__author">Par <span>Helium</span></div>
             </div>
             <div class="status-stroke-black collections__counter"><span>24 images</span></div>
-          </div></a><a class="collections__item" href="#">
-            <div class="collections__gallery">
-              <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
-              <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
-              <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
-              <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
-            </div>
-            <h3 class="collections__subtitle">Pack Sport</h3>
+          </div>
+        </nuxt-link>
+        <nuxt-link to="/packs" class="collections__item">
+          <div class="collections__gallery">
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+          </div>
+          <h3 class="collections__subtitle">Pack Nature</h3>
           <div class="collections__line">
             <div class="collections__user">
-              <div class="collections__avatar"><img src="img/content/avatar-3.jpg" alt="Avatar"></div>
+              <div class="collections__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"></div>
               <div class="collections__author">Par <span>Helium</span></div>
             </div>
-            <div class="status-stroke-black collections__counter"><span>28 images</span></div>
-          </div></a><a class="collections__item" href="#">
-            <div class="collections__gallery">
-              <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
-              <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
-              <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
-              <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
-            </div>
-            <h3 class="collections__subtitle">Pack Design</h3>
+            <div class="status-stroke-black collections__counter"><span>24 images</span></div>
+          </div>
+        </nuxt-link>
+        <nuxt-link to="/packs" class="collections__item">
+          <div class="collections__gallery">
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+          </div>
+          <h3 class="collections__subtitle">Pack Nature</h3>
           <div class="collections__line">
             <div class="collections__user">
-              <div class="collections__avatar"><img src="img/content/avatar-4.jpg" alt="Avatar"></div>
+              <div class="collections__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"></div>
               <div class="collections__author">Par <span>Helium</span></div>
             </div>
-            <div class="status-stroke-black collections__counter"><span>20 images</span></div>
-          </div></a></div>
+            <div class="status-stroke-black collections__counter"><span>24 images</span></div>
+          </div>
+        </nuxt-link>
+        </div>
     </div>
   </div>
 </div>
