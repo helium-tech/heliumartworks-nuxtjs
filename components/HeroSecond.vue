@@ -1,5 +1,5 @@
 <template>
-  <div class="section-mb80 main main_stays-category">
+  <div class="section main main_stays-category">
 <div class="main__center center">
   <div class="main__preview"><img src=@/assets/images/emotions-cat.jpg alt="Main">
     <div class="main__wrap">
@@ -10,19 +10,20 @@
     <div class="panel__background"></div>
     <div class="panel__body">
       <div class="panel__row">
-        <div class="location js-location">
-          <div class="location__head js-location-head">
+        <div class="location">
+          <div class="location__head">
             <div class="location__icon">
               <svg class="icon icon-image">
                 <use xlink:href="#icon-image"></use>
               </svg>
             </div>
-            <input class="location__input js-location-input" type="text" name="searchimage" v-model="keyword" placeholder="Travailleur africain" required v-on:keyup.enter="makeSearch"/>
-            <button class="location__clear">
+            <input class="location__input" type="text" name="searchimage" ref="searchKey"
+              v-model="keyword" placeholder="Saisir votre recherche" required v-on:keyup.enter="makeSearch"/>
+            <!-- <button class="location__clear js-location-clear">
               <svg class="icon icon-close-circle">
                 <use xlink:href="#icon-close-circle"></use>
               </svg>
-            </button>
+            </button> -->
           </div>
           <!-- <div class="location__body js-location-body">
             <div class="location__list">
@@ -34,11 +35,10 @@
             </div>
           </div> -->
         </div>
-        <button class="panel__search">
+        <a class="panel__search" @click.prevent="makeSearch">
           <svg class="icon icon-search">
             <use xlink:href="#icon-search"></use>
-          </svg>
-        </button>
+          </svg></a>
       </div>
     </div>
   </div>
@@ -47,12 +47,9 @@
 </template>
 
 <script>
-import SearchImage from './SearchImage.vue'
+let url = 'https://heliumartworks.herokuapp.com/files/search'
 export default {
   name: 'HeroSecond',
-  components: {
-    SearchImage
-  },
   props: {
     title: String
   },
@@ -65,6 +62,9 @@ export default {
     makeSearch() {
       if (this.keyword) {
         this.$router.push('/search?' + `keyword=${this.keyword}`);
+      }
+      else {
+        this.$refs.searchKey.focus()
       }
     }
   }

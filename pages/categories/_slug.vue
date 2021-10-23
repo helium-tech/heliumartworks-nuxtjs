@@ -1,10 +1,10 @@
 <template>
   <div>
+    <CategorySlugHeader :title="cat_title"/>
 
     <div class="section-mb80 main__center center">
-      
+
       <div class="columns flex-centered" v-if="isSearching == false">
-        
 
         <ImagesList :images="images" />
 
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import CategorySlugHeader from '~/components/CategorySlugHeader.vue'
 import ImagesList from '~/components/Lists/ImagesList.vue'
 import { mapGetters, mapState } from 'vuex'
 
@@ -22,6 +23,11 @@ export default {
   name: 'Images',
   components:{
     ImagesList,
+  },
+  data() {
+    return {
+      cat_title: ''
+    }
   },
   computed: {
     ...mapState({
@@ -32,6 +38,7 @@ export default {
 
   created() {
     let slug = this.$route.params.slug
+    this.cat_title = slug
     return this.$store.dispatch('images/searchImages', slug);
   },
 }
