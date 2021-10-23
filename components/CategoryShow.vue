@@ -3,7 +3,7 @@
     <div class="section live">
       <div class="live__center center">
         <div class="live__head">
-          <h2 class="live__title h2">Que cherchez vous?</h2>
+          <h2 class="live__title h3 text-bold">Que cherchez vous?</h2>
           <div class="browse__info info">Explorez par catégories</div>
         </div>
         <div class="live__slider js-slider-live js-slider-resize">

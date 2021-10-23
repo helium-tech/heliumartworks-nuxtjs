@@ -2,7 +2,7 @@
   <div class="bg-gray collections">
 <div class="collections__center center">
   <div class="collections__wrapper">
-    <h3 class="collections__title h3">Packs</h3>
+    <h3 class="collections__title h3 text-bold">Packs</h3>
     <div class="collections__inner">
       <div class="collections__slider js-slider-collections">
         <nuxt-link to="/packs" class="collections__item">
@@ -12,7 +12,7 @@
             <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
             <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
           </div>
-          <h3 class="collections__subtitle">Pack Nature</h3>
+          <h3 class="collections__subtitle text-bold">Pack Nature</h3>
           <div class="collections__line">
             <div class="collections__user">
               <div class="collections__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"></div>
@@ -28,7 +28,7 @@
             <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
             <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
           </div>
-          <h3 class="collections__subtitle">Pack Nature</h3>
+          <h3 class="collections__subtitle text-bold">Pack Nature</h3>
           <div class="collections__line">
             <div class="collections__user">
               <div class="collections__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"></div>
@@ -44,7 +44,7 @@
             <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
             <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
           </div>
-          <h3 class="collections__subtitle">Pack Nature</h3>
+          <h3 class="collections__subtitle text-bold">Pack Nature</h3>
           <div class="collections__line">
             <div class="collections__user">
               <div class="collections__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"></div>

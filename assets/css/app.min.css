@@ -3122,6 +3122,15 @@ body.dark .section-bg {
     }
 }
 
+@media only screen and (max-width: 640px) {
+  .app-hero {
+      font-size: 45px;
+  }
+  .main_stays .main__title, .main_flights .main__title {
+    max-width: 100% !important;
+  }
+}
+
 .h1 {
     font-size: 64px;
     line-height: 1;
@@ -5015,7 +5024,7 @@ body.dark .panel__controls .panel__button.active {
 }
 
 .main__title {
-    margin-bottom: 16px;
+    margin-bottom: 5rem;
 }
 
 body.dark .main__title {
@@ -11072,14 +11081,15 @@ body.dark .receipt {
 .receipt__check {
     position: absolute;
     top: 0;
-    right: 0;
+    right: -3px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background: #58C27D;
+    z-index: 10;
 }
 
 .receipt__check .icon {
