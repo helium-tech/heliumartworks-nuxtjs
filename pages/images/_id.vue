@@ -124,11 +124,12 @@
                 Sélectionner
               </a>
             </div>
-            <div class="item__control">
+            <div class="item__control" v-if="image.user">
               <div class="item__head">
                 <div class="item__avatar">
                   <figure class="avatar avatar-lg mr-2 bg-secondary">
-                    <img src="img/avatar-1.png" alt="..." />
+                    <img v-if="image.user.photoURL" :src="image.user.photoURL" :alt="image.user.displayName" />
+                    <img v-else src="@/assets/images/logo_500.png" alt="Helium Artworks" />
                   </figure>
                   <span class="receipt__check" v-if="isCertified === true">
                     <svg class="icon icon-check">

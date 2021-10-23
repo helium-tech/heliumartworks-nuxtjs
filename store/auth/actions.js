@@ -97,6 +97,12 @@ export default {
 
     },
 
+
+    async updateUserDisplayName({ commit }, { name }) {
+
+    },
+
+
     checkVuexStore(ctx) {
         if (this.$fire.auth === null) {
             throw 'Vuex Store example not working - this.$fire.auth cannot be accessed.'

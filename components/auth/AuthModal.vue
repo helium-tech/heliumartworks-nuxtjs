@@ -77,8 +77,8 @@
             </div>
             <div class="login__note">Ou continuer avec email</div>
             <div class="subscription">
+              <input class="subscription__input mb-2" type="name" name="name" placeholder="Nom Complet" required v-model="name">
               <input class="subscription__input mb-2" type="email" name="email" placeholder="Saisir email" required v-model="email">
-              <input class="subscription__input mb-2" type="name" name="name" placeholder="Choisir un pseudonyme" required v-model="name">
               <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Saisir mot de passe" required v-model="password">
               <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Confirmer mot de passe" required v-model="confirm">
               <a class="btn btn-cta flex-centered text-bold mt-2" href="#" style="border-radius: 20px;" @click="createAccountWithEmail">
