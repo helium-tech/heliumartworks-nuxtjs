@@ -60,14 +60,11 @@
                 :key="tag.id"
                 v-for="tag in tags"
               >
-              <nuxt-link
-                :to="'/search?' + 'keyword=' + tag"
-              >
-                {{ tag }}
-              </nuxt-link>
+                <nuxt-link :to="'/search?' + 'keyword=' + tag">
+                  {{ tag }}
+                </nuxt-link>
               </div>
             </div>
-
           </div>
           <div class="item__details mt-2">
             <h1 class="item__title h2 text-bold">{{ image.title }}</h1>
@@ -128,8 +125,16 @@
               <div class="item__head">
                 <div class="item__avatar">
                   <figure class="avatar avatar-lg mr-2 bg-secondary">
-                    <img v-if="image.user.photoURL" :src="image.user.photoURL" :alt="image.user.displayName" />
-                    <img v-else src="@/assets/images/logo_500.png" alt="Helium Artworks" />
+                    <img
+                      v-if="image.user.photoURL"
+                      :src="image.user.photoURL"
+                      :alt="image.user.displayName"
+                    />
+                    <img
+                      v-else
+                      src="@/assets/images/logo_500.png"
+                      alt="Helium Artworks"
+                    />
                   </figure>
                   <span class="receipt__check" v-if="isCertified === true">
                     <svg class="icon icon-check">
@@ -153,9 +158,8 @@
 
         <section class="main__center center">
           <h2 class="text-bold mb-2">Images similaires</h2>
-          <ImagesList :images="searchImages"/>
+          <ImagesList :images="searchImages" />
         </section>
-
       </div>
     </div>
 
@@ -202,7 +206,14 @@
                 required
                 v-model="email"
               />
-              <input class="subscription__input mb-2" type="name" name="name" placeholder="Choisir un pseudonyme" required v-model="name">
+              <input
+                class="subscription__input mb-2"
+                type="name"
+                name="name"
+                placeholder="Choisir un pseudonyme"
+                required
+                v-model="name"
+              />
               <input
                 class="subscription__input mb-2 mt-2"
                 type="password"
@@ -308,7 +319,7 @@ export default {
   name: 'ImageContent',
   components: {
     AlertLogin,
-    ImagesList
+    ImagesList,
   },
   data() {
     return {
@@ -326,7 +337,27 @@ export default {
       isAchatModalActive: false,
       isModalImageActive: false,
       isRegister: false,
-      isCertified:  false,
+      isCertified: false,
+    }
+  },
+
+  head() {
+    return {
+      title: this.image.title,
+
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.image.description + ' ' + this.image.title,
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.image.description + ' ' + this.image.title,
+        },
+        { hid: 'fb:app_id', name: 'fb:app_id', content: '4443848595663604' },
+      ],
     }
   },
 
@@ -367,59 +398,58 @@ export default {
         .then((data) => {
           data = data.data
           if (data.isSuccess == false) {
-              this.$vs.notification({
-                position: 'top-right',
-                title: 'Solde insuffisant',
-                text: data.message,
+            this.$vs.notification({
+              position: 'top-right',
+              title: 'Solde insuffisant',
+              text: data.message,
+            })
+
+            let returnUrl =
+              'http://localhost:3000/images/' +
+              this.image.slug +
+              '?download=true'
+
+            let payement_url =
+              'https://heliumartworks.herokuapp.com/users/account/recharge?amount=550&user_id=' +
+              this.authUser.uid +
+              '&return_url=' +
+              returnUrl
+
+            console.log(payement_url)
+            axios
+              .post(payement_url)
+              .then((data) => {
+                console.log(data.data)
+                window.open(data.data)
+              })
+              .catch((error) => {
+                console.log(error)
+              })
+          } else {
+            //Voir ici : https://stackoverflow.com/questions/54978597/download-file-from-php-server-with-vuejs
+            let download_url = data.data.download_url
+            let file_id = data.data.file_id
+            console.log(download_url)
+            axios
+              .get(download_url, { responseType: 'blob' })
+              .then((response) => {
+                const url = window.URL.createObjectURL(
+                  new Blob([response.data])
+                )
+                const link = document.createElement('a')
+                link.href = url
+                link.setAttribute('download', file_id)
+                document.body.appendChild(link)
+                link.click()
               })
 
-              let returnUrl =
-                'http://localhost:3000/images/' +
-                this.image.slug +
-                '?download=true'
-
-              let payement_url =
-                'https://heliumartworks.herokuapp.com/users/account/recharge?amount=550&user_id=' +
-                this.authUser.uid +
-                '&return_url=' +
-                returnUrl
-
-              console.log(payement_url)
-              axios
-                .post(payement_url)
-                .then((data) => {
-                  console.log(data.data)
-                  window.open(data.data)
-                })
-                .catch((error) => {
-                  console.log(error)
-                })
-            }
-          else {
-              //Voir ici : https://stackoverflow.com/questions/54978597/download-file-from-php-server-with-vuejs
-              let download_url = data.data.download_url
-              let file_id = data.data.file_id
-              console.log(download_url)
-              axios
-                .get(download_url,
-                  {responseType: 'blob'}
-                  )
-                .then((response) => {
-                  const url = window.URL.createObjectURL(new Blob([response.data]));
-                  const link = document.createElement('a');
-                  link.href = url;
-                  link.setAttribute('download', file_id);
-                  document.body.appendChild(link);
-                  link.click();
-                })
-
-                this.$vs.notification({
-                  color: 'success',
-                  position: 'top-right',
-                  title: 'Téléchargement Effectué',
-                  text: 'Le télechargement a été effectué avec succès. Continuer à accroitre votre créativité avec Helium Artworks',
-                })
-            }
+            this.$vs.notification({
+              color: 'success',
+              position: 'top-right',
+              title: 'Téléchargement Effectué',
+              text: 'Le télechargement a été effectué avec succès. Continuer à accroitre votre créativité avec Helium Artworks',
+            })
+          }
         })
         .catch((error) => {
           console.log(error)
@@ -461,7 +491,7 @@ export default {
           color: 'danger',
           position: 'top-right',
           title: 'Email Incorrect',
-          text: "Veuillez saisir une adresse email valide !",
+          text: 'Veuillez saisir une adresse email valide !',
         })
         return
       }
@@ -513,7 +543,7 @@ export default {
           color: 'danger',
           position: 'top-right',
           title: 'Mot de passe non conforme',
-          text: 'Le mot de passe que vous avez fourni n\'est pas conforme ! Veuillez le vérifier',
+          text: "Le mot de passe que vous avez fourni n'est pas conforme ! Veuillez le vérifier",
         })
         return
       }
@@ -557,8 +587,10 @@ export default {
         this.cats = response.data.categories[0].split(',')
         this.isCertified = response.data.user.is_certified
 
-        return this.$store.dispatch('images/searchImages', response.data.categories[0]);
-
+        return this.$store.dispatch(
+          'images/searchImages',
+          response.data.categories[0]
+        )
       })
       .catch((error) => {
         error = true
@@ -645,7 +677,7 @@ export default {
   text-transform: uppercase;
 }
 .item__category a {
-	color: #fff !important;
+  color: #fff !important;
 }
 .item__preview img {
   width: 100%;
@@ -810,12 +842,12 @@ export default {
 }
 
 @media (max-width: 840px) {
-  .item__center{
-  display: block;
+  .item__center {
+    display: block;
   }
   .item__bg {
     margin-right: 0;
-    max-width: 100%
+    max-width: 100%;
   }
   .item__btns .item__button {
     flex: inherit;

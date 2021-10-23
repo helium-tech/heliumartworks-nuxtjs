@@ -27,6 +27,12 @@ export default {
     Promote,
     Packs,
     CtaVendeur
+  },
+  head:{
+    title: "La meilleur banques de médias africaine (Images, Vidéos, Musiques)",
+    meta: [
+      
+    ]
   }
 }
 </script>
