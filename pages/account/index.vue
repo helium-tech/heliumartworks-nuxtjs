@@ -8,21 +8,22 @@
         <option>Connexion et sécurité</option>
         <option>Paiements</option>
         <option>Notifications</option>
+        <option>Uploader un fichier</option>
       </select>
     </div>
     <div class="setting__menu"><a class="setting__link js-tabs-link active" href="#">
         <svg class="icon icon-user">
           <use xlink:href="#icon-user"></use>
-        </svg>Personal info</a><a class="setting__link js-tabs-link" href="#">
+        </svg>Mes informations</a><a class="setting__link js-tabs-link" href="#">
         <svg class="icon icon-lock">
           <use xlink:href="#icon-lock"></use>
-        </svg>Login and security</a><a class="setting__link js-tabs-link" href="#">
+        </svg>Connexion et sécurité</a><a class="setting__link js-tabs-link" href="#">
         <svg class="icon icon-credit-card">
           <use xlink:href="#icon-credit-card"></use>
-        </svg>Payments</a><a class="setting__link js-tabs-link" href="#">
+        </svg>Paiements</a><a class="setting__link js-tabs-link" href="#">
         <svg class="icon icon-bell">
           <use xlink:href="#icon-bell"></use>
-        </svg>Notification</a></div>
+        </svg>Notifications</a></div>
     <div class="setting__container">
       <div class="setting__item js-tabs-item">
         <form class="setting__form">

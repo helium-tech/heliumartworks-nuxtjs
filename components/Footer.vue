@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-  <div class="footer__center center">
+  <div class="footer__center main__center center">
     <div class="footer__row">
       <div class="footer__col">
         <nuxt-link to="/" class="footer__logo h4"><span class="text-yellow">helium</span>artworks</nuxt-link>
@@ -16,9 +16,10 @@
       </div>
       <div class="footer__col">
         <div class="footer__menu">
-          <a class="footer__link" href="#">Images</a>
-          <a class="footer__link" href="#">Vidéos</a>
-          <a class="footer__link" href="#">Support</a>
+          <nuxt-link to="/images" class="footer__link">Images</nuxt-link>
+          <nuxt-link to="/videos" class="footer__link">Videos</nuxt-link>
+          <nuxt-link to="/support" class="footer__link">Support</nuxt-link>
+          <nuxt-link to="/cgu" class="footer__link">CGU</nuxt-link>
           <a class="footer__link" href="#">Musique</a>
           <a class="footer__link" href="#">Autres</a>
         </div>
