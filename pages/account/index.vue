@@ -1,366 +1,167 @@
 <template>
-  <div class="outer__inner">
-<div class="section setting js-tabs">
-  <div class="setting__center center">
+<div class="section setting">
+  <div class="center">
     <div class="setting__select tablet-show">
       <select class="select js-tabs-select">
         <option>Mes informations</option>
         <option>Connexion et sécurité</option>
-        <option>Paiements</option>
-        <option>Notifications</option>
         <option>Uploader un fichier</option>
       </select>
     </div>
-    <div class="setting__menu"><a class="setting__link js-tabs-link active" href="#">
-        <svg class="icon icon-user">
-          <use xlink:href="#icon-user"></use>
-        </svg>Mes informations</a><a class="setting__link js-tabs-link" href="#">
-        <svg class="icon icon-lock">
-          <use xlink:href="#icon-lock"></use>
-        </svg>Connexion et sécurité</a><a class="setting__link js-tabs-link" href="#">
-        <svg class="icon icon-credit-card">
-          <use xlink:href="#icon-credit-card"></use>
-        </svg>Paiements</a><a class="setting__link js-tabs-link" href="#">
-        <svg class="icon icon-bell">
-          <use xlink:href="#icon-bell"></use>
-        </svg>Notifications</a></div>
-    <div class="setting__container">
-      <div class="setting__item js-tabs-item">
-        <form class="setting__form">
-          <div class="setting__head">
-            <h2 class="setting__title h2">Personal info</h2><a class="button-stroke button-small setting__button" href="#">Voir profil</a>
+    <tabs>
+      <tab
+        svg="icon-user"
+        useSvg="#icon-user"
+        title="Mes informations"
+        >
+          <div class="setting__item">
+              <div class="setting__head">
+                <h2 class="setting__title h2">Mes informations</h2>
+              </div>
+              <div class="setting__category">Nom</div>
+              <div class="setting__category">Email</div>
+              <div class="setting__category">Numero de Télephone</div>
           </div>
-          <div class="setting__list">
-            <div class="setting__section">
-              <div class="setting__category">Account info</div>
-              <div class="setting__fieldset">
-                <div class="setting__row">
+      </tab>
+
+      <tab
+        svg="icon-upload-file"
+        useSvg="#icon-upload-file"
+        title="Uploader un fichier"
+        >
+        <div class="setting__item">
+          <div class="upload__head">
+            <h2 class="upload__title h2">Uploader un fichier</h2><a class="button-stroke button-small upload__button" href="#">Liste des images</a>
+          </div>
+          <div class="upload__form">
+            <div class="upload__list">
+              <div class="upload__item">
+                <div class="upload__note">Choisissez le fichier à uploader</div>
+                <div class="upload__file">
+                  <input class="upload__input" type="file">
+                  <div class="upload__icon">
+                    <svg class="icon icon-upload-file">
+                      <use xlink:href="#icon-upload-file"></use>
+                    </svg>
+                  </div>
+                  <div class="upload__format">PNG, JPEG. Max 500Mb.</div>
+                </div>
+              </div>
+              <div class="upload__item">
+                <div class="upload__category">Détails du fichier</div>
+                <div class="upload__fieldset">
                   <div class="field">
-                    <div class="field__label">Display Name</div>
+                    <div class="field__label">titre</div>
                     <div class="field__wrap">
-                      <input class="field__input" type="text" name="display-name" placeholder="Enter your display name" required>
+                      <input class="field__input" type="text" name="title" required>
+                    </div>
+                  </div>
+                  <div class="upload__row">
+                    <div class="upload__col upload__col_w70">
+                      <div class="upload__label">prix</div>
+                      <div class="upload__line">
+                        <div class="upload__cell">
+                          <div class="field field_empty">
+                            <div class="field__wrap">
+                              <input class="field__input" type="text" name="price" placeholder="e. g. &quot;180&quot;" required>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="upload__cell">
+                          <div class="field field_empty">
+                            <div class="field__wrap">
+                              <select class="select">
+                                <option>XOF F</option>
+                                <option>$ USD</option>
+                                <option>€ EUR</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="upload__col upload__col_w30">
+                      <div class="upload__label">Promotion</div>
+                      <div class="upload__line">
+                        <div class="upload__cell">
+                          <div class="field field_empty">
+                            <div class="field__wrap">
+                              <input class="field__input" type="text" name="discount" placeholder="ex. &quot;10&quot;" required>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="upload__cell">
+                          <div class="field field_empty">
+                            <div class="field__wrap">
+                              <select class="select">
+                                <option>%</option>
+                                <option>F CFA</option>
+                                <option>$</option>
+                                <option>€</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="field">
-                    <div class="field__label">real name</div>
+                    <div class="field__label">description</div>
                     <div class="field__wrap">
-                      <input class="field__input" type="text" name="real-name" placeholder="Enter your real name" required>
+                      <textarea class="field__textarea" name="description" placeholder="ex. Femme portant un enfant au dos" required></textarea>
                     </div>
                   </div>
                 </div>
-                <div class="setting__row">
-                  <div class="field">
-                    <div class="field__label">Phone</div>
-                    <div class="field__wrap">
-                      <input class="field__input" type="tel" name="phone" placeholder="Phone number" required>
-                    </div>
+              </div>
+              <div class="upload__item">
+                <div class="upload__category">Tags</div>
+                <div class="upload__fieldset">
+                  <div class="upload__row">
+                    <div class="upload__col upload__col_w50">
+                      <div class="field">
+                        <div class="field__wrap">
+                          <input class="field__input" type="text" name="service5" placeholder="e. g. Wifi 24/7" required>
+                        </div>
+                      </div>
                   </div>
-                  <div class="field">
-                    <div class="field__label">email</div>
-                    <div class="field__wrap">
-                      <input class="field__input" type="email" name="email" placeholder="Email" required>
-                    </div>
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="field__label">bio</div>
-                  <div class="field__wrap">
-                    <textarea class="field__textarea" name="bio" placeholder="About yourself in a few words" required></textarea>
-                  </div>
-                </div>
-                <div class="setting__row">
-                  <div class="field">
-                    <div class="field__label">lives in</div>
-                    <div class="field__wrap">
-                      <select class="select">
-                        <option>Location</option>
-                        <option>USA</option>
-                        <option>Russia</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="field">
-                    <div class="field__label">Speak</div>
-                    <div class="field__wrap">
-                      <select class="select">
-                        <option>English (United States)</option>
-                        <option>Russian</option>
-                        <option>Chinese</option>
-                      </select>
-                    </div>
-                  </div>
+                  <!-- <button class="button-stroke upload__button">
+                    <svg class="icon icon-plus">
+                      <use xlink:href="#icon-plus"></use>
+                    </svg><span>Add more feature</span>
+                  </button> -->
                 </div>
               </div>
             </div>
-            <div class="setting__section">
-              <div class="setting__category">Social</div>
-              <div class="setting__fieldset">
-                <div class="setting__row">
-                  <div class="field">
-                    <div class="field__label">website</div>
-                    <div class="field__wrap">
-                      <input class="field__input" type="text" name="website" placeholder="Your site URL" required>
-                    </div>
-                  </div>
-                  <div class="field field_button">
-                    <div class="field__label">twitter</div>
-                    <div class="field__wrap">
-                      <input class="field__input" type="text" name="twitter" placeholder="@twitter username" required>
-                      <button class="button-stroke button-small field__button">Verify account</button>
-                    </div>
-                  </div>
-                </div>
+            <div class="upload__foot">
+              <button class="button-stroke upload__button js-upload-button">Aperçu</button>
+              <div class="button upload__button"><span>Uploader</span>
+                <svg class="icon icon-arrow-next">
+                  <use xlink:href="#icon-arrow-next"></use>
+                </svg>
               </div>
-            </div>
-          </div>
-          <div class="setting__controls">
-            <button class="button setting__button">Update profile</button>
-            <button class="setting__clear">
-              <svg class="icon icon-close">
-                <use xlink:href="#icon-close"></use>
-              </svg>Clear all
-            </button>
-          </div>
-        </form>
-      </div>
-      <div class="setting__item js-tabs-item">
-        <h2 class="setting__title h2">Login and security</h2>
-        <div class="setting__list">
-          <div class="setting__box">
-            <div class="setting__stage">Login</div>
-            <div class="setting__element">
-              <div class="setting__details">
-                <div class="setting__label">Password</div>
-                <div class="setting__text">Last updated 1 month ago</div>
-              </div>
-              <button class="button-stroke button-small settings__button">Update password</button>
-            </div>
-          </div>
-          <div class="setting__box">
-            <div class="setting__stage">Social accounts</div>
-            <div class="setting__line">
-              <div class="setting__element">
-                <div class="setting__details">
-                  <div class="setting__label">Facebook</div>
-                  <div class="setting__text">Not connected</div>
-                </div>
-                <button class="button-stroke button-small settings__button">Connect</button>
-              </div>
-              <div class="setting__element">
-                <div class="setting__details">
-                  <div class="setting__label">Apple account</div>
-                  <div class="setting__text">Not connected</div>
-                </div>
-                <button class="button-stroke button-small settings__button">Connect</button>
-              </div>
-            </div>
-          </div>
-          <div class="setting__box">
-            <div class="setting__stage">Device history</div>
-            <div class="setting__group">
-              <div class="setting__element">
-                <div class="setting__details">
-                  <div class="setting__label">Session</div>
-                  <div class="setting__text">May 14, 2021 at 08:36pm</div>
-                </div>
-                <button class="button-stroke button-small settings__button">Log out device</button>
-              </div>
-              <div class="setting__element">
-                <div class="setting__details">
-                  <div class="setting__label">macOs Big Sur. Chrome</div>
-                  <div class="setting__text">May 14, 2021 at 08:36pm</div>
-                </div>
-                <button class="button-stroke button-small settings__button">Log out device</button>
-              </div>
-              <div class="setting__element">
-                <div class="setting__details">
-                  <div class="setting__label">Session</div>
-                  <div class="setting__text">May 14, 2021 at 08:36pm</div>
-                </div>
-                <button class="button-stroke button-small settings__button">Log out device</button>
-              </div>
+              <!-- <div class="upload__saving">Auto saving
+                <div class="loader"></div>
+              </div> -->
             </div>
           </div>
         </div>
-      </div>
-      <div class="setting__item js-tabs-item">
-        <h2 class="setting__title h2">Payment methods</h2>
-        <form class="setting__form">
-          <div class="setting__list">
-            <div class="setting__box">
-              <div class="setting__stage">Credit card</div>
-              <div class="setting__element">
-                <div class="setting__details">
-                  <div class="setting__label">Visa ••••••1667</div>
-                  <div class="setting__text">Expiration: 03/2026</div>
-                </div>
-                <button class="button-small settings__button">Add payment method</button>
-              </div>
-              <div class="setting__top">
-                <div class="setting__category">Add new credit card</div>
-                <div class="setting__cards">
-                  <div class="setting__card"><img src="img/content/visa.svg" alt="Visa"></div>
-                  <div class="setting__card"><img src="img/content/master-card.svg" alt="Master Card"></div>
-                </div>
-              </div>
-              <div class="setting__fieldset">
-                <div class="field">
-                  <div class="field__label">card number</div>
-                  <div class="field__wrap">
-                    <input class="field__input" type="tel" name="card-number" placeholder="XXXX XXXX XXXX XXXX" required>
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="field__label">card holder</div>
-                  <div class="field__wrap">
-                    <input class="field__input" type="text" name="card-holder" placeholder="TRAN MAU TRI TAM" required>
-                  </div>
-                </div>
-                <div class="setting__row">
-                  <div class="field">
-                    <div class="field__label">EXPIRATION DATE</div>
-                    <div class="field__wrap">
-                      <input class="field__input" type="tel" name="date" placeholder="MM / YY" required>
-                    </div>
-                  </div>
-                  <div class="field">
-                    <div class="field__label">CVC</div>
-                    <div class="field__wrap">
-                      <input class="field__input" type="tel" name="CVC" placeholder="CVC" required>
-                    </div>
-                  </div>
-                </div>
-                <label class="checkbox">
-                  <input class="checkbox__input" type="checkbox" checked="checked"/><span class="checkbox__inner"><span class="checkbox__tick"></span><span class="checkbox__text">Save Card</span></span>
-                </label>
-              </div>
-            </div>
-            <div class="setting__box">
-              <div class="setting__stage">Coupons</div>
-              <div class="setting__line">
-                <div class="setting__element">
-                  <div class="setting__details">
-                    <div class="setting__label">Coupons</div>
-                    <div class="setting__text">No coupon added</div>
-                  </div>
-                  <button class="button-stroke button-small settings__button">Add</button>
-                </div>
-                <div class="setting__element">
-                  <div class="setting__details">
-                    <div class="setting__label">Gift credit</div>
-                    <div class="setting__text">No gift credit added</div>
-                  </div>
-                  <button class="button-stroke button-small settings__button">Add</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="setting__item js-tabs-item">
-        <h2 class="setting__title h2">Notification setting</h2>
-        <div class="setting__list">
-          <div class="setting__box">
-            <div class="setting__stage">Messages</div>
-            <div class="setting__notification">
-              <div class="setting__main">
-                <div class="setting__subtitle">Email</div>
-                <label class="switch">
-                  <input class="switch__input" type="checkbox" checked="checked"/><span class="switch__inner"><span class="switch__box"></span></span>
-                </label>
-              </div>
-              <div class="setting__content">Recevice notifications via email</div>
-            </div>
-            <div class="setting__notification">
-              <div class="setting__main">
-                <div class="setting__subtitle">Text messages</div>
-                <label class="switch">
-                  <input class="switch__input" type="checkbox"/><span class="switch__inner"><span class="switch__box"></span></span>
-                </label>
-              </div>
-              <div class="setting__content">Recevice notifications via mobile phone</div>
-            </div>
-            <div class="setting__notification">
-              <div class="setting__main">
-                <div class="setting__subtitle">Browser notifications</div>
-                <label class="switch">
-                  <input class="switch__input" type="checkbox"/><span class="switch__inner"><span class="switch__box"></span></span>
-                </label>
-              </div>
-              <div class="setting__content">Recevice notifications of your browser</div>
-            </div>
-          </div>
-          <div class="setting__box">
-            <div class="setting__stage">Promotions</div>
-            <div class="setting__notification">
-              <div class="setting__main">
-                <div class="setting__subtitle">Email</div>
-                <label class="switch">
-                  <input class="switch__input" type="checkbox" checked="checked"/><span class="switch__inner"><span class="switch__box"></span></span>
-                </label>
-              </div>
-              <div class="setting__content">Recevice notifications via email</div>
-            </div>
-            <div class="setting__notification">
-              <div class="setting__main">
-                <div class="setting__subtitle">Text messages</div>
-                <label class="switch">
-                  <input class="switch__input" type="checkbox"/><span class="switch__inner"><span class="switch__box"></span></span>
-                </label>
-              </div>
-              <div class="setting__content">Recevice notifications via mobile phone</div>
-            </div>
-            <div class="setting__notification">
-              <div class="setting__main">
-                <div class="setting__subtitle">Browser notifications</div>
-                <label class="switch">
-                  <input class="switch__input" type="checkbox"/><span class="switch__inner"><span class="switch__box"></span></span>
-                </label>
-              </div>
-              <div class="setting__content">Recevice notifications of your browser</div>
-            </div>
-          </div>
-          <div class="setting__box">
-            <div class="setting__stage">Reminders</div>
-            <div class="setting__notification">
-              <div class="setting__main">
-                <div class="setting__subtitle">Email</div>
-                <label class="switch">
-                  <input class="switch__input" type="checkbox" checked="checked"/><span class="switch__inner"><span class="switch__box"></span></span>
-                </label>
-              </div>
-              <div class="setting__content">Recevice notifications via email</div>
-            </div>
-            <div class="setting__notification">
-              <div class="setting__main">
-                <div class="setting__subtitle">Text messages</div>
-                <label class="switch">
-                  <input class="switch__input" type="checkbox"/><span class="switch__inner"><span class="switch__box"></span></span>
-                </label>
-              </div>
-              <div class="setting__content">Recevice notifications via mobile phone</div>
-            </div>
-            <div class="setting__notification">
-              <div class="setting__main">
-                <div class="setting__subtitle">Browser notifications</div>
-                <label class="switch">
-                  <input class="switch__input" type="checkbox"/><span class="switch__inner"><span class="switch__box"></span></span>
-                </label>
-              </div>
-              <div class="setting__content">Recevice notifications of your browser</div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
+      </tab>
+
+    </tabs>
   </div>
-</div>
 </div>
 </template>
 
 <script>
+import Tab from '~/components/Tab.vue'
+import Tabs from '~/components/Tabs.vue'
 export default {
-  name: 'Account'
+  name: 'Account',
+  components: {
+    Tab,
+    Tabs
+  }
 }
 </script>
 

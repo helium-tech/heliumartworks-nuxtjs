@@ -14936,10 +14936,6 @@ body.dark .setting__head .setting__button {
     }
 }
 
-.setting__item {
-    display: none;
-}
-
 .setting__section:not(:last-child) {
     margin-bottom: 48px;
 }
