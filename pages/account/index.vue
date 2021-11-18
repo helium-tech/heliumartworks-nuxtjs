@@ -4,7 +4,6 @@
     <div class="setting__select tablet-show">
       <select class="select js-tabs-select">
         <option>Mes informations</option>
-        <option>Connexion et sécurité</option>
         <option>Uploader un fichier</option>
       </select>
     </div>
@@ -146,6 +145,83 @@
           </div>
         </div>
         </div>
+      </tab>
+
+      <tab
+        svg="icon-credit-card"
+        useSvg="#icon-credit-card"
+        title="Solde et Transactions"
+        >
+          <div class="setting__item">
+                <h2 class="setting__title h2">Solde et Transactions</h2>
+                <div class="setting__list">
+                  <div class="setting__box">
+                    <div class="setting__stage">Solde</div>
+                    <div class="setting__element">
+                      <div class="setting__details">
+                        <div class="columns">
+                          <div class="column col-4 col-xs-12">
+                            <div class="card s-rounded mb-4-o">
+                              <div class="card-header">
+                                <div v-if="loading" class="loading loading-lg"></div>
+                                <div class="card-title text-bold" v-else>Mon solde</div>
+                                <div class="card-subtitle text-gray text-tiny">Montant constituant votre solde total</div>
+                              </div>
+                              <div class="card-body text-center">
+                                <span class="h4 text-bold">450000 FCFA</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="setting__box">
+                    <div class="setting__stage">Transactions</div>
+                  </div>
+                </div>
+
+          </div>
+      </tab>
+
+      <tab
+        svg="icon-monitor"
+        useSvg="#icon-monitor"
+        title="Mes statistiques"
+        >
+          <div class="setting__item">
+              <div class="setting__head">
+                <h2 class="setting__title h2">Mes statistiques</h2>
+              </div>
+
+            <div class="columns">
+              <div class="column col-4 col-xs-12">
+                <div class="card s-rounded mb-4-o">
+                  <div class="card-header">
+                    <div v-if="loading" class="loading loading-lg"></div>
+                    <div class="card-title text-bold" v-else>Téléchargements</div>
+                    <div class="card-subtitle text-gray text-tiny">Nombre de fois où vos fichiers ont été téléchargés</div>
+                  </div>
+                  <div class="card-body text-center">
+                    <span class="h4 text-bold">15000</span>
+                  </div>
+                </div>
+              </div>
+              <div class="column col-4 col-xs-12">
+                <div class="card s-rounded mb-4-o">
+                  <div class="card-header">
+                    <div v-if="loading" class="loading loading-lg"></div>
+                    <div class="card-title text-bold" v-else>Vues</div>
+                    <div class="card-subtitle text-gray text-tiny">Nombre de fois où vos fichiers ont été consultés</div>
+                  </div>
+                  <div class="card-body text-center">
+                    <span class="h4 text-bold">500000</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
       </tab>
 
     </tabs>
