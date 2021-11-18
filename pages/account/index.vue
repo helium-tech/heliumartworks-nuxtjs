@@ -164,7 +164,11 @@
                             <div class="card s-rounded mb-4-o">
                               <div class="card-header">
                                 <div v-if="loading" class="loading loading-lg"></div>
-                                <div class="card-title text-bold" v-else>Mon solde</div>
+                                <div class="card-title text-bold" v-else>Mon solde
+                                  <svg class="icon icon-credit-card">
+                                  <use xlink:href="#icon-credit-card"></use>
+                                </svg>
+                              </div>
                                 <div class="card-subtitle text-gray text-tiny">Montant constituant votre solde total</div>
                               </div>
                               <div class="card-body text-center">
@@ -177,7 +181,9 @@
                     </div>
                   </div>
                   <div class="setting__box">
-                    <div class="setting__stage">Transactions</div>
+                    <div class="setting__stage">Transactions
+
+                    </div>
                   </div>
                 </div>
 
@@ -198,8 +204,9 @@
               <div class="column col-4 col-xs-12">
                 <div class="card s-rounded mb-4-o">
                   <div class="card-header">
-                    <div v-if="loading" class="loading loading-lg"></div>
-                    <div class="card-title text-bold" v-else>Téléchargements</div>
+                    <div class="card-title text-bold">Téléchargements
+                      <i class="icon icon-downward"></i>
+                    </div>
                     <div class="card-subtitle text-gray text-tiny">Nombre de fois où vos fichiers ont été téléchargés</div>
                   </div>
                   <div class="card-body text-center">
@@ -210,8 +217,11 @@
               <div class="column col-4 col-xs-12">
                 <div class="card s-rounded mb-4-o">
                   <div class="card-header">
-                    <div v-if="loading" class="loading loading-lg"></div>
-                    <div class="card-title text-bold" v-else>Vues</div>
+                    <div class="card-title text-bold">Vues
+                      <svg class="icon icon-eye">
+                        <use xlink:href="#icon-eye"></use>
+                      </svg>
+                    </div>
                     <div class="card-subtitle text-gray text-tiny">Nombre de fois où vos fichiers ont été consultés</div>
                   </div>
                   <div class="card-body text-center">
