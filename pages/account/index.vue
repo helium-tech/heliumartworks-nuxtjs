@@ -123,11 +123,11 @@
                         </div>
                       </div>
                   </div>
-                  <!-- <button class="button-stroke upload__button">
+                  <button class="button-stroke upload__button">
                     <svg class="icon icon-plus">
                       <use xlink:href="#icon-plus"></use>
                     </svg><span>Add more feature</span>
-                  </button> -->
+                  </button>
                 </div>
               </div>
             </div>

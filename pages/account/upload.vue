@@ -10,7 +10,7 @@
         <div class="upload__form">
           <div class="upload__list">
             <div class="upload__item">
-              <div class="upload__note">Choisissez le fichier à uploader</div>
+              <div class="upload__note">Choisissez le fichier à uploaderrrr</div>
               <div class="upload__file">
                 <input class="upload__input" type="file">
                 <div class="upload__icon">
@@ -99,11 +99,11 @@
                     </div>
                   </div>
                 </div>
-                <!-- <button class="button-stroke upload__button">
+                <button class="button-stroke upload__button">
                   <svg class="icon icon-plus">
                     <use xlink:href="#icon-plus"></use>
                   </svg><span>Add more feature</span>
-                </button> -->
+                </button>
               </div>
             </div>
           </div>
@@ -114,13 +114,13 @@
                 <use xlink:href="#icon-arrow-next"></use>
               </svg>
             </div>
-            <!-- <div class="upload__saving">Auto saving
+            <div class="upload__saving">Auto saving
               <div class="loader"></div>
-            </div> -->
+            </div>
           </div>
         </div>
       </div>
-      <!-- <div class="upload__preview js-upload-preview">
+      <div class="upload__preview js-upload-preview">
         <div class="upload__wrap">
           <button class="upload__close js-upload-close">
             <svg class="icon icon-close">
@@ -166,7 +166,7 @@
               </div>
             </div></a>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </div>
