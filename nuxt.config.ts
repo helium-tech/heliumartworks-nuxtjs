@@ -20,9 +20,9 @@ const config: NuxtConfig = {
       { hid: 'twitter:label1', name: 'twitter:label1', content: 'Durée de lecture est...' },
       { hid: 'twitter:data1', name: 'twitter:data1', content: '02 minutes ' },
       { hid: 'fb:app_id', name: 'fb:app_id', content: '4443848595663604' },
-      { hid: 'article:publisher', name: 'article:publisher', content: 'https://www.facebook.com/HeliumArtworks'},
+      { hid: 'article:publisher', name: 'article:publisher', content: 'https://www.facebook.com/HeliumArtworks' },
       { hid: 'og:title', name: 'og:title', content: 'La meilleurs banque de médias africaines (Images, Videos etc)' },
-      
+
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [ //inclue les scripts en pied de page de façon normale
@@ -57,6 +57,7 @@ const config: NuxtConfig = {
   buildModules: [
     '@nuxt/typescript-build',
     '@nuxtjs/firebase',
+    '@/modules/generator'
   ],
 
   firebase: {
@@ -125,7 +126,10 @@ const config: NuxtConfig = {
     },
   },
 
-  modules: ['@nuxtjs/pwa'],
+  modules: [
+    '@nuxtjs/pwa',
+    '@nuxtjs/sitemap'
+  ],
   plugins: [
     // '~/plugins/lazyMode', dev update
     { src: '~plugins/vuemasonry.js' },
@@ -150,58 +154,72 @@ const config: NuxtConfig = {
     middleware: ['testMiddleware'],
   },
 
-  pwa: {
-    manifest: {
-      name: "Helium Artworks",
-      lang: "fr",
-      short_name: "Helium Artworks",
-      description: "Tous les médias africaines, comme vous le vloulez pour vos projets créatives !"
-    },
-    workbox: {
-      importScripts: ['/firebase-auth-sw.js'],
-      dev: process.env.NODE_ENV === 'development',
-    },
-    meta: {
-      mobileAppIOS: true,
-      name: "Helium Artworks",
-      author: "Helium Technologie",
-      lang: "fr",
-      ogType: "website",
-      ogName: "Helium Artworks"
-    },
-    icon: {
-      source: '/logo_500.png',
-      filename: "logo_500.png",
-      icons: [
-        {
-          src: `/icon.png`,
-          size: "144x144",
-          type: "image/png"
-        }, {
-          src: `/apple-touch-icon.png`,
-          size: "128x128",
-          type: "image/png"
-        }, {
-          src: `/apple-touch-icon.png`,
-          size: "152x152",
-          type: "image/png"
-        }, {
-          src: `/apple-touch-icon.png`,
-          size: "180x180",
-          type: "image/png"
-        }, {
-          src: `/apple-touch-icon.png`,
-          size: "192x192",
-          type: "image/png"
-        }, {
-          src: `/apple-touch-icon.png`,
-          size: "256x256",
-          type: "image/png"
-        }
-      ]
+  sitemap: {
+    hostname: 'https://www.heliumartworks.com/',
+    gzip: true,
+    exclude: [
+      '/account',
+      '/account/**',
+    ],
+    defaults: {
+      changefreq: 'daily',
+      priority: 1,
+      lastmod: new Date()
     }
-
   },
+
+  // pwa: {
+  //   manifest: {
+  //     name: "Helium Artworks",
+  //     lang: "fr",
+  //     short_name: "Helium Artworks",
+  //     description: "Tous les médias africaines, comme vous le vloulez pour vos projets créatives !"
+  //   },
+  //   workbox: {
+  //     importScripts: ['/firebase-auth-sw.js'],
+  //     dev: process.env.NODE_ENV === 'development',
+  //   },
+  //   meta: {
+  //     mobileAppIOS: true,
+  //     name: "Helium Artworks",
+  //     author: "Helium Technologie",
+  //     lang: "fr",
+  //     ogType: "website",
+  //     ogName: "Helium Artworks"
+  //   },
+  //   icon: {
+  //     source: '/logo_500.png',
+  //     filename: "logo_500.png",
+  //     icons: [
+  //       {
+  //         src: `/icon.png`,
+  //         size: "144x144",
+  //         type: "image/png"
+  //       }, {
+  //         src: `/apple-touch-icon.png`,
+  //         size: "128x128",
+  //         type: "image/png"
+  //       }, {
+  //         src: `/apple-touch-icon.png`,
+  //         size: "152x152",
+  //         type: "image/png"
+  //       }, {
+  //         src: `/apple-touch-icon.png`,
+  //         size: "180x180",
+  //         type: "image/png"
+  //       }, {
+  //         src: `/apple-touch-icon.png`,
+  //         size: "192x192",
+  //         type: "image/png"
+  //       }, {
+  //         src: `/apple-touch-icon.png`,
+  //         size: "256x256",
+  //         type: "image/png"
+  //       }
+  //     ]
+  //   }
+
+  // },
 }
 export default config
 
