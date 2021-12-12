@@ -127,7 +127,7 @@ const config: NuxtConfig = {
   },
 
   modules: [
-    '@nuxtjs/pwa',
+    // '@nuxtjs/pwa',
     '@nuxtjs/sitemap'
   ],
   plugins: [
