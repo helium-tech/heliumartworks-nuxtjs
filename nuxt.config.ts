@@ -128,7 +128,8 @@ const config: NuxtConfig = {
 
   modules: [
     // '@nuxtjs/pwa',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
   ],
   plugins: [
     // '~/plugins/lazyMode', dev update
@@ -167,6 +168,17 @@ const config: NuxtConfig = {
       lastmod: new Date()
     }
   },
+
+
+  robots: () => {
+    return {
+      UserAgent: '*',
+      Disallow: '/account',
+      Host: "https://www.heliumartworks.com",
+      Sitemap: "https://www.heliumartworks.com/sitemap.xml"
+    }
+  }
+
 
   // pwa: {
   //   manifest: {
