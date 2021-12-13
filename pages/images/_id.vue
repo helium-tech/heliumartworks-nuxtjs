@@ -461,7 +461,7 @@ export default {
       var provider = new firebase.auth.GoogleAuthProvider()
       firebase
         .auth()
-        .signInWithPopup(provider)
+        .signInWithRedirect(provider)
         .then((result) => {
           this.loading = false
           this.isAchatModalActive = false

@@ -167,7 +167,7 @@ export default Vue.extend({
       var provider = new firebase.auth.GoogleAuthProvider()
       firebase
         .auth()
-        .signInWithPopup(provider)
+        .signInWithRedirect(provider)
         .then((result) => {
           this.loading = false
           this.isModalActive = false
