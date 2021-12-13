@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-      <nuxt-link to="/sell" class="btn btn-cta text-small text-bold header__button">Vendre mes oeuvres</nuxt-link>
+      <nuxt-link to="/vendre-mes-oeuvres" class="btn btn-cta text-small text-bold header__button">Vendre mes oeuvres</nuxt-link>
     </div>
     <AuthModal class="hide-md"/>
     <!-- <div class="header__item header__item_notification js-header-item">
