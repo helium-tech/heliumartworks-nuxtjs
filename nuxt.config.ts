@@ -28,17 +28,6 @@ const config: NuxtConfig = {
     script: [ //inclue les scripts en pied de page de façon normale
       {
         type: 'text/javascript',
-        src: '/js/lib/jquery.min.js',
-        async: true,
-      },
-      {
-        type: 'text/javascript',
-        src: '/js/app.js',
-        body: true,
-        defer: true,
-      },
-      {
-        type: 'text/javascript',
         src: '//code.tidio.co/jpah1p3bihphulgejchyouwkgyjmixj6.js',
         body: true,
         defer: true,
@@ -234,5 +223,3 @@ const config: NuxtConfig = {
   // },
 }
 export default config
-
-

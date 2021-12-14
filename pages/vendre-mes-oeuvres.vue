@@ -1,9 +1,18 @@
 <template>
-  <div class="travel__center center section-mb80">
-            <div class="travel__head">
-              <h2 class="travel__title h1">Vendre ses oeuvres sur Heliumartworks</h2>
-            </div>
-            <div class="travel__row">
+  <div class="travel__center section-mb80">
+            <div class="section main main_stays-category">
+              <div class="main__center center">
+                <div class="main__preview bg-gray">
+                  <div class="main__wrap">
+                    <h1 class="h2">Bannière</h1>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="travel__head">
+            <h2 class="travel__title h1">Vendre ses oeuvres sur Heliumartworks</h2>
+          </div>
+            <div class="travel__row center">
               <div class="travel__col">
                 <div class="travel__list">
                   <div class="travel__item">
@@ -21,7 +30,7 @@
                 </div>
               </div>
             </div>
-            <div class="travel__row">
+            <div class="travel__row center">
               <div class="travel__col">
                 <div class="travel__wrapper">
                   <div class="travel__group">
@@ -39,7 +48,7 @@
                 </div><a class="button travel__button" href="#">Ouvrir un compte</a>
               </div>
             </div>
-            <div class="travel__row">
+            <div class="travel__row center">
               <div class="travel__col">
                 <div class="travel__list">
                   <div class="travel__item">
@@ -64,5 +73,10 @@
 
 </script>
 <style scoped>
-
+  .main_stays-category .main__preview:before {
+    padding-bottom: 20%;
+  }
+  .main_stays-category .main__wrap {
+    padding: 0;
+  }
 </style>

@@ -16619,9 +16619,7 @@ body.dark .place__text {
 }
 
 .upload__wrapper {
-    flex: 0 0 calc(100% - 352px);
-    width: calc(100% - 352px);
-    padding-right: 128px;
+    padding-right: 58px;
 }
 
 @media only screen and (max-width: 1339px) {
