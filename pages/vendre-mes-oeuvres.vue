@@ -2,15 +2,12 @@
   <div class="travel__center section-mb80">
             <div class="section main main_stays-category">
               <div class="main__center center">
-                <div class="main__preview bg-gray">
+                <div class="main__preview"><img src=@/assets/images/oncle-bob.jpg alt="Bannière">
                   <div class="main__wrap">
-                    <h1 class="h2">Bannière</h1>
+                    <h1 class="main__title hero">Vendre ses oeuvres sur Heliumartworks</h1>
                   </div>
                 </div>
               </div>
-          </div>
-          <div class="travel__head">
-            <h2 class="travel__title h1">Vendre ses oeuvres sur Heliumartworks</h2>
           </div>
             <div class="travel__row center">
               <div class="travel__col">
@@ -73,10 +70,29 @@
 
 </script>
 <style scoped>
-  .main_stays-category .main__preview:before {
-    padding-bottom: 20%;
-  }
-  .main_stays-category .main__wrap {
-    padding: 0;
-  }
+<style scoped>
+.panel {
+	border: none;
+	border-radius: inherit;
+}
+.main__preview img {
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+.main__title {
+  margin: 0
+}
+.main_stays-category .main__wrap {
+  padding: 0
+}
+.main_stays-category .main__preview:before {
+    padding-bottom: 30%;
+}
+.main__title.hero {
+	color: #fff;
+}
 </style>

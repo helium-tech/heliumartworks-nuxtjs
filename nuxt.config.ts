@@ -126,6 +126,7 @@ const config: NuxtConfig = {
     { src: '~plugins/vue-lazyload.js' },
     { src: '~plugins/spectrecss.js' },
     { src: '~plugins/vuesax.js' },
+    { src: '~plugins/vueFormulate.js' },
 
   ],
 

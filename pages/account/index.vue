@@ -33,28 +33,39 @@
                 <div class="upload__head">
                   <h2 class="upload__title h2">Uploader un fichier</h2><a class="button-stroke button-small upload__button" href="#">Liste des images</a>
                 </div>
-                <form class="upload__form" enctype="multipart/form-data">
+                <FormulateForm
+                  v-model="formValues"
+                  @submit="uploadFile"
+                  #default="{ isLoading }"
+                  >
                   <div class="upload__list">
                     <div class="upload__item">
                       <div class="upload__note">Choisissez le fichier à uploader</div>
                       <div class="upload__file">
-                        <!-- <input class="upload__input" type="file" @change="getUploadFile($event)"> -->
+                        <FormulateInput
+                        type="image"
+                        name="file"
+                        validation="required|mime:image/jpeg,image/png,image/gif"
+                        validation-name="Le fichier"
+                        />
                         <div class="upload__icon">
                           <svg class="icon icon-upload-file">
                             <use xlink:href="#icon-upload-file"></use>
                           </svg>
                         </div>
-                        <div class="upload__format">PNG, JPEG. Max 500Mb.</div>
+                        <div class="upload__format">Sélectionner un fichier PNG ,JPEG ou GIF. Max 50Mb.</div>
                       </div>
                     </div>
                     <div class="upload__item">
                       <div class="upload__category">Détails du fichier</div>
                       <div class="upload__fieldset">
                         <div class="field">
-                          <div class="field__label">titre</div>
-                          <div class="field__wrap">
-                            <input class="field__input" type="text" name="title" required v-model="fileTitle">
-                          </div>
+                          <div class="field__label">Titre</div>
+                          <FormulateInput
+                            name="title"
+                            validation="required"
+                            validation-name="Le nom du fichier"
+                          />
                         </div>
                         <div class="upload__row">
                           <div class="upload__col upload__col_w70">
@@ -63,11 +74,15 @@
                               <div class="upload__cell">
                                 <div class="field field_empty">
                                   <div class="field__wrap">
-                                    <input class="field__input" type="text" name="price" placeholder="e. g. &quot;180&quot;" required v-model="filePrice">
+                                    <FormulateInput
+                                      name="price"
+                                      validation="number"
+                                      validation-name="Le prix"
+                                    />
                                   </div>
                                 </div>
                               </div>
-                              <div class="upload__cell">
+                              <!-- <div class="upload__cell">
                                 <div class="field field_empty">
                                   <div class="field__wrap">
                                     <select class="select">
@@ -77,20 +92,24 @@
                                     </select>
                                   </div>
                                 </div>
-                              </div>
+                              </div> -->
                             </div>
                           </div>
                           <div class="upload__col upload__col_w30">
-                            <div class="upload__label">Promotion</div>
+                            <div class="upload__label">Prix Promotion</div>
                             <div class="upload__line">
                               <div class="upload__cell">
                                 <div class="field field_empty">
                                   <div class="field__wrap">
-                                    <input class="field__input" type="text" name="discount" placeholder="ex. &quot;10&quot;" required>
+                                    <FormulateInput
+                                      name="offer_price"
+                                      validation="number"
+                                      validation-name="Le prix promotionnel"
+                                    />
                                   </div>
                                 </div>
                               </div>
-                              <div class="upload__cell">
+                              <!-- <div class="upload__cell">
                                 <div class="field field_empty">
                                   <div class="field__wrap">
                                     <select class="select">
@@ -101,26 +120,29 @@
                                     </select>
                                   </div>
                                 </div>
-                              </div>
+                              </div> -->
                             </div>
                           </div>
                         </div>
                         <div class="field">
                           <div class="field__label">description</div>
                           <div class="field__wrap">
-                            <textarea class="field__textarea" name="description" placeholder="ex. Femme portant un enfant au dos" required v-model="fileDescription"></textarea>
+                            <FormulateInput
+                              type="textarea"
+                              name="file_description"
+                            />
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="upload__item">
+                    <!-- <div class="upload__item">
                       <div class="upload__category">Tags</div>
                       <div class="upload__fieldset">
                         <div class="upload__row">
                           <div class="upload__col upload__col_w50">
                             <div class="field">
                               <div class="field__wrap">
-                                <input class="field__input" type="text" name="service5" placeholder="e. g. Wifi 24/7" required>
+                                <input class="field__input" type="text" name="service5" placeholder="ex. Afro">
                               </div>
                             </div>
                         </div>
@@ -131,47 +153,47 @@
                         </button>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="upload__foot">
                     <button class="button-stroke upload__button js-upload-button">Aperçu</button>
-                    <!-- <button class="button upload__button" @click="uploadFile"> -->
-                      <span>Uploader</span>
-                      <svg class="icon icon-arrow-next">
-                        <use xlink:href="#icon-arrow-next"></use>
-                      </svg>
-                    </button>
+                    <FormulateInput
+                      type="submit"
+                      :disabled="isLoading"
+                      :label="isLoading ? 'Chargement en cours...' : 'Uploader ce fichier'"
+                    />
                     <!-- <div class="upload__saving">Auto saving
                       <div class="loader"></div>
                     </div> -->
                   </div>
                 </div>
-              </form>
+              </FormulateForm>
           </div>
           <div class="upload__preview">
             <div class="upload__wrap">
               <div class="upload__subtitle">Aperçu</div>
-                <div class="card__preview"><img src="img/content/card-pic-5.jpg"/>
+                <div class="card__preview">
+                  <img :src="formValues.file.files[0].previewData" v-if="formValues.file">
                   <div class="category card__category">Catégorie Image</div>
                 </div>
                 <div class="card__body">
                   <div class="card__line">
-                    <div class="card__title">{{fileTitle}}</div>
+                    <div class="card__title">{{formValues.title}}</div>
                     <div class="card__price">
-                      <div class="card__old">Prix original</div>
-                      <div class="card__actual">Prix promotionne</div>
+                      <div class="card__old">{{formValues.price}}</div>
+                      <div class="card__actual">{{formValues.offer_price}}</div>
                     </div>
                   </div>
-                  <div class="card__options">
+                  <!-- <div class="card__options">
                     <div class="card__option">
                       Tag1
                     </div>
                     <div class="card__option">
                       Tag2
                     </div>
-                  </div>
+                  </div> -->
                   <div class="card__foot">
                     <div class="card__flex">
-                      <div class="card__cost">{{filePrice}}</div>
+                      <div class="card__cost">{{formValues.price}}</div>
                     </div>
                   </div>
                 </div>
@@ -274,6 +296,9 @@
 <script>
 import Tab from '~/components/Tab.vue'
 import Tabs from '~/components/Tabs.vue'
+import axios from 'axios'
+import { mapState } from 'vuex'
+const url = 'https://heliumartworks.herokuapp.com/files/add'
 export default {
   name: 'Account',
   components: {
@@ -283,30 +308,52 @@ export default {
 
   data() {
     return {
-      file: '',
-      fileTitle: '',
-      fileDescription: '',
-      filePrice: ''
+      formValues: {},
+    }
+  },
+
+  computed: {
+    ...mapState({
+      user_id: (state) => state.auth.authUser.uid,
+    }),
+  },
+
+  methods: {
+    async uploadFile(data) {
+      try {
+        const res =  await axios.post(
+                url + '?resource_type=images' + '?user_id=' + this.user_id,
+                data,
+                {
+                  headers: {'Content-Type': 'multipart/form-data' }
+                }
+          );
+          console.log(res.data);
+      } catch (e) {
+        console.error(e);
+      }
     }
   }
-  // methods: {
-  //   getUploadFile() {
-  //     this.file = event.target.files[0];
-  //   },
-
-    // uploadFile() {
-    //   axios
-    //     .post('https://heliumartworks.herokuapp.com/files/add',
-    //           {
-    //             "email": this.newEmail
-    //           })
-    //     .then((response) => {
-    //       console.log(data.data)
-    //     })
-    // }
-  }
+}
 </script>
 
-<style scoped>
+<style>
+.formulate-input-upload-area input {
+	border: none;
+}
+.formulate-input-error {
+	color: red;
+	font-size: 14px;
+}
+.upload__file img {
+	width: 250px;
+}
+.formulate-files {
+  list-style: none;
+}
+.formulate-input-upload-area {
+ display: flex;
+ align-items: center;
+}
 
 </style>
