@@ -45,8 +45,7 @@
                     <div class="travel__subtitle">Nous nous occupons de tout</div>
                     <div class="travel__content">
                       Devenez contributeur en rejoignant notre communauté
-                      de contributeurs. Nous nous occupons de vous faire gagner de l'argent en
-                      faisant ce que vous aimez. Lancez-vous maintenant.
+                      . Faites ce que vous aimez et nous nous occupons de vous aider à en vivre. Lancez-vous maintenant.
                     </div>
                   </div>
                 </div><a class="button travel__button" href="#">Je me lance</a>
