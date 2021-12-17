@@ -79,7 +79,6 @@
                         <div class="field__label">Titre</div>
                         <FormulateInput
                           name="title"
-                          v-model="title"
                           validation="required"
                           validation-name="Le nom du fichier"
                         />
@@ -146,7 +145,7 @@
                         <div class="field__wrap">
                           <FormulateInput
                             type="textarea"
-                            name="file_description"
+                            name="description"
                           />
                         </div>
                       </div>
@@ -337,7 +336,6 @@ export default {
     return {
       formValues: {},
       file: '',
-      title: '',
     }
   },
 
@@ -362,11 +360,13 @@ export default {
       preview.src = src
     },
 
-
     async uploadFile() {
       let formData = new FormData()
       formData.append('file', this.file)
-      formData.append('title', this.title)
+      formData.append('title', this.formValues.title)
+      formData.append('price', this.formValues.price)
+      formData.append('offer_price', this.formValues.offer_price)
+      formData.append('description', this.formValues.description)
       try {
         const res = await axios.post(
           url + '?resource_type=images' + '&user_id=' + this.user_id,
