@@ -14,10 +14,13 @@
                 <div class="travel__list">
                   <div class="travel__item">
                     <div class="travel__number" style="background-color: #8BC5E5;">01</div>
-                    <div class="travel__subtitle">Lorem Ipsum</div>
-                    <div class="travel__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
+                    <div class="travel__subtitle">Soyez rémunéré pour vos oeuvres</div>
+                    <div class="travel__content">
+                      Plus vous avez de contenu, plus vous vendez et plus vous gagnez. En effet, vous êtes rémunéré de 60 à 70% du prix par
+                      défaut pour chaque photo vendue si vous êtes un contributeur.
+                    </div>
                   </div>
-                </div><a class="button travel__button" href="#">Ouvrir un compte</a>
+                </div><a class="button travel__button" href="#">Je veux vendre</a>
               </div>
               <div class="travel__col">
                 <div class="travel__wrapper">
@@ -39,10 +42,14 @@
                 <div class="travel__list">
                   <div class="travel__item">
                     <div class="travel__number" style="background-color: #92A5EF;">02</div>
-                    <div class="travel__subtitle">Lorem ipsum dolor sit amet</div>
-                    <div class="travel__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
+                    <div class="travel__subtitle">Nous nous occupons de tout</div>
+                    <div class="travel__content">
+                      Devenez contributeur en rejoignant notre communauté
+                      de contributeurs. Nous nous occupons de vous faire gagner de l'argent en
+                      faisant ce que vous aimez. Lancez-vous maintenant.
+                    </div>
                   </div>
-                </div><a class="button travel__button" href="#">Ouvrir un compte</a>
+                </div><a class="button travel__button" href="#">Je me lance</a>
               </div>
             </div>
             <div class="travel__row center">
@@ -50,10 +57,11 @@
                 <div class="travel__list">
                   <div class="travel__item">
                     <div class="travel__number" style="background-color: #58C27D;">03</div>
-                    <div class="travel__subtitle">Lorem ipsum dolor sit amet</div>
-                    <div class="travel__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
+                    <div class="travel__subtitle">Inscription gratuite et rapide</div>
+                    <div class="travel__content">
+                      Inscrivez vous en quelques clics et commencez à vendre vos contenus dès maintenant</div>
                   </div>
-                </div><a class="button travel__button" href="#">Ouvrir un compte</a>
+                </div><a class="button travel__button" href="#">J'ouvre un compte</a>
               </div>
               <div class="travel__col">
                 <div class="travel__wrapper">
@@ -87,7 +95,10 @@
   margin: 0
 }
 .main_stays-category .main__wrap {
-  padding: 0
+  padding: 0;
+  background: #000;
+  opacity: .6;
+  border-radius: 24px;
 }
 .main_stays-category .main__preview:before {
     padding-bottom: 30%;

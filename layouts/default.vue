@@ -27,7 +27,7 @@
           </div>
         </div>
       </div>
-      <a class="header__item" href="#">Support</a>
+      <nuxt-link to="/support" class="header__item">Support</nuxt-link>
       <div class="header__item header__item_language" :class="{active: isLanguageDropdownActive}">
         <button class="header__head" @click="toggleLanguageDropdown">
           <svg class="icon icon-globe">
