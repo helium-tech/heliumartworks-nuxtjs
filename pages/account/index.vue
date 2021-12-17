@@ -13,9 +13,14 @@
             <div class="setting__head">
               <h2 class="setting__title h2">Mes informations</h2>
             </div>
-            <div class="setting__category">Nom</div>
-            <div class="setting__category">Email</div>
-            <div class="setting__category">Numero de Télephone</div>
+            <div class="setting__category">
+              <span>Nom:</span>
+              <!-- <span class="ml-2 text-bold">{{user_name}}</span> -->
+              </div>
+            <div class="setting__category">
+              <span>Email:</span>
+              <!-- <span class="ml-2 text-bold">{{user_email}}</span> -->
+            </div>
           </div>
         </tab>
 
@@ -43,7 +48,7 @@
                       Choisissez le fichier à uploader
                     </div>
                     <div class="upload__file">
-                      <input
+                      <input class="upload__input"
                         type="file"
                         name="file"
                         ref="file"
@@ -192,10 +197,7 @@
               <div class="upload__wrap">
                 <div class="upload__subtitle">Aperçu</div>
                 <div class="card__preview">
-                  <img
-                    :src="formValues.file.files[0].previewData"
-                    v-if="formValues.file"
-                  />
+                  <img id="img__preview">
                   <div class="category card__category">Catégorie Image</div>
                 </div>
                 <div class="card__body">
@@ -254,7 +256,7 @@
                             </div>
                           </div>
                           <div class="card-body text-center">
-                            <span class="h4 text-bold">450000 FCFA</span>
+                            <!-- <span class="h4 text-bold">{{user_balance}} FCFA</span> -->
                           </div>
                         </div>
                       </div>
@@ -342,15 +344,22 @@ export default {
   computed: {
     ...mapState({
       user_id: (state) => state.auth.authUser.uid,
+      // user_name: (state) => state.auth.authUser.displayName,
+      // user_email: (state) => state.auth.authUser.email,
+      // user_balance: (state) => state.auth.authUser.balance,
+      // user_followers: (state) => state.auth.authUser.followers,
     }),
   },
 
   methods: {
 
     async onFileChange(e) {
-      var files = e.target.files || e.dataTransfer.files
+      let files = e.target.files || e.dataTransfer.files
+      let preview = document.getElementById("img__preview")
       if (!files.length) return
+      let src = URL.createObjectURL(files[0])
       this.file = files[0]
+      preview.src = src
     },
 
 
@@ -382,14 +391,7 @@ export default {
   color: red;
   font-size: 14px;
 }
-.upload__file img {
-  width: 250px;
-}
 .formulate-files {
   list-style: none;
-}
-.formulate-input-upload-area {
-  display: flex;
-  align-items: center;
 }
 </style>
