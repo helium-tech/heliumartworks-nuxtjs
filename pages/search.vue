@@ -21,7 +21,7 @@
           </form>
         </div>
         <div class="catalog__sorting">
-          <select class="select">
+          <select class="select hide-md">
             <option>Récent</option>
             <option>Ancien</option>
           </select>
@@ -144,6 +144,7 @@ export default {
   },
 }
 </script>
+
 <style scoped>
 .catalog__top {
   display: flex;
@@ -245,6 +246,25 @@ export default {
   transition: all 0.2s;
 }
 
+.nice-select::after {
+  border-bottom: 2px solid #999;
+  border-right: 2px solid #999;
+  content: '';
+  display: block;
+  height: 5px;
+  margin-top: -4px;
+  pointer-events: none;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  -webkit-transform-origin: 66% 66%;
+  transform-origin: 66% 66%;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  transition: all 0.15s ease-in-out;
+  width: 5px;
+}
+
 .catalog__sorting {
   display: flex;
   align-items: center;
@@ -342,5 +362,52 @@ export default {
   color: #23262f;
   cursor: pointer;
   transition: color 0.2s;
+}
+
+.catalog {
+  padding: 0 1em;
+}
+
+@media screen and (max-width: 767px) {
+  .catalog__nav::before, .catalog__nav::after {
+    content: "";
+    flex-shrink: 0;
+    width: 32px;
+    height: 1px;
+  }
+
+  .catalog__sorting {
+    margin-bottom: 32px;
+  }
+
+  .catalog__nav {
+    margin: 0 -32px;
+    overflow: auto;
+    overflow-x: auto;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .catalog__filters {
+    width: 100%;
+    margin-bottom: 32px;
+    position: inherit;
+  }
+
+  .catalog__wrapper {
+    padding-left: 0;
+  }
+
+  .catalog__sorting {
+    display: block;
+  }
+
+  .catalog__row {
+    display: block;
+  }
 }
 </style>
