@@ -5,7 +5,8 @@ export default {
     async getRecentsImages({ commit }) {
 
         axios.get(API_BASE_URL + "/files/ressources?resource_type=images").then(data => {
-            var recentsImages = data.data
+            let response = data.data
+            let recentsImages = response.slice(0, 20);
             commit('SET_RECENTS_IMAGES', { recentsImages })
         })
     },

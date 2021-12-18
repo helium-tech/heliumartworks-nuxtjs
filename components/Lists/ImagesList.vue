@@ -1,8 +1,8 @@
 <template>
   <div>
-    <masonry 
+    <masonry
     :cols="{default: 4, 1000: 3, 700: 1, 400: 1}"
-  :gutter="{default: '10px', 700: '10px'}"
+    :gutter="{default: '10px', 700: '10px'}"
     >
 
 
@@ -37,7 +37,7 @@
           </div>
         </nuxt-link>
       </figure>
-      
+
     </masonry>
   </div>
 </template>

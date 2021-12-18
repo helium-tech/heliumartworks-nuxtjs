@@ -275,6 +275,9 @@ export default {
 .catalog__filters {
   flex-shrink: 0;
   width: 256px;
+  position: sticky;
+  top: 2em;
+  align-self: flex-start;
 }
 .catalog__wrapper {
   flex-grow: 1;
