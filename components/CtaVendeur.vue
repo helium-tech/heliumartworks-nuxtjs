@@ -2,7 +2,7 @@
     <section class="cta-vendeur">
       <div class="section center">
         <h2 class="text-bold pt-2">Vendez vos oeuvres</h2>
-        <div class="columns flex-centered bg-gray r-rounded">
+        <div class="columns flex-centered bg-gray r-rounded buy_oeuvre_back">
           <div class="col-5 hide-lg">
             <img class="img-responsive fit-img l-rounded" src=@/assets/images/art-cat.jpg alt="Categorie Art">
           </div>
@@ -38,7 +38,7 @@ export default {
   padding: 0 2rem;
 }
 
-@@media (max-width: 840px) {
+@media (max-width: 840px) {
   .px-6 {
     padding: 1rem;
   }
