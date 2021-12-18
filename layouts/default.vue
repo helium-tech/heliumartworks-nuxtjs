@@ -27,7 +27,7 @@
           </div>
         </div>
       </div>
-      <a class="header__item" href="#">Support</a>
+      <nuxt-link to="/support" class="header__item">Support</nuxt-link>
       <div class="header__item header__item_language" :class="{active: isLanguageDropdownActive}">
         <button class="header__head" @click="toggleLanguageDropdown">
           <svg class="icon icon-globe">
@@ -84,7 +84,7 @@
     <section id="nav-mob" class="mob-menu p-sticky p-4 show-lg bg-gray">
       <a class="column flex-centered" @click.prevent="toggleNavMob"><i class="icon icon-menu" title="Menu"></i></a>
       <a class="column flex-centered badge" data-badge="0"><i class="icon icon-bookmark" title="Ma sélection"></i></a>
-      <a class="column flex-centered"><i class="icon icon-search" title="Effectuer une recherche"></i></a>
+      <nuxt-link to="/search" class="column flex-centered"><i class="icon icon-search" title="Effectuer une recherche"></i></nuxt-link>
       <AuthModal class="column flex-centered"/>
     </section>
 

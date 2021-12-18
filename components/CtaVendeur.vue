@@ -8,8 +8,8 @@
           </div>
           <div class="column col-7 px-6 col-lg-auto">
             <h2>Vous êtes artiste, photographe ou créateur africain de contenu ?!</h2>
-            <p>Ouvrez un compte, publiez vos oeuvres et faites vous un revenu passif !</p>
-            <button href="#" class="btn btn-cta btn-lg mr-1 font-500">Vendre mes oeuvres</button>
+            <p>Ouvrez un compte, vendez vos oeuvres et soyez rémunéré !</p>
+            <nuxt-link to="/vendre-mes-oeuvres" class="btn btn-cta btn-lg mr-1 font-500">Vendre mes oeuvres</nuxt-link>
           </div>
         </div>
     </div>
