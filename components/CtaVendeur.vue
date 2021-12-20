@@ -23,6 +23,10 @@ export default {
 </script>
 
 <style scoped>
+
+.buy_oeuvre_back{
+  background-image: url("@/assets/images/art-cat.jpg");
+}
 .cta-vendeur {
  padding-top: 4rem;
 }
