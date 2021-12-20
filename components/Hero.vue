@@ -8,7 +8,8 @@
       </div>
       <div class="hero-side">
         <picture class="hero-img">
-          <source media="(max-width: 767px)" srcSet="img/content/main-pic-mobile-1.jpg"><img src=@/assets/images/hero.png alt="Hero">
+          <source media="(max-width: 960px)" srcSet="img/content/main-pic-mobile-1.jpg">
+            <img src=@/assets/images/hero.png alt="Hero">
           </picture>
         </div>
     </div>

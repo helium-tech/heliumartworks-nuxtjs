@@ -291,8 +291,18 @@ a:focus {
   to {transform:scale(1)}
 }
 
+.fixed-dim {
+  height: 200px !important;
+  width: 241px;
+}
+
 
 @media (max-width: 960px) {
+  .fixed-dim {
+    height: 110px !important;
+    width: 158px;
+  }
+  
   .navbar-center {
    flex-direction: column;
    align-items: flex-start !important;

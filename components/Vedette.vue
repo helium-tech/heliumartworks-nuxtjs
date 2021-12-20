@@ -7,9 +7,9 @@
             ultérieurement.
           </p>
         </div>
-        <div v-else class="columns flex-centered">
+        <div v-else>
           <!-- <figure v-if="loading" class="loading loading-lg"></figure> -->
-
+          <ImagesList v-if="loading" class="loading loading-lg"/>
           <ImagesList :images="images" />
 
         </div>
@@ -33,7 +33,7 @@ export default {
   },
   data() {
     return {
-      // loading: true,
+      loading: false,
       errored: false,
     }
   },

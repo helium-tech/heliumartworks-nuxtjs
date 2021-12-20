@@ -2,6 +2,7 @@
     <section class="cta-vendeur">
       <div class="section center">
         <h2 class="text-bold pt-2">Vendez vos oeuvres</h2>
+<<<<<<< HEAD
         <div class="columns flex-centered bg-gray r-rounded buy_oeuvre_back">
           <div class="col-5 hide-lg">
             <img class="img-responsive fit-img l-rounded" src=@/assets/images/art-cat.jpg alt="Categorie Art">
@@ -12,6 +13,11 @@
             <nuxt-link to="/vendre-mes-oeuvres" class="btn btn-cta btn-lg mr-1 font-500">Vendre mes oeuvres</nuxt-link>
           </div>
         </div>
+=======
+        <nuxt-link to="/vendre-mes-oeuvres">
+          <img class="img-responsive fit-img s-rounded" src=@/assets/images/sell-cta.jpg alt="Vendre mes oeuvres">
+        </nuxt-link>
+>>>>>>> 2e45a749ab95eb3b6e92a8cbcb5274ad911e0fc0
     </div>
     </section>
 </template>
