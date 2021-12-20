@@ -1,20 +1,18 @@
 <template>
-  <div>
-    <masonry
-    :cols="{default: 4, 1000: 3, 700: 1, 400: 1}"
+  <div class="columns flex-centered">
+    <!-- <masonry
+    :cols="{default: 4, 1000: 3, 700: 2, 400: 1}"
     :gutter="{default: '10px', 700: '10px'}"
-    >
-
-
+    > -->
       <figure
-        class="m-2 p-relative image-preview h-rounded"
+        class="m-2 p-relative image-preview h-rounded col-auto"
         v-for="image in images"
         :key="image.id"
       >
         <nuxt-link :to="'/images/' + image.slug">
           <div class="p-relative">
             <img
-              class="img-responsive img-fit-cover"
+              class="img-responsive img-fit-cover fixed-dim"
               :src="image.thumb800"
               :alt="image.title"
             />
@@ -38,7 +36,7 @@
         </nuxt-link>
       </figure>
 
-    </masonry>
+    <!-- </masonry> -->
   </div>
 </template>
 
@@ -50,3 +48,7 @@ export default {
   },
 }
 </script>
+<style>
+
+
+</style>

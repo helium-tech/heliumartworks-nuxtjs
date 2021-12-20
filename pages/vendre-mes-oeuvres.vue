@@ -77,7 +77,6 @@
 
 </script>
 <style scoped>
-<style scoped>
 .panel {
 	border: none;
 	border-radius: inherit;
