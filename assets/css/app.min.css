@@ -3123,12 +3123,13 @@ body.dark .section-bg {
 }
 
 @media only screen and (max-width: 640px) {
-  .app-hero {
-      font-size: 45px;
-  }
-  .main_stays .main__title, .main_flights .main__title {
-    max-width: 100% !important;
-  }
+    .app-hero {
+        font-size: 45px;
+    }
+    .main_stays .main__title,
+    .main_flights .main__title {
+        max-width: 100% !important;
+    }
 }
 
 .h1 {
@@ -4974,7 +4975,7 @@ body.dark .panel__controls .panel__button.active {
 @media only screen and (max-width: 767px) {
     .main__preview img {
         position: static;
-        border-radius: 16px 16px 0 0;
+        border-radius: 0px 0px 0 0;
         -o-object-position: 50% 100%;
         object-position: 50% 100%;
     }
@@ -5087,7 +5088,7 @@ body.dark .main__title {
 
 @media only screen and (max-width: 767px) {
     .main_stays .main__preview img {
-        height: 780px;
+        height: 500px;
     }
 }
 
@@ -12343,19 +12344,25 @@ body.dark .field__textarea {
     color: #777E90;
 }
 
-.field__input::-moz-placeholder, .field__textarea::-moz-placeholder {
+.field__input::-moz-placeholder,
+.field__textarea::-moz-placeholder {
     color: #777E90;
 }
 
-.field__input:-ms-input-placeholder, .field__textarea:-ms-input-placeholder {
+.field__input:-ms-input-placeholder,
+.field__textarea:-ms-input-placeholder {
     color: #777E90;
 }
 
-.field__input::-moz-placeholder, .field__textarea::-moz-placeholder, .formulate-input-element textarea::-moz-placeholder {
+.field__input::-moz-placeholder,
+.field__textarea::-moz-placeholder,
+.formulate-input-element textarea::-moz-placeholder {
     color: #777E90;
 }
 
-.field__input:-ms-input-placeholder, .field__textarea:-ms-input-placeholder, .formulate-input-element textarea:-ms-input-placeholder {
+.field__input:-ms-input-placeholder,
+.field__textarea:-ms-input-placeholder,
+.formulate-input-element textarea:-ms-input-placeholder {
     color: #777E90;
 }
 

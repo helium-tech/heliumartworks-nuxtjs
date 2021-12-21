@@ -1,8 +1,7 @@
 <template>
   <div>
-    <CategorySlugHeader :title="cat_title"/>
 
-    <div class="section-mb80 main__center center">
+    <div class="section-mb80">
 
       <div class="columns flex-centered" v-if="isSearching == false">
 

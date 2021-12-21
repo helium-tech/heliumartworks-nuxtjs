@@ -156,8 +156,8 @@
           </div>
         </div>
 
-        <section class="main__center center">
-          <h2 class="text-bold mb-2">Images similaires</h2>
+        <section class="">
+          <h2 class="text-bold mb-2" style="padding-left: 40px; padding-bottom: 20px">Les images similaires !</h2>
           <ImagesList :images="searchImages" />
         </section>
       </div>
@@ -415,7 +415,6 @@ export default {
               '&return_url=' +
               returnUrl
 
-            console.log(payement_url)
             axios
               .post(payement_url)
               .then((data) => {

@@ -2,7 +2,7 @@
   <div>
     <HeroSecond title="Images"/>
 
-    <div class="section-mb80 main__center center">
+    <div class="section-mb80">
       <!-- <div v-if="errored" class="error">
         <p>
           Impossible de charger les images pour l'instant. Veuillez réessayer

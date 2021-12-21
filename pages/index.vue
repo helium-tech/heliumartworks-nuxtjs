@@ -1,9 +1,8 @@
 <template>
   <div class="home">
     <Hero></Hero>
-    <Vedette></Vedette>
     <CategoryShow></CategoryShow>
-    <!-- //bug not found -->
+    <Vedette></Vedette>
     <Promote></Promote>
     <Packs></Packs>
     <CtaVendeur></CtaVendeur>

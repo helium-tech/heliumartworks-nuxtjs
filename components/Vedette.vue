@@ -1,5 +1,5 @@
 <template>
-  <section class="section-mb80 main__center center">
+  <section class="section-mb80  ">
       <div class="render-images-vedette pb-2">
         <div v-if="errored" class="error">
           <p>
@@ -9,7 +9,7 @@
         </div>
         <div v-else>
           <!-- <figure v-if="loading" class="loading loading-lg"></figure> -->
-          <ImagesList v-if="loading" class="loading loading-lg"/>
+          <!-- <ImagesList v-if="loading" class="loading loading-lg"/> -->
           <ImagesList :images="images" />
 
         </div>

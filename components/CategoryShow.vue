@@ -1,12 +1,12 @@
 <template>
   <section>
     <div class="section live">
-      <div class="live__center center">
+      <div class="live__center " style="padding-left: 25px">
         <div class="live__head">
           <h2 class="live__title h3 text-bold">Que cherchez vous?</h2>
           <div class="browse__info info">Explorez par catégories</div>
         </div>
-        <div class="live__slider js-slider-live js-slider-resize">
+        <div class="live__slider">
           <nuxt-link to="/categories/technologie" class="live__item">
             <div class="live__preview">
               <img src=@/assets/images/categories/technologie.png alt="Helium

@@ -1,6 +1,6 @@
 <template>
   <div class="section main main_stays-category">
-<div class="main__center center">
+<div class="">
   <div class="main__preview"><img src=@/assets/images/emotions-cat.jpg alt="Main">
     <div class="main__wrap">
       <h1 class="main__title hero">{{title}}</h1>
