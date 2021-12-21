@@ -3124,7 +3124,8 @@ body.dark .section-bg {
 
 @media only screen and (max-width: 640px) {
     .app-hero {
-        font-size: 35px;
+        font-size: 28px;
+        padding: 0 .5em;
     }
     .main_stays .main__title,
     .main_flights .main__title {
@@ -3405,7 +3406,7 @@ body.dark .status-gray {
 
 @media only screen and (max-width: 767px) {
     .header {
-        padding: 24px 0;
+        padding: 14px 0;
     }
 }
 
@@ -3834,7 +3835,6 @@ body.dark .header__item_user .header__body {
         margin: 0 -32px;
         padding: 0 32px;
         height: 64px;
-        font-family: 'Poppins', sans-serif;
         font-size: 24px;
         font-weight: 600;
     }
@@ -3927,7 +3927,6 @@ body.dark .header__link.active .icon {
         height: 64px;
         padding: 0 32px;
         border-radius: 0;
-        font-family: 'Poppins', sans-serif;
         font-size: 24px;
         font-weight: 600;
     }
@@ -5021,7 +5020,7 @@ body.dark .panel__controls .panel__button.active {
 
 @media only screen and (max-width: 767px) {
     .main__wrap {
-        padding: 0px 10px 80px;
+        padding: 30px 0px 80px;
     }
 }
 
@@ -6425,7 +6424,6 @@ body.dark .travels__location {
     border-radius: 24px;
     background: none;
     border: 2px solid #E6E8EC;
-    font-family: 'Poppins', sans-serif;
     font-size: 14px;
     line-height: 1.71429;
     color: #23262F;
@@ -11404,7 +11402,6 @@ body.dark .receipt .counter {
 .receipt__report {
     display: inline-flex;
     align-items: center;
-    font-family: 'Poppins', sans-serif;
     font-size: 12px;
     line-height: 1.66667;
     color: #777E90;
@@ -11432,7 +11429,6 @@ body.dark .receipt .counter {
     justify-content: center;
     align-items: center;
     margin-bottom: 32px;
-    font-family: 'Poppins', sans-serif;
     font-size: 12px;
     line-height: 1.66667;
     color: #777E90;
@@ -11848,7 +11844,6 @@ body.dark .profile__note {
     display: inline-flex;
     align-items: center;
     margin-top: 32px;
-    font-family: 'Poppins', sans-serif;
     font-size: 12px;
     line-height: 1.66667;
     color: #777E90;
@@ -11941,7 +11936,6 @@ body.dark .comment__text span {
     border-radius: 24px;
     background: none;
     border: 2px solid #E6E8EC;
-    font-family: 'Poppins', sans-serif;
     font-size: 16px;
     line-height: 1.5;
     color: #23262F;
@@ -12118,7 +12112,6 @@ body.dark .comment__content {
 
 .comment__action {
     margin-left: 16px;
-    font-family: 'Poppins', sans-serif;
     font-size: 12px;
     line-height: 1.66667;
     font-weight: 600;
@@ -12643,7 +12636,6 @@ body.dark .checkout__datepicker {
     background: none;
     box-shadow: none;
     border-radius: 0;
-    font-family: 'Poppins', sans-serif;
     font-size: 16px;
     line-height: 1.5;
     font-weight: 500;
@@ -14719,7 +14711,6 @@ body.dark .reviews__content {
 
 .reviews__action {
     margin-left: 16px;
-    font-family: 'Poppins', sans-serif;
     font-size: 12px;
     line-height: 1.66667;
     font-weight: 600;
@@ -17671,7 +17662,6 @@ body.dark .avatars__file {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-family: 'Poppins', sans-serif;
     font-size: 24px;
     line-height: 1.33333;
     font-weight: 600;
@@ -17854,7 +17844,6 @@ body.dark .datepicker__input::placeholder {
     background: #FCFCFD;
     z-index: 20;
     overflow: hidden;
-    font-family: 'Poppins', sans-serif;
 }
 
 @media only screen and (max-width: 767px) {

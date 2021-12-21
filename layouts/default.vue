@@ -1,14 +1,14 @@
 <template>
-  <div id="app">
+  <div id="app" class="outer">
     <header class="header">
       <div class="header__center main__center center">
-        <h1>
+        <h1 class=" mb-1">
           <nuxt-link to="/" class="header__logo text-bold"
             ><span class="text-yellow">helium</span>artworks</nuxt-link
           >
         </h1>
         <div
-          class="header__wrapper js-header-wrapper"
+          class="header__wrapper"
           :class="{ visible: isNavMobVisible }"
         >
           <div
