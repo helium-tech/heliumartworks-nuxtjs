@@ -6,9 +6,8 @@
       <div class="main__wrap">
         <h1 class="main__title app-hero">Des <span class="text-yellow">images africaines</span> de qualité en un seul et même endroit</h1>
       </div>
-      <div class="hero-side">
+      <div class="hero-side hide-md">
         <picture class="hero-img">
-          <source media="(max-width: 960px)" srcSet="img/content/main-pic-mobile-1.jpg">
             <img src=@/assets/images/hero.png alt="Hero">
           </picture>
         </div>

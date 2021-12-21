@@ -3,16 +3,10 @@
   <div class="footer__center main__center center">
     <div class="footer__row">
       <div class="footer__col">
-        <nuxt-link to="/" class="footer__logo h4"><span class="text-yellow">helium</span>artworks</nuxt-link>
-        <!-- <div class="footer__theme">
-          <svg class="icon icon-bulb">
-            <use xlink:href="#icon-bulb"></use>
-          </svg>Mode Sombre
-          <label class="theme js-theme">
-            <input class="theme__input" type="checkbox"/><span class="theme__inner">
-              <span class="theme__box"></span></span>
-          </label>
-        </div> -->
+        <nuxt-link to="/" class="footer__logo h3 text-bold"><span class="text-yellow">Helium</span>artworks</nuxt-link>
+        <div class="footer__theme">
+          Helium Artworks, la plateforme pour booster votre créativité avec des réalisations graphiques des créateurs africains.
+        </div>
       </div>
       <div class="footer__col">
         <div class="footer__menu">

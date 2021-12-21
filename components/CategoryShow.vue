@@ -1,7 +1,7 @@
 <template>
-  <section>
+  <section class="collections__center center">
     <div class="section live">
-      <div class="live__center " style="padding-left: 25px">
+      <div class="live__center">
         <div class="live__head">
           <h2 class="live__title h3 text-bold">Que cherchez vous?</h2>
           <div class="browse__info info">Explorez par catégories</div>

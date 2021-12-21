@@ -26,9 +26,9 @@
               <div class="header__menu">
                 <nuxt-link to="/images" class="header__link">Images</nuxt-link>
                 <nuxt-link to="/videos" class="header__link">Videos</nuxt-link>
-                <a class="header__link" href="#"> Musiques </a>
-                <a class="header__link" href="#"> Oeuvres d'art </a>
-                <a class="header__link" href="#"> Stylisme </a>
+                <a class="header__link" href="#">Musiques</a>
+                <a class="header__link" href="#">Oeuvres d'art</a>
+                <a class="header__link" href="#">Stylisme</a>
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@
 
     <Nuxt />
 
-    
+
 
     <Footer></Footer>
 
@@ -115,7 +115,7 @@
       @click="toTop"
     >
 
-   
+
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="48"

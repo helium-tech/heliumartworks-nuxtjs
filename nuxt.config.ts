@@ -7,11 +7,11 @@ const config: NuxtConfig = {
   target: 'static',
   head: {
     title: "Helium Artworks",
-    titleTemplate: "%s | Helium Artworks - Banque de médias(Images, Vidéos, Musiques, Samples) africaines",
+    titleTemplate: "%s | Helium Artworks - Banque de médias (Images, Vidéos, Musiques, Samples) africains",
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Helium Artworks, votre plateforme pour booster votre sprit de créativité avec des réalisations graphique des créateurs africains. ' },
+      { hid: 'description', name: 'description', content: 'Helium Artworks, la plateforme pour booster votre créativité avec des réalisations graphiques des créateurs africains.' },
       { hid: 'og:locale', name: 'og:locale', content: 'fr_FR' },
       { hid: 'og:type', name: 'og:type', content: 'website' },
       { hid: 'og:site_name', name: 'og:site_name', content: 'Helium Artwork' },
@@ -21,7 +21,7 @@ const config: NuxtConfig = {
       { hid: 'twitter:data1', name: 'twitter:data1', content: '02 minutes ' },
       { hid: 'fb:app_id', name: 'fb:app_id', content: '4443848595663604' },
       { hid: 'article:publisher', name: 'article:publisher', content: 'https://www.facebook.com/HeliumArtworks' },
-      { hid: 'og:title', name: 'og:title', content: 'La meilleurs banque de médias africaines (Images, Videos etc)' },
+      { hid: 'og:title', name: 'og:title', content: 'La meilleure banque de médias africaines (Images, Videos etc)' },
 
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],

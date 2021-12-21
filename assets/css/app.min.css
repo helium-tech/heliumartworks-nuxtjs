@@ -3106,8 +3106,8 @@ body.dark .section-bg {
 
 .app-hero {
     font-size: 3rem;
-    line-height: 1;
-    letter-spacing: -.02em;
+    line-height: 1.1;
+    letter-spacing: -.01em;
 }
 
 @media only screen and (max-width: 1339px) {
@@ -3118,13 +3118,13 @@ body.dark .section-bg {
 
 @media only screen and (max-width: 1179px) {
     .app-hero {
-        font-size: 54px;
+        font-size: 34px;
     }
 }
 
 @media only screen and (max-width: 640px) {
     .app-hero {
-        font-size: 45px;
+        font-size: 35px;
     }
     .main_stays .main__title,
     .main_flights .main__title {
@@ -4936,7 +4936,7 @@ body.dark .panel__controls .panel__button.active {
 
 @media only screen and (max-width: 1419px) {
     .main__center {
-        padding: 0 40px;
+        padding: 0 20px;
     }
 }
 
@@ -5127,7 +5127,7 @@ body.dark .main__title {
 
 .main_stays .main__title,
 .main_flights .main__title {
-    max-width: 62%;
+    max-width: 55%;
 }
 
 @media only screen and (max-width: 767px) {
@@ -5139,7 +5139,7 @@ body.dark .main__title {
 }
 
 .main_stays-category .main__preview:before {
-    padding-bottom: 46%;
+    padding-bottom: 38%;
 }
 
 @media only screen and (max-width: 767px) {
@@ -12363,6 +12363,14 @@ body.dark .field__textarea {
 .field__input:-ms-input-placeholder,
 .field__textarea:-ms-input-placeholder,
 .formulate-input-element textarea:-ms-input-placeholder {
+    color: #777E90;
+}
+
+.field__input::-moz-placeholder, .field__textarea::-moz-placeholder, .formulate-input-element textarea::-moz-placeholder {
+    color: #777E90;
+}
+
+.field__input:-ms-input-placeholder, .field__textarea:-ms-input-placeholder, .formulate-input-element textarea:-ms-input-placeholder {
     color: #777E90;
 }
 
