@@ -5,7 +5,7 @@
       <div class="footer__col">
         <nuxt-link to="/" class="footer__logo h3 text-bold"><span class="text-yellow">Helium</span>artworks</nuxt-link>
         <div class="footer__theme">
-          Helium Artworks, la plateforme pour booster votre créativité avec des réalisations graphiques des créateurs africains.
+            Helium Artworks, la plateforme pour booster votre créativité avec des réalisations graphiques des créateurs africains.
         </div>
       </div>
       <div class="footer__col">

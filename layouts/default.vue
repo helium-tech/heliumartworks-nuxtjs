@@ -1,10 +1,10 @@
 <template>
   <div id="app" class="outer">
     <header class="header">
-      <div class="header__center main__center center">
-        <h1 class=" mb-1">
-          <nuxt-link to="/" class="header__logo text-bold"
-            ><span class="text-yellow">helium</span>artworks</nuxt-link
+      <div class="header__center main__center center flex-centered">
+        <h1 class="header__logo text-bold mb-1">
+          <nuxt-link to="/"
+            ><span class="text-yellow">Helium</span>artworks</nuxt-link
           >
         </h1>
         <div
@@ -110,12 +110,10 @@
 
     <div
       id="pagetop"
-      class="fixed right-0 bottom-0"
+      class="p-fixed s-rounded"
       v-show="scY > 300"
       @click="toTop"
     >
-
-
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="48"
@@ -223,6 +221,14 @@ a:focus,
 a:hover {
   text-decoration: none !important;
 }
+
+#pagetop {
+ right: 32px;
+ background: #ffc71c;
+ bottom: 6rem;
+ z-index: 10;
+}
+
 .text-yellow {
   color: #ffc71c;
 }
