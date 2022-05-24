@@ -1,5 +1,5 @@
 <template>
-  <section class="main__center">
+  <section class="section-mb80">
     <div class="section live">
       <div class="live__center">
         <div class="live__head">
