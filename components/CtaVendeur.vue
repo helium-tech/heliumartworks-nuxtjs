@@ -1,17 +1,10 @@
 <template>
-    <section class="cta-vendeur pb-8">
-      <div class="container">
+    <section class="cta-vendeur">
+      <div class="section center">
         <h2 class="text-bold pt-2">Vendez vos oeuvres</h2>
-        <div class="columns flex-centered bg-gray r-rounded">
-          <div class="col-5 hide-lg">
-            <img class="img-responsive fit-img img-fit-cover l-rounded" src=@/assets/images/art-cat.jpg alt="Categorie Art">
-          </div>
-          <div class="column col-7 px-6 py-2 col-lg-auto">
-            <h2>Vous êtes artiste, photographe ou créateur africain de contenu ?!</h2>
-            <p>Ouvrez un compte, publiez vos oeuvres et faites vous un revenu passif !</p>
-            <button href="#" class="btn btn-cta btn-lg mr-1 font-500">Vendre mes oeuvres</button>
-          </div>
-        </div>
+        <nuxt-link to="/vendre-mes-oeuvres">
+          <img class="img-responsive fit-img s-rounded" src=@/assets/images/sell-cta.jpg alt="Vendre mes oeuvres">
+        </nuxt-link>
     </div>
     </section>
 </template>
@@ -23,9 +16,12 @@ export default {
 </script>
 
 <style scoped>
-.fit-img {
-  height: 24rem;
-  width: 100%;
+
+.buy_oeuvre_back{
+  background-image: url("@/assets/images/art-cat.jpg");
+}
+.cta-vendeur {
+ padding-top: 4rem;
 }
 .l-rounded {
   border-top-left-radius: .4rem;
@@ -34,5 +30,14 @@ export default {
 .r-rounded {
   border-top-right-radius: .4rem;
   border-bottom-right-radius: .4rem;
+}
+.px-6 {
+  padding: 0 2rem;
+}
+
+@media (max-width: 840px) {
+  .px-6 {
+    padding: 1rem;
+  }
 }
 </style>

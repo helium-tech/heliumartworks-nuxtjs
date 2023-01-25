@@ -1,112 +1,134 @@
 <template>
-  <div class="center">
+  <div>
     <!-- <vs-button @click="active=!active">
         Open Dialog
       </vs-button> -->
-    <div>
-      <button
-        class="btn btn-cta-y my-2 font-500 btn-block"
-        v-if="isLoggedIn">
-        Mon compte
-      </button>
-      <button
-        @click="active = !active"
-        class="btn btn-cta-y my-2 font-500 btn-block"
-        v-else>
-        Se connecter
-      </button>
-    </div>
-    <vs-dialog :loading="loading" blur v-model="active">
-      <template #header>
-        <h1 class=""><span class="text-yellow">helium</span>artworks</h1>
-      </template>
 
-      <div class="con-form">
-        <vs-input
-          v-if="isRegister == true"
-          v-model="name"
-          placeholder="Nom Complet"
-        >
-          <template #icon>
-            <i class="bx bxs-user-circle"></i>
-          </template>
-        </vs-input>
-        <vs-input v-model="email" placeholder="Email">
-          <template #icon> @ </template>
-        </vs-input>
-        <vs-input type="password" v-model="password" placeholder="Password">
-          <template #icon>
-            <i class="bx bxs-lock"></i>
-          </template>
-        </vs-input>
-        <vs-input
-          v-if="isRegister == true"
-          type="password"
-          v-model="confirm"
-          placeholder="Confimer le mot de passe"
-        >
-          <template #icon>
-            <i class="bx bxs-lock"></i>
-          </template>
-        </vs-input>
-        <div class="flex">
-          <vs-checkbox v-model="remember" v-if="isRegister == false"
-            >Se Souvenir</vs-checkbox
+      <div class="header__item header__item_user"
+        :class="{active: isUserTabActive}"
+        v-if="isLoggedIn"
+      >
+        <button class="header__login" @click="toggleUserTab">
+          <figure
+            class="avatar"
+            data-initial="HT"
           >
-          <vs-checkbox v-model="remember" v-else
-            >J'accepte les <a href="#">conditions d'utilisations</a>
-          </vs-checkbox>
-          <a href="#" v-if="isRegister == false">Mot de passe oublié?</a>
+          <img src="img/avatar-1.png" alt="..." />
+          </figure>
+        </button>
+        <div class="header__body">
+          <div class="header__group">
+              <div class="header__menu">
+                <a class="header__link" href="#">
+                <!-- <svg class="icon icon-comment">
+                  <use xlink:href="#icon-comment"></use>
+                </svg>Messages</a><a class="header__link" href="bookings-list.html">
+                <svg class="icon icon-home">
+                  <use xlink:href="#icon-home"></use>
+                </svg>Bookings</a><a class="header__link" href="wishlists.html"> -->
+                <svg class="icon icon-bag">
+                  <use xlink:href="#icon-bag"></use>
+                </svg>Ma sélection
+              </a>
+              </div>
+              <!-- <div class="header__menu"><a class="header__link" href="list-your-property.html">
+                <svg class="icon icon-building">
+                  <use xlink:href="#icon-building"></use>
+                </svg>List your property</a><a class="header__link" href="host-an-experience.html">
+                <svg class="icon icon-flag">
+                  <use xlink:href="#icon-flag"></use>
+                </svg>Host an experience</a>
+              </div> -->
+          </div>
+          <div class="header__btns">
+            <nuxt-link to="/account" class="button button-small header__button">Mon compte</nuxt-link>
+            <button class="button-stroke button-small header__button"
+              @click="logout">
+              Déconnexion
+            </button>
+          </div>
         </div>
       </div>
+      <a class="header__login" data-effect="mfp-zoom-in"
+        v-else
+        @click="toggleModal"
+        >
+        <svg class="icon icon-user">
+          <use xlink:href="#icon-user"></use>
+        </svg>
+      </a>
 
-      <template #footer>
-        <div class="footer-dialog">
-          <vs-button
-            color="#ffc71c"
-            dark
-            block
-            v-if="isRegister == false"
-            @click="connectWithEmail()"
-          >
-            Connexion
-          </vs-button>
-          <vs-button
-            color="#ffc71c"
-            dark
-            block
-            v-else
-            @click="createAccountWithEmail()"
-          >
-            Créer un compte
-          </vs-button>
-
-          <!-- <vs-button
-            icon
-            style="margin-top: 20px; padding-left: 15px; padding-right: 15px"
-            @click="signWithGoogle()"
-          >
-            <i class="bx bxl-google" style="margin-right: 5px"></i>
-            Se Connecter avec Google
-          </vs-button> -->
-
-          <div class="new" v-if="isRegister == false">
-            Nouveau?
-            <a href="javascript:{}" @click="swithConnexionMode()"
-              >Créer un compte</a
-            >
-          </div>
-          <div class="new" v-else>
-            Déja un compte?
-            <a href="javascript:{}" @click="swithConnexionMode()">Connexion</a>
+      <!-- Popup login-->
+      <div class="modal" :class="{active: isModalActive}" id="modal-id">
+      <div class="popup popup_login">
+        <div class="signup"
+          v-if="isRegister == true"
+        >
+          <div class="login__item">
+            <div class="login__title h3">
+              S'inscrire
+            </div>
+            <div class="login__btns">
+              <button class="button login__button" @click="signWithGoogle" >
+                <svg class="icon icon-google">
+                  <use xlink:href="#icon-google"></use>
+                </svg><span>Avec Google</span>
+              </button>
+            </div>
+            <div class="login__note">Ou continuer avec email</div>
+            <div class="subscription">
+              <input class="subscription__input mb-2" type="name" name="name" placeholder="Nom Complet" required v-model="name">
+              <input class="subscription__input mb-2" type="email" name="email" placeholder="Saisir email" required v-model="email">
+              <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Saisir mot de passe" required v-model="password">
+              <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Confirmer mot de passe" required v-model="confirm">
+              <a class="btn btn-cta flex-centered text-bold mt-2" href="#" style="border-radius: 20px;" @click="createAccountWithEmail">
+                S'inscrire
+              </a>
+            </div>
+            <div class="login__foot">Avez vous déjà un compte?
+              <a class="login__link" @click.prevent="swithConnexionMode">
+                Se connecter
+              </a>
+              </div>
           </div>
         </div>
-      </template>
-    </vs-dialog>
+        <div class="login" v-else>
+          <div class="login__item">
+            <div class="login__title h3">
+              Se connecter
+            </div>
+            <div class="login__btns">
+              <button class="button login__button" @click="signWithGoogle">
+                <svg class="icon icon-google">
+                  <use xlink:href="#icon-google"></use>
+                </svg><span>Avec Google</span>
+              </button>
+            </div>
+            <div class="login__note">Ou avec email</div>
+            <div class="subscription">
+              <input class="subscription__input mb-2" type="email" name="email" placeholder="Saisir email" required v-model="email">
+              <input class="subscription__input mb-2 mt-2" type="password" name="password" placeholder="Saisir mot de passe" required v-model="password">
+              <a class="btn btn-cta flex-centered text-bold mt-2" href="#" style="border-radius: 20px;" @click="connectWithEmail">
+                Se connecter
+              </a>
+            </div>
+            <div class="login__foot">Vous n'avez pas de compte?
+              <a class="login__link" @click.prevent="swithConnexionMode">S'inscrire</a>
+            </div>
+          </div>
+        </div>
+        <button title="Fermer" type="button" class="mfp-close"
+          @click="toggleModal"
+          >×
+        </button>
+      </div>
+
+    </div>
+
   </div>
 </template>
   <script >
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import Vue from 'vue'
 import { mapState, mapGetters } from 'vuex'
 export default Vue.extend({
@@ -127,8 +149,16 @@ export default Vue.extend({
     password: '',
     confirm: '',
     remember: false,
+    isModalActive : false,
+    isUserTabActive : false,
   }),
   methods: {
+    toggleModal() {
+      this.isModalActive = !this.isModalActive;
+    },
+    toggleUserTab() {
+      this.isUserTabActive = !this.isUserTabActive;
+    },
     swithConnexionMode() {
       this.isRegister = !this.isRegister
     },
@@ -137,9 +167,10 @@ export default Vue.extend({
       var provider = new firebase.auth.GoogleAuthProvider()
       firebase
         .auth()
-        .signInWithPopup(provider)
+        .signInWithRedirect(provider)
         .then((result) => {
           this.loading = false
+          this.isModalActive = false
           const noti = this.$vs.notification({
             color: 'success',
             position: 'top-right',
@@ -175,6 +206,7 @@ export default Vue.extend({
         .signInWithEmailAndPassword(this.email, this.password)
         .then((data) => {
           this.loading = false
+          this.isModalActive = false
           const noti = this.$vs.notification({
             color: 'success',
             position: 'top-right',
@@ -217,24 +249,25 @@ export default Vue.extend({
           color: 'danger',
           position: 'top-right',
           title: 'Mot de passe non conforme',
-          text: 'Les mot de passe que vous avez fournis ne sont pas conforme ! Veuillez le vérifiez',
+          text: 'Les mots de passe que vous avez fournis ne sont pas conformes ! Veuillez les vérifier',
         })
         return
       }
-      if (this.remember != true) {
-        const noti = this.$vs.notification({
-          color: 'danger',
-          position: 'top-right',
-          title: "Accepter les conditions d'utilisation",
-          text: "Vous devez lire et accepter les conditions d'utilisation de la plateforme avant de créer votre compte!",
-        })
-        return
-      }
+      // if (this.remember != true) {
+      //   const noti = this.$vs.notification({
+      //     color: 'danger',
+      //     position: 'top-right',
+      //     title: "Accepter les conditions d'utilisation",
+      //     text: "Vous devez lire et accepter les conditions d'utilisation de la plateforme avant de créer votre compte!",
+      //   })
+      //   return
+      // }
       this.loading = true
       await this.$fire.auth
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((data) => {
           this.loading = false
+          this.isModalActive = false
         })
         .catch((error) => {
           this.loading = false
@@ -247,61 +280,23 @@ export default Vue.extend({
           return
         })
     },
+
+    async logout() {
+      try {
+        await this.$fire.auth.signOut()
+      } catch (e) {
+        alert(e)
+      }
+    },
   },
+
+  watch: {
+    '$route' () {
+      this.isUserTabActive = false
+    }
+  }
 })
 </script>
-  <style>
-.not-margin {
-  margin: 0px;
-  font-weight: normal;
-  padding: 10px;
-}
-.con-form {
-  width: 100%;
-}
-.con-form .flex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.con-form .flex a {
-  font-size: 0.8rem;
-  opacity: 0.7;
-}
-.con-form .flex a:hover {
-  opacity: 1;
-}
-.con-form .vs-checkbox-label {
-  font-size: 0.8rem;
-}
-.con-form .vs-input-content {
-  margin: 10px 0px;
-  width: calc(100%);
-}
-.con-form .vs-input-content .vs-input {
-  width: 100%;
-}
-.footer-dialog {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: calc(100%);
-}
-.footer-dialog .new {
-  margin: 0px;
-  margin-top: 20px;
-  padding: 0px;
-  font-size: 0.7rem;
-}
-.footer-dialog .new a {
-  color: rgba(var(--vs-primary), 1) !important;
-  margin-left: 6px;
-}
-.footer-dialog .new a:hover {
-  text-decoration: underline;
-}
-.footer-dialog .vs-button {
-  margin: 0px;
-}
+<style scoped>
+
 </style>

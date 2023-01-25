@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeroSecond></HeroSecond>
+    <HeroSecond title="Videos"/>
     <ComingSoon></ComingSoon>
 
   </div>

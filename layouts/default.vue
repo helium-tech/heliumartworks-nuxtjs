@@ -1,90 +1,133 @@
 <template>
-  <div id="app">
-    <header class="bg-gray">
-        <div class="container navbar py-4">
-          <section class="navbar-section">
-            <nuxt-link to="/" class="logo"><span class="text-yellow">helium</span>artworks</nuxt-link>
-          </section>
-          <section class="navbar-center nav-mob" :class="{active: isNavMobActive}">
-            <nuxt-link to="/images" class="btn btn-link">Images</nuxt-link>
-            <div class="dropdown categories">
-              <a href="#" class="btn btn-link dropdown-toggle" tabindex="0">
-                Catégories
-              </a>
-              <ul class="menu">
-                  <div class="chip">
-                  <img src=@/assets/images/art-cat.jpg class="avatar avatar-sm">
-                    Art
-                  </div>
-                  <div class="chip">
-                  <img src=@/assets/images/travail-cat.jpg class="avatar avatar-sm">
-                    Travail
-                  </div>
-                  <div class="chip">
-                  <img src=@/assets/images/emotions-cat.jpg class="avatar avatar-sm">
-                    Personnes
-                  </div>
-                  <div class="chip">
-                  <img src=@/assets/images/retro-cat.jpg class="avatar avatar-sm">
-                    Retro
-                  </div>
-                  <div class="chip">
-                  <img src=@/assets/images/personnes-cat.jpg class="avatar avatar-sm">
-                    Emotion
-                  </div>
-              </ul>
+  <div id="app" class="outer">
+    <header class="header">
+      <div class="header__center main__center center flex-centered">
+        <h1 class="header__logo text-bold mb-1">
+          <nuxt-link to="/"
+            ><span class="text-yellow">Helium</span>artworks</nuxt-link
+          >
+        </h1>
+        <div
+          class="header__wrapper"
+          :class="{ visible: isNavMobVisible }"
+        >
+          <div
+            class="header__item header__item_dropdown"
+            :class="{ active: isHeadDropdownactive }"
+            ref="HeadDropdown"
+          >
+            <button class="header__head" @click.prevent="toggleHeadDropdown">
+              Catégories
+              <svg class="icon icon-arrow-down">
+                <use xlink:href="#icon-arrow-down"></use>
+              </svg>
+            </button>
+            <div class="header__body js-header-body">
+              <div class="header__menu">
+                <nuxt-link to="/images" class="header__link">Images</nuxt-link>
+                <nuxt-link to="/videos" class="header__link">Videos</nuxt-link>
+                <a class="header__link" href="#">Musiques</a>
+                <a class="header__link" href="#">Oeuvres d'art</a>
+                <a class="header__link" href="#">Stylisme</a>
+              </div>
             </div>
-            <nuxt-link to="/videos" class="btn btn-link">Vidéos</nuxt-link>
-            <nuxt-link to="/musiques" class="btn btn-link">Musique</nuxt-link>
-            <nuxt-link to="/arts" class="btn btn-link">Oeuvres d'art</nuxt-link>
-            <div class="dropdown selection hide-xs">
-              <a href="#" class="btn btn-link badge hide-md" data-badge="0">Ma sélection</a>
-              <ul class="menu">
-                <div class="empty">
-                  <p class="empty-subtitle">Vous n'avez sélectionné aucune image pour l'instant</p>
-                  <div class="empty-action">
-                    <button class="btn btn-cta font-500">Parcourir les images</button>
-                  </div>
-                </div>
-              </ul>
+          </div>
+          <nuxt-link to="/support" class="header__item">Support</nuxt-link>
+          <div
+            class="header__item header__item_language"
+            :class="{ active: isLanguageDropdownActive }"
+          >
+            <button class="header__head" @click="toggleLanguageDropdown">
+              <svg class="icon icon-globe">
+                <use xlink:href="#icon-globe"></use></svg
+              >Langue
+            </button>
+            <div class="header__body js-header-body">
+              <div class="header__list">
+                <a class="header__box active" href="#">
+                  <div class="header__category">Français</div>
+                </a>
+                <a class="header__box" href="#">
+                  <div class="header__category">Anglais</div>
+                </a>
+              </div>
             </div>
-          </section>
-          <section class="navbar-section navbar-right hide-md">
-            <AuthModal></AuthModal>
-            <!-- <UserAccountButton v-else></UserAccountButton> -->
-            <button href="#" class="btn btn-cta-y ml-2 font-500" @click.prevent="toggleModal">Vendre mes oeuvres</button>
-          </section>
+          </div>
+          <nuxt-link
+            to="/vendre-mes-oeuvres"
+            class="btn btn-cta text-small text-bold header__button"
+            >Vendre mes oeuvres</nuxt-link
+          >
         </div>
+        <AuthModal class="hide-md" />
+        <!-- <div class="header__item header__item_notification js-header-item">
+      <button class="header__head js-header-head active">
+        <svg class="icon icon-notification">
+          <use xlink:href="#icon-notification"></use>
+        </svg>
+      </button>
+      <div class="header__body js-header-body">
+        <div class="header__title">Notification</div>
+        <div class="header__notifications"><a class="header__notification" href="message-center.html">
+            <div class="header__avatar"><img src="images/content/avatar-1.jpg" alt="Avatar"></div>
+            <div class="header__details">
+              <div class="header__subtitle">Kohaku Tora</div>
+              <div class="header__content">just sent you a message</div>
+              <div class="header__date">1 minute ago</div>
+              <div class="header__status" style="background-color: #3B71FE;"></div>
+            </div></a><a class="header__notification" href="message-center.html">
+            <div class="header__avatar"><img src="images/content/avatar-1.jpg" alt="Avatar"></div>
+            <div class="header__details">
+              <div class="header__subtitle">Kohaku Tora</div>
+              <div class="header__content">just sent you a message</div>
+              <div class="header__date">3 hours ago</div>
+              <div class="header__status" style="background-color: #3B71FE;"></div>
+            </div></a></div>
+      </div>
+      </div> -->
+      </div>
     </header>
 
-  <Nuxt />
+    <Nuxt />
 
-    <!-- Modal de connexion et d'inscription -->
-    <div class="modal modal-sm" :class="{active: isModalActive}" id="modal-id">
-      <a href="#close" class="modal-overlay" aria-label="Close" @click="toggleModal"></a>
-      <div class="modal-container h-rounded">
-        <section class="modal-header">
-        <a href="#close" class="btn btn-clear float-right my-2" aria-label="Close" @click="toggleModal"></a>
-        <div class="modal-title text-center h5"><span class="text-yellow">helium</span>artworks</div>
-        </section>
-        <section class="modal-body">
-          <div class="content text-large">
-            Bientôt vous aurez la possibilité de vendre vos oeuvres
-          </div>
-        </section>
-    </div>
-  </div>
+
 
     <Footer></Footer>
 
     <!-- Mob menu -->
     <section id="nav-mob" class="mob-menu p-sticky p-4 show-lg bg-gray">
-      <a class="column flex-centered" @click.prevent="toggleNavMob"><i class="icon icon-menu" title="Menu"></i></a>
-      <a class="column flex-centered badge" data-badge="0"><i class="icon icon-bookmark" title="Ma sélection"></i></a>
-      <a class="column flex-centered"><i class="icon icon-search" title="Effectuer une recherche"></i></a>
-      <AuthModal/>
+      <a class="column flex-centered" @click.prevent="toggleNavMob"
+        ><i class="icon icon-menu" title="Menu"></i
+      ></a>
+      <a class="column flex-centered badge" data-badge="0"
+        ><i class="icon icon-bookmark" title="Ma sélection"></i
+      ></a>
+      <nuxt-link to="/search" class="column flex-centered"
+        ><i class="icon icon-search" title="Effectuer une recherche"></i
+      ></nuxt-link>
+      <AuthModal class="column flex-centered" />
     </section>
 
+    <div
+      id="pagetop"
+      class="p-fixed s-rounded"
+      v-show="scY > 300"
+      @click="toTop"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#4a5568"
+        stroke-width="1"
+        stroke-linecap="square"
+        stroke-linejoin="arcs"
+      >
+        <path d="M18 15l-6-6-6 6" />
+      </svg>
+    </div>
   </div>
 </template>
 
@@ -101,8 +144,11 @@ export default {
   },
   data() {
     return {
-      isModalActive : false,
-      isNavMobActive : false
+      scTimer: 0,
+      scY: 0,
+      isNavMobVisible: false,
+      isHeadDropdownactive: false,
+      isLanguageDropdownActive: false,
     }
   },
   computed: {
@@ -113,73 +159,81 @@ export default {
       isLoggedIn: 'auth/isLoggedIn',
     }),
   },
-  methods: {
 
-    toggleModal() {
-      if (this.isModalActive) {
-        this.isModalActive = false
-      } else {
-        this.isModalActive = true
-      }
+  methods: {
+    handleScroll: function () {
+      if (this.scTimer) return
+      this.scTimer = setTimeout(() => {
+        this.scY = window.scrollY
+        clearTimeout(this.scTimer)
+        this.scTimer = 0
+      }, 100)
+    },
+    toTop: function () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
     },
 
     toggleNavMob() {
-      if (this.isNavMobActive) {
-        this.isNavMobActive = false
-      } else {
-        this.isNavMobActive = true
+      this.isNavMobVisible = !this.isNavMobVisible
+    },
+    toggleHeadDropdown() {
+      this.isHeadDropdownactive = !this.isHeadDropdownactive
+    },
+    toggleLanguageDropdown() {
+      this.isLanguageDropdownActive = !this.isLanguageDropdownActive
+    },
+    documentClick(e) {
+      let el = this.$refs.HeadDropdown
+      let target = e.target
+      if (el !== target && !el.contains(target)) {
+        this.isHeadDropdownactive = false
       }
-    }
-
-  }
+    },
+  },
+  watch: {
+    $route() {
+      ;(this.isHeadDropdownactive = false), (this.isNavMobVisible = false)
+    },
+  },
+  mounted() {
+    document.addEventListener('click', this.documentClick)
+    window.addEventListener('scroll', this.handleScroll)
+  },
 }
 </script>
 
 <!-- Style généralisé -->
 <style>
 #app {
-  font-family: "DM sans";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  font-family: 'DM Sans', sans-serif;
 }
-
-.container {
-	max-width: 1280px;
-}
-
 a {
+  text-decoration: none;
   color: #2c3e50 !important;
+  cursor: pointer;
+}
+a.active,
+a:active,
+a:focus,
+a:hover {
+  text-decoration: none !important;
 }
 
-a.active, a:active, a:focus, a:hover {
-	text-decoration: none !important;
+#pagetop {
+ right: 32px;
+ background: #ffc71c;
+ bottom: 6rem;
+ z-index: 10;
 }
 
 .text-yellow {
-  color : #ffc71c;
+  color: #ffc71c;
 }
-
 .bg-yellow {
   background: #ffc71c;
-}
-
-.py-4 {
-	padding-bottom: .8rem;
-	padding-top: .8rem;
-}
-
-.px-6 {
-  padding-left: 2rem !important;
-  padding-right: 2rem !important;
-}
-
-.pb-8 {
-  padding-bottom: 1.6rem;
-}
-
-.pt-2rem {
-  padding-top: 2rem
 }
 
 .logo {
@@ -188,7 +242,7 @@ a.active, a:active, a:focus, a:hover {
 }
 
 .m-4 {
-  margin: .8rem;
+  margin: 0.8rem;
 }
 
 .mb-6 {
@@ -206,31 +260,38 @@ a.active, a:active, a:focus, a:hover {
 }
 
 a:focus {
-	box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.modal:target,
+.modal.active {
+  background: rgba(20, 20, 22, 0.3);
 }
 
 .btn.btn-cta {
-  border: .05rem solid #303030;
+  border: 0.05rem solid #303030;
   color: inherit;
   border-radius: 4px;
 }
 
-.btn-cta:focus, .btn-cta:hover {
-	background: #ffc71c !important;
-	border-color: #fbc930 !important;
+.btn-cta:focus,
+.btn-cta:hover {
+  background: #ffc71c !important;
+  border-color: #fbc930 !important;
   box-shadow: inherit !important;
 }
 
 .btn.btn-cta-y {
-	background: #ffc71c;
-  border: .05rem solid #fbc930;
+  background: #ffc71c;
+  border: 0.05rem solid #fbc930;
   color: inherit;
   border-radius: 4px;
 }
 
-.btn-cta-y:focus, .btn-cta-y:hover {
-	background: #fff !important;
-	border-color: #fbc930 !important;
+.btn-cta-y:focus,
+.btn-cta-y:hover {
+  background: #fff !important;
+  border-color: #fbc930 !important;
   color: #fbc930;
   box-shadow: inherit !important;
 }
@@ -240,28 +301,33 @@ a:focus {
 }
 
 .form-input:focus {
-	border-color: #fbc930 !important;
+  border-color: #fbc930 !important;
   box-shadow: inherit !important;
 }
 
 .h-rounded {
-  border-radius: .3rem !important;
+  border-radius: 0.3rem !important;
   overflow: hidden;
 }
 
 .price {
-	top: 1em;
-	right: 1em;
+  top: 1em;
+  right: 1em;
 }
 
 .figure-caption {
   position: absolute;
   bottom: 0;
-  padding: .5em;
+  padding: 0.5em;
   width: 100%;
   z-index: 1;
   background-color: transparent;
-  background-image: linear-gradient(180deg,rgba(0,23,37,0),rgba(0,23,37,0) 15%,rgba(0,23,37,.85));
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 23, 37, 0),
+    rgba(0, 23, 37, 0) 15%,
+    rgba(0, 23, 37, 0.85)
+  );
 }
 
 .figure-caption,
@@ -275,40 +341,23 @@ a:focus {
 
 .image-preview:hover .figure-caption,
 .image-preview:hover .price {
-	opacity: 1 !important;
+  opacity: 1 !important;
   transition: all 0.3s;
-}
-
-aside {
- margin-bottom: -1em;
 }
 
 .gradient {
   background-color: transparent;
-  background-image: linear-gradient(180deg,rgba(0,23,37,0),rgba(0,23,37,0) 15%,rgba(0,23,37,.85));
-}
-
-.tab .tab-item a.active, .tab .tab-item.active a {
-	border-bottom-color: #ffc71c !important;
-}
-
-.form-checkbox input:checked + .form-icon, .form-radio input:checked + .form-icon, .form-switch input:checked + .form-icon {
-	background: #ffc71c !important;
-	border-color: #ffc71c !important;
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 23, 37, 0),
+    rgba(0, 23, 37, 0) 15%,
+    rgba(0, 23, 37, 0.85)
+  );
 }
 
 .mob-menu {
   bottom: 0;
-  z-index: 22
-}
-
-.dropdown:hover .menu {
-  display: block;
-}
-
-.dropdown .menu {
-	top: 90% !important;
-  width: 20em;
+  z-index: 22;
 }
 
 .badge[data-badge]::after,
@@ -316,18 +365,33 @@ aside {
   background: #ffc71c !important;
 }
 
-.chip {
-  margin: 8px !important;
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
-@media (max-width: 840px) {
+.fixed-dim {
+  height: 300px !important;
+  width: 360px;
+}
+
+@media (max-width: 960px) {
+  .fixed-dim {
+    height: 400px !important;
+    width: 340px;
+  }
+
   .navbar-center {
-   flex-direction: column;
-   align-items: flex-start !important;
+    flex-direction: column;
+    align-items: flex-start !important;
   }
 
   .dropdown .menu {
-	   width: auto;
+    width: auto;
   }
 
   .nav-mob {
@@ -344,7 +408,7 @@ aside {
   }
 
   .p-4 {
-  	padding: .8rem;
+    padding: 0.8rem;
   }
 
   #nav-mob {

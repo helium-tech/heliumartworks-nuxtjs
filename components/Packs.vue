@@ -1,64 +1,63 @@
 <template>
-    <section class="packs mb-6">
-      <div class="container">
-        <h2 class="text-bold pt-2rem">Découvrez les packs images</h2>
-        <div class="columns flex-centered">
-          <figure class="column p-relative pack">
-              <a href="#">
-                <img class="img-responsive h-rounded p-relative img-pack fit-img img-fit-cover" src=@/assets/images/art-cat.jpg>
-                <img class="img-responsive h-rounded fit-img img-fit-cover p-absolute left-image" src=@/assets/images/personnes-cat.jpg>
-                <img class="img-responsive h-rounded fit-img img-fit-cover p-absolute right-image" src=@/assets/images/art-cat.jpg>
-                <figcaption>
-                  <h5 class="category-title py-1">Pack Artiste</h5>
-                </figcaption>
-              </a>
-          </figure>
-          <figure class="column p-relative">
-              <a href="#">
-                <img class="img-responsive h-rounded p-relative img-pack fit-img img-fit-cover" src=@/assets/images/travail-cat.jpg>
-                <img class="img-responsive h-rounded fit-img img-fit-cover p-absolute left-image" src=@/assets/images/art-cat.jpg>
-                <img class="img-responsive h-rounded fit-img img-fit-cover p-absolute right-image" src=@/assets/images/art-cat.jpg>
-                <figcaption>
-                  <h5 class="category-title py-1">Pack Designer</h5>
-                </figcaption>
-              </a>
-          </figure>
-          <figure class="column p-relative">
-              <a href="#">
-                <img class="img-responsive h-rounded p-relative img-pack fit-img img-fit-cover" src=@/assets/images/personnes-cat.jpg alt="Categorie Personnes" title="Categorie Personnes">
-                <img class="img-responsive h-rounded fit-img img-fit-cover p-absolute left-image" src=@/assets/images/art-cat.jpg alt="Categorie Art">
-                <img class="img-responsive h-rounded fit-img img-fit-cover p-absolute right-image" src=@/assets/images/emotions-cat.jpg alt="Categorie Emotions" title="Categorie Emotions">
-                <figcaption>
-                  <h5 class="category-title py-1">Pack Special</h5>
-                </figcaption>
-              </a>
-          </figure>
-          <figure class="column p-relative">
-              <a href="#">
-                <img class="img-responsive h-rounded p-relative img-pack fit-img img-fit-cover" src=@/assets/images/emotions-cat.jpg>
-                <img class="img-responsive h-rounded fit-img img-fit-cover p-absolute left-image" src=@/assets/images/art-cat.jpg>
-                <img class="img-responsive h-rounded fit-img img-fit-cover p-absolute right-image" src=@/assets/images/art-cat.jpg>
-                <figcaption>
-                  <h5 class="category-title py-1">Pack Nature</h5>
-                </figcaption>
-              </a>
-          </figure>
-          <figure class="column p-relative">
-              <a href="#">
-                <img class="img-responsive h-rounded p-relative img-pack fit-img img-fit-cover" src=@/assets/images/travail-cat.jpg>
-                <img class="img-responsive h-rounded fit-img img-fit-cover p-absolute left-image" src=@/assets/images/art-cat.jpg>
-                <img class="img-responsive h-rounded fit-img img-fit-cover p-absolute right-image" src=@/assets/images/art-cat.jpg>
-                <figcaption>
-                  <h5 class="category-title py-1">Pack Designer</h5>
-                </figcaption>
-              </a>
-          </figure>
-        </div>
-        <div class="columns flex-centered">
-          <button href="#" class="btn btn-lg btn-cta-y text-center font-500">Plus de packs</button>
+  <div class="bg-gray collections">
+<div class="collections__center center">
+  <div class="collections__wrapper">
+    <h3 class="collections__title h3 text-bold">Packs</h3>
+    <div class="collections__inner">
+      <div class="collections__slider js-slider-collections">
+        <nuxt-link to="/packs" class="collections__item">
+          <div class="collections__gallery">
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+          </div>
+          <h3 class="collections__subtitle text-bold">Pack Nature</h3>
+          <div class="collections__line">
+            <div class="collections__user">
+              <div class="collections__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"></div>
+              <div class="collections__author">Par <span>Helium</span></div>
+            </div>
+            <div class="status-stroke-black collections__counter"><span>24 images</span></div>
+          </div>
+        </nuxt-link>
+        <nuxt-link to="/packs" class="collections__item">
+          <div class="collections__gallery">
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+          </div>
+          <h3 class="collections__subtitle text-bold">Pack Nature</h3>
+          <div class="collections__line">
+            <div class="collections__user">
+              <div class="collections__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"></div>
+              <div class="collections__author">Par <span>Helium</span></div>
+            </div>
+            <div class="status-stroke-black collections__counter"><span>24 images</span></div>
+          </div>
+        </nuxt-link>
+        <nuxt-link to="/packs" class="collections__item">
+          <div class="collections__gallery">
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+            <div class="collections__preview"><img src=@/assets/images/emotions-cat.jpg alt="Collections"></div>
+          </div>
+          <h3 class="collections__subtitle text-bold">Pack Nature</h3>
+          <div class="collections__line">
+            <div class="collections__user">
+              <div class="collections__avatar"><img src="img/content/avatar-1.jpg" alt="Avatar"></div>
+              <div class="collections__author">Par <span>Helium</span></div>
+            </div>
+            <div class="status-stroke-black collections__counter"><span>24 images</span></div>
+          </div>
+        </nuxt-link>
         </div>
     </div>
-    </section>
+  </div>
+</div>
+</div>
 </template>
 
 <script>
@@ -68,27 +67,55 @@ export default {
 </script>
 
 <style scoped>
-.fit-img {
-  height: 14em;
-  width: 100%;
+.collections {
+  padding: 4rem 0;
 }
-.left-image {
-	right: .6rem;
-	top: -1.2rem;
-}
-.right-image {
-	left: 1rem;
-	top: -.8rem;
+.collections__wrapper {
+    position: relative;
 }
 
-.img-pack {
-  position: relative;
-  z-index: 1;
+.collections__slider {
+  display: flex;
 }
-
-@media (max-width:840px)  {
-  .fit-img {
-    height: 8em;
-  }
+.collections__inner {
+    margin: 0 -16px;
+}
+.collections__gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -8px -4px 16px;
+}
+.collections__preview:first-child {
+    flex: 0 0 calc(100% - 8px);
+    width: calc(100% - 8px);
+}
+.collections__preview {
+	flex: 0 0 calc(33.333% - 8px);
+	width: calc(33.333% - 8px);
+	margin: 8px 4px 0;
+}
+.collections__preview img {
+    width: 100%;
+    border-radius: 8px;
+}
+.collections__item  {
+  padding: 14px;
+}
+.collections__line {
+    display: flex;
+    align-items: center;
+}
+.collections__user {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    color: #353945;
+}
+.collections__counter {
+    flex-shrink: 0;
+}
+.status-stroke-black {
+    box-shadow: inset 0 0 0 2px #E6E8EC;
+    color: #777E90;
 }
 </style>

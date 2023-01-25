@@ -4,21 +4,49 @@ const isDev = process.env.NODE_ENV === 'development'
 const useEmulators = false // manually change if emulators needed
 
 const config: NuxtConfig = {
+  target: 'static',
   head: {
-    title: "Helium Artworks - La meilleure banque d'images africaines",
+    title: "Helium Artworks",
+    titleTemplate: "%s | Helium Artworks - Banque de médias (Images, Vidéos, Musiques, Samples) africains",
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'Helium Artworks, la plateforme pour booster votre créativité avec des réalisations graphiques des créateurs africains.' },
+      { hid: 'og:locale', name: 'og:locale', content: 'fr_FR' },
+      { hid: 'og:type', name: 'og:type', content: 'website' },
+      { hid: 'og:site_name', name: 'og:site_name', content: 'Helium Artwork' },
+      { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
+      { hid: 'twitter:site', name: 'twitter:site', content: '@HeliumArtworks' },
+      { hid: 'twitter:label1', name: 'twitter:label1', content: 'Durée de lecture est...' },
+      { hid: 'twitter:data1', name: 'twitter:data1', content: '02 minutes ' },
+      { hid: 'fb:app_id', name: 'fb:app_id', content: '4443848595663604' },
+      { hid: 'article:publisher', name: 'article:publisher', content: 'https://www.facebook.com/HeliumArtworks' },
+      { hid: 'og:title', name: 'og:title', content: 'La meilleure banque de médias africaines (Images, Videos etc)' },
+
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [ //inclue les scripts en pied de page de façon normale
+      {
+        type: 'text/javascript',
+        src: '//code.tidio.co/jpah1p3bihphulgejchyouwkgyjmixj6.js',
+        body: true,
+        defer: true,
+      },
+    ]
   },
+
+  loading: {
+    color: 'blue',
+    height: '5px'
+  },
+
 
   components: true,
 
   buildModules: [
     '@nuxt/typescript-build',
     '@nuxtjs/firebase',
+    '@/modules/generator'
   ],
 
   firebase: {
@@ -87,19 +115,25 @@ const config: NuxtConfig = {
     },
   },
 
-  modules: ['@nuxtjs/pwa'],
+  modules: [
+    // '@nuxtjs/pwa',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+  ],
   plugins: [
     // '~/plugins/lazyMode', dev update
-    { src: '~plugins/vuesax.js' },
     { src: '~plugins/vuemasonry.js' },
-    { src: '~plugins/spectrecss.js' },
     { src: '~plugins/vue-lazyload.js' },
+    { src: '~plugins/spectrecss.js' },
+    { src: '~plugins/vuesax.js' },
+    { src: '~plugins/vueFormulate.js' },
+
   ],
 
   css: [
     "~assets/css/fonts.css",
+    "~assets/css/app.min.css",
     "~assets/css/icons.css",
-    "~assets/css/iconify.css",
   ],
 
   build: {},
@@ -111,13 +145,82 @@ const config: NuxtConfig = {
     middleware: ['testMiddleware'],
   },
 
-  pwa: {
-    workbox: {
-      importScripts: ['/firebase-auth-sw.js'],
-      // by default the workbox module will not install the service worker in dev environment to avoid conflicts with HMR
-      // only set this true for testing and remember to always clear your browser cache in development
-      dev: process.env.NODE_ENV === 'development',
-    },
+  sitemap: {
+    hostname: 'https://www.heliumartworks.com/',
+    gzip: true,
+    exclude: [
+      '/account',
+      '/account/**',
+    ],
+    defaults: {
+      changefreq: 'daily',
+      priority: 1,
+      lastmod: new Date()
+    }
   },
+
+
+  robots: () => {
+    return {
+      UserAgent: '*',
+      Disallow: '/account',
+      Host: "https://www.heliumartworks.com",
+      Sitemap: "https://www.heliumartworks.com/sitemap.xml"
+    }
+  }
+
+
+  // pwa: {
+  //   manifest: {
+  //     name: "Helium Artworks",
+  //     lang: "fr",
+  //     short_name: "Helium Artworks",
+  //     description: "Tous les médias africaines, comme vous le vloulez pour vos projets créatives !"
+  //   },
+  //   workbox: {
+  //     importScripts: ['/firebase-auth-sw.js'],
+  //     dev: process.env.NODE_ENV === 'development',
+  //   },
+  //   meta: {
+  //     mobileAppIOS: true,
+  //     name: "Helium Artworks",
+  //     author: "Helium Technologie",
+  //     lang: "fr",
+  //     ogType: "website",
+  //     ogName: "Helium Artworks"
+  //   },
+  //   icon: {
+  //     source: '/logo_500.png',
+  //     filename: "logo_500.png",
+  //     icons: [
+  //       {
+  //         src: `/icon.png`,
+  //         size: "144x144",
+  //         type: "image/png"
+  //       }, {
+  //         src: `/apple-touch-icon.png`,
+  //         size: "128x128",
+  //         type: "image/png"
+  //       }, {
+  //         src: `/apple-touch-icon.png`,
+  //         size: "152x152",
+  //         type: "image/png"
+  //       }, {
+  //         src: `/apple-touch-icon.png`,
+  //         size: "180x180",
+  //         type: "image/png"
+  //       }, {
+  //         src: `/apple-touch-icon.png`,
+  //         size: "192x192",
+  //         type: "image/png"
+  //       }, {
+  //         src: `/apple-touch-icon.png`,
+  //         size: "256x256",
+  //         type: "image/png"
+  //       }
+  //     ]
+  //   }
+
+  // },
 }
 export default config

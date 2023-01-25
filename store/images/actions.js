@@ -3,28 +3,42 @@ const API_BASE_URL = "https://heliumartworks.herokuapp.com";
 
 export default {
     async getRecentsImages({ commit }) {
+
         axios.get(API_BASE_URL + "/files/ressources?resource_type=images").then(data => {
-            console.log(data.data)
-            var recentsImages = data.data
-            commit('SET_RECENTS_IMAGES', { recentsImages })
+            let response = data.data
+            commit('SET_RECENTS_IMAGES', { response })
         })
     },
 
 
-    async downloadImage({ commit }, imageId, userId) {
-        var request_url =
-            url + '/download?file_id=' + imageId + '&user_id=' + userId
-        axios.get(request_url).then(data => {
-            var result = data.data
+    async searchImages({ commit }, keyword, page, limit) {
+        let is_searching = true;
+        commit('SWITCH_SEARCHING_BOOL', { is_searching })
 
-            var file_path = 'host/path/file.ext';
-            var a = document.createElement('A');
-            a.href = file_path;
-            a.download = file_path.substr(file_path.lastIndexOf('/') + 1);
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        })
-    }
+        if (page == null || !Number.isInteger(page)) {
+            page = 1
+        }
+        if (limit == null || !Number.isInteger(limit)) {
+            limit = 20
+        }
+        let url = 'https://heliumartworks.herokuapp.com/files/search'
+        var searchUrl = url + '?keyword=' + keyword + '&page=' + page + '&limit=500'
+        axios
+            .get(searchUrl)
+            .then((response) => {
+                var images = response.data.data;
+                commit('SET_SEARCH_IMAGES', { images })
+
+                is_searching = false;
+                commit('SWITCH_SEARCHING_BOOL', { is_searching })
+            })
+            .catch((error) => {
+                console.log(error)
+
+                is_searching = false;
+                commit('SWITCH_SEARCHING_BOOL', { is_searching })
+            })
+
+    },
 
 }

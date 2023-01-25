@@ -1,51 +1,53 @@
 <template>
-    <section class="category-show mb-6">
-      <div class="container">
-        <h2 class="text-bold pt-2rem">Catégories</h2>
-        <div class="columns flex-centered">
-          <figure class="m-0 column col-md-6">
-              <a href="#">
-                <img class="img-responsive h-rounded fit-img img-fit-cover" src=@/assets/images/art-cat.jpg alt="Categorie Art" title="Categorie Art">
-                <figcaption>
-                  <h4 class="category-title py-1">Arts</h4>
-                </figcaption>
-              </a>
-          </figure>
-          <figure class="m-0 column col-md-6">
-              <a href="#">
-                <img class="img-responsive h-rounded fit-img img-fit-cover" src=@/assets/images/travail-cat.jpg alt="Categorie Travail" title="Categorie Travail">
-                <figcaption>
-                  <h4 class="category-title py-1">Travail</h4>
-                </figcaption>
-              </a>
-          </figure>
-          <figure class="m-0 column col-md-auto">
-              <a href="#">
-                <img class="img-responsive h-rounded fit-img img-fit-cover" src=@/assets/images/personnes-cat.jpg alt="Categorie Personnes" title="Categorie Personnes">
-                <figcaption>
-                  <h4 class="category-title py-1">Personnes</h4>
-                </figcaption>
-              </a>
-          </figure>
-          <figure class="m-0 column col-md-6">
-              <a href="#">
-                <img class="img-responsive h-rounded fit-img img-fit-cover" src=@/assets/images/emotions-cat.jpg alt="Categorie Emotions" title="Categorie Emotions">
-                <figcaption>
-                  <h4 class="category-title py-1">Emotions</h4>
-                </figcaption>
-              </a>
-          </figure>
-          <figure class="m-0 column col-md-6">
-              <a href="#">
-                <img class="img-responsive h-rounded fit-img img-fit-cover" src=@/assets/images/retro-cat.jpg alt="Categorie Retro" title="Categorie Retro">
-                <figcaption>
-                  <h4 class="category-title py-1">Retro</h4>
-                </figcaption>
-              </a>
-          </figure>
+  <section class="section-mb80">
+    <div class="section live">
+      <div class="live__center">
+        <div class="live__head">
+          <h2 class="live__title h3 text-bold">Que cherchez vous?</h2>
+          <div class="browse__info info">Explorez par catégories</div>
         </div>
+        <div class="live__slider">
+          <nuxt-link to="/categories/technologie" class="live__item">
+            <div class="live__preview">
+              <img src=@/assets/images/categories/technologie.png alt="Helium
+              Artworks Technologie">
+            </div>
+            <div class="live__subtitle text-large">Technologie</div>
+            <!-- <div class="live__content">6,879 properties</div> -->
+          </nuxt-link>
+          <nuxt-link to="/categories/femmes" class="live__item">
+            <div class="live__preview">
+              <img src=@/assets/images/categories/femmes.png alt="Helium
+              Artworks Femmes">
+            </div>
+            <div class="live__subtitle text-large">Femmes</div>
+            <!-- <div class="live__content">6,879 properties</div> -->
+          </nuxt-link>
+          <nuxt-link to="/categories/hommes" class="live__item">
+            <div class="live__preview">
+              <img src=@/assets/images/categories/hommes.png alt="Helium
+              Artworks Hommes">
+            </div>
+            <div class="live__subtitle text-large">Hommes</div>
+            <!-- <div class="live__content">6,879 properties</div> -->
+          </nuxt-link>
+          <nuxt-link to="/categories/etudiants" class="live__item">
+            <div class="live__preview">
+              <img src=@/assets/images/categories/etudiants.png alt="Helium
+              Artworks Etudiants">
+            </div>
+            <div class="live__subtitle text-large">Etudiants</div>
+            <!-- <div class="live__content">6,879 properties</div> -->
+          </nuxt-link>
+        </div>
+        <div class="live__btns">
+          <!-- <button class="button-stroke button-small live__button">
+            <div class="loader"></div><span>Load more</span>
+          </button> -->
+        </div>
+      </div>
     </div>
-    </section>
+  </section>
 </template>
 
 <script>
@@ -55,20 +57,4 @@ export default {
 </script>
 
 <style scoped>
-.fit-img {
-  height: 20em;
-  width: 100%;
-}
-
-.fit-img:hover {
-  box-shadow: rgba(17, 17, 26, 0.1) 0 0 16px;
-  transform: translateY(-5px);
-  transition: all .3s;
-}
-
-@media (max-width:840px)  {
-  .fit-img {
-    height: 14em;
-  }
-}
 </style>

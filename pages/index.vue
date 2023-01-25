@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <Hero></Hero>
-    <Vedette></Vedette>
     <CategoryShow></CategoryShow>
+    <Vedette></Vedette>
     <Promote></Promote>
     <Packs></Packs>
     <CtaVendeur></CtaVendeur>
@@ -26,6 +26,12 @@ export default {
     Promote,
     Packs,
     CtaVendeur
+  },
+  head:{
+    title: "La meilleur banques de médias africaine (Images, Vidéos, Musiques)",
+    meta: [
+      
+    ]
   }
 }
 </script>

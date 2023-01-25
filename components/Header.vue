@@ -2,7 +2,7 @@
 <header class="bg-gray">
     <div class="container navbar py-4">
       <section class="navbar-section">
-        <router-link to="/" class="logo"><span class="text-yellow">helium</span>artworks</router-link>
+        <nuxt-link to="/" class="logo"><span class="text-yellow">helium</span>artworks</nuxt-link>
       </section>
       <section class="navbar-center hide-md">
         <router-link to="/images" class="btn btn-link">Images</router-link>
