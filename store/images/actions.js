@@ -6,8 +6,7 @@ export default {
 
         axios.get(API_BASE_URL + "/files/ressources?resource_type=images").then(data => {
             let response = data.data
-            let recentsImages = response.slice(0, 20);
-            commit('SET_RECENTS_IMAGES', { recentsImages })
+            commit('SET_RECENTS_IMAGES', { response })
         })
     },
 
@@ -23,7 +22,7 @@ export default {
             limit = 20
         }
         let url = 'https://heliumartworks.herokuapp.com/files/search'
-        var searchUrl = url + '?keyword=' + keyword + '&page=' + page + '&limit=20'
+        var searchUrl = url + '?keyword=' + keyword + '&page=' + page + '&limit=500'
         axios
             .get(searchUrl)
             .then((response) => {
